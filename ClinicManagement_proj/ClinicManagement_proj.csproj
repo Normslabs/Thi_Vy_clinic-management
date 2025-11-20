@@ -61,6 +61,7 @@
     <Compile Include="DAL\Appointment.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\ClinicDbContext.cs" />
     <Compile Include="DAL\Doctor.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
