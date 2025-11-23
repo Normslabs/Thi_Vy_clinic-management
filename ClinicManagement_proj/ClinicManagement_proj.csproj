@@ -60,8 +60,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BLL\UTILS\Notification.cs" />
-    <Compile Include="BLL\UTILS\NotificationManager.cs" />
+    <Compile Include="BLL\Utils\Notification.cs" />
+    <Compile Include="BLL\Utils\NotificationManager.cs" />
     <Compile Include="DAL\Appointment.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
@@ -126,9 +126,26 @@
     <Compile Include="UI\AdminDashboard\AdminDashboard.Doctor.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\AdminDashboard\AdminDashboard.Notifications.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AdminDashboard\AdminDashboard.Patient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AdminDashboard\AdminDashboard.Scheduling.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="UI\AdminDashboard\AdminDashboard.User.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="UI\AdminDashboard\Controllers\DoctorManagementController.cs" />
+    <Compile Include="UI\AdminDashboard\Utils\ImageHelper.cs" />
+    <Compile Include="UI\AdminDashboard\Controllers\IPanelController.cs" />
+    <Compile Include="UI\AdminDashboard\Utils\NavigationManager.cs" />
+    <Compile Include="UI\AdminDashboard\Controllers\PatientRegistrationController.cs" />
+    <Compile Include="UI\AdminDashboard\Controllers\ReportsController.cs" />
+    <Compile Include="UI\AdminDashboard\Controllers\SchedulingController.cs" />
+    <Compile Include="UI\AdminDashboard\Controllers\UserManagementController.cs" />
     <Compile Include="UI\DoctorDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -1,12 +1,14 @@
 ﻿using ClinicManagement_proj.BLL.Utils;
 using System;
 using System.Drawing;
-using System.Windows.Forms;
 
 namespace ClinicManagement_proj.UI
 {
     public partial class AdminDashboard
     {
+        /// <summary>
+        /// Reset the user management form to initial state
+        /// </summary>
         private void ResetUsrForm()
         {
             txtUsrUsername.Text = string.Empty;
@@ -23,9 +25,11 @@ namespace ClinicManagement_proj.UI
             txtUsrPassword.UseSystemPasswordChar = true;
             btnTogglePassword.Text = "Show";
             txtUsrPassword.BackColor = SystemColors.Window;
-
         }
 
+        /// <summary>
+        /// Enter edit mode for user management
+        /// </summary>
         private void EnterUsrEditMode()
         {
             isEditMode = true;
@@ -38,6 +42,9 @@ namespace ClinicManagement_proj.UI
             grpAdminForm.Text = "Edit User";
         }
 
+        /// <summary>
+        /// Handle password text change to track modifications
+        /// </summary>
         private void txtUsrPassword_TextChanged(object sender, EventArgs e)
         {
             if (txtUsrPassword.Text.Length == 0)
@@ -52,6 +59,9 @@ namespace ClinicManagement_proj.UI
             }
         }
 
+        /// <summary>
+        /// Handle user selection from grid
+        /// </summary>
         private void dgvUsers_Click(object sender, EventArgs e)
         {
             if (dgvUsers.CurrentRow != null)
@@ -61,11 +71,17 @@ namespace ClinicManagement_proj.UI
             }
         }
 
+        /// <summary>
+        /// Cancel user form operation
+        /// </summary>
         private void btnUsrCancel_Click(object sender, EventArgs e)
         {
             ResetUsrForm();
         }
 
+        /// <summary>
+        /// Toggle password visibility
+        /// </summary>
         private void btnTogglePassword_Click(object sender, EventArgs e)
         {
             txtUsrPassword.UseSystemPasswordChar = !txtUsrPassword.UseSystemPasswordChar;
@@ -79,23 +95,31 @@ namespace ClinicManagement_proj.UI
             }
         }
 
+        /// <summary>
+        /// Submit user form (create or update)
+        /// </summary>
         private void btnUsrSubmit_Click(object sender, EventArgs e)
         {
             NotificationManager.AddNotification("User operation simulated!", NotificationType.Info);
             ResetUsrForm();
         }
 
+        /// <summary>
+        /// Delete selected user
+        /// </summary>
         private void btnUsrDelete_Click(object sender, EventArgs e)
         {
             NotificationManager.AddNotification("User delete simulated!", NotificationType.Info);
             ResetUsrForm();
         }
 
+        /// <summary>
+        /// Generate a random password
+        /// </summary>
         private void btnGenPassword_Click(object sender, EventArgs e)
         {
             string generatedPassword = "GeneratedPassword123"; // Simulated
             txtUsrPassword.Text = generatedPassword;
         }
-
     }
 }

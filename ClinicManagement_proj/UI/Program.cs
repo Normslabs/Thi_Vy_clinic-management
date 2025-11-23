@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using ClinicManagement_proj.UI;
+using System;
 using System.Windows.Forms;
 
 namespace ClinicManagement_proj
@@ -16,7 +14,7 @@ namespace ClinicManagement_proj
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Form1());
+            Application.Run(new LoginForm());
         }
     }
 }

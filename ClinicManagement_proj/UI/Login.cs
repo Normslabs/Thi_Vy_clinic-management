@@ -1,6 +1,4 @@
-﻿using ClinicManagement_proj.DAL;
-using System;
-using System.Drawing;
+﻿using System;
 using System.Windows.Forms;
 
 namespace ClinicManagement_proj.UI
