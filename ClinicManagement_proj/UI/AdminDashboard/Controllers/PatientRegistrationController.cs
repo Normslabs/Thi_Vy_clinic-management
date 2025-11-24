@@ -17,7 +17,6 @@ namespace ClinicManagement_proj.UI
         private TextBox txtMedicalNumber => (TextBox)grpPatientRegistration.Controls["txtMedicalNumber"];
         private DateTimePicker dateDoB => (DateTimePicker)grpPatientRegistration.Controls["dateDoB"];
         private TextBox txtPPhone => (TextBox)grpPatientRegistration.Controls["txtPPhone"];
-        private TextBox txtEmail => (TextBox)grpPatientRegistration.Controls["txtEmail"];
         private TableLayoutPanel layoutPatientButtons => (TableLayoutPanel)grpPatientRegistration.Controls["layoutPatientButtons"];
         private Button btnPatientSubmit => (Button)layoutPatientButtons.Controls["btnPCreate"];
         private Button btnPatientCancel => (Button)layoutPatientButtons.Controls["btnPCancel"];
@@ -61,7 +60,6 @@ namespace ClinicManagement_proj.UI
             txtMedicalNumber.Text = string.Empty;
             dateDoB.Value = DateTime.Now;
             txtPPhone.Text = string.Empty;
-            txtEmail.Text = string.Empty;
         }
 
         /// <summary>
