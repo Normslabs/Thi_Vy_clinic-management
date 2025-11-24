@@ -33,7 +33,7 @@ namespace ClinicManagement_proj.UI
         {
             LoadUsers();
             ComboBox comboRoles = (ComboBox)panel.Controls["comboRoles"];
-            comboRoles.DataSource = userService.GetRoleNames();
+            // comboRoles.DataSource = userService.GetRoleNames();
         }
 
         private void LoadUsers()
@@ -60,7 +60,7 @@ namespace ClinicManagement_proj.UI
 
             try
             {
-                userService.CreateUser(username, password, role);
+                // userService.CreateUser(username, password, role);
                 LoadUsers();
                 ResetForm();
             }
