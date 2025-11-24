@@ -14,7 +14,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public int CreatePatient(PatientDTO patientDto)
         {
-            var patient = new Patient
+            var patient = new PatientDTO
             {
                 FirstName = patientDto.FirstName,
                 LastName = patientDto.LastName,
