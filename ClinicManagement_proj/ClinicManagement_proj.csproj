@@ -71,6 +71,9 @@
     <Compile Include="DAL\Doctor.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="DAL\DoctorSchedule.cs">
+      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="DAL\HealthCareClinicModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -89,7 +92,10 @@
     <Compile Include="DAL\Patient.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\Schedule.cs">
+    <Compile Include="DAL\Role.cs">
+      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\Specialty.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\sp_BookAppointment_Result.cs">
@@ -102,6 +108,9 @@
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\sp_GetDoctorCurrentSchedule_Result.cs">
+      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DAL\TimeSlot.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\User.cs">

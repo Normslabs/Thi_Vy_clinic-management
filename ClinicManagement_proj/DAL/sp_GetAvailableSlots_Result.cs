@@ -16,10 +16,11 @@ namespace ClinicManagement_proj.DAL
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public string Specialization { get; set; }
-        public string DoctorSchedule { get; set; }
         public Nullable<System.DateTime> RequestedDate { get; set; }
-        public Nullable<System.DateTime> BookedSlotStart { get; set; }
-        public Nullable<System.DateTime> BookedSlotEnd { get; set; }
-        public Nullable<int> SlotDuration { get; set; }
+        public string DayOfWeek { get; set; }
+        public int TimeSlotId { get; set; }
+        public int HourOfDay { get; set; }
+        public int MinuteOfHour { get; set; }
+        public int IsBooked { get; set; }
     }
 }

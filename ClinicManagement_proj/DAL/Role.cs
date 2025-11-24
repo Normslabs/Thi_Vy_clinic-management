@@ -12,21 +12,20 @@ namespace ClinicManagement_proj.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class User
+    public partial class Role
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public User()
+        public Role()
         {
-            this.Roles = new HashSet<Role>();
+            this.Users = new HashSet<User>();
         }
     
         public int Id { get; set; }
-        public string Username { get; set; }
-        public string PasswordHash { get; set; }
+        public string RoleName { get; set; }
         public System.DateTime CreatedAt { get; set; }
         public System.DateTime ModifiedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Role> Roles { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -12,15 +12,18 @@ namespace ClinicManagement_proj.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class vw_PatientRecordsSummary
+    public partial class Specialty
     {
-        public int PatientId { get; set; }
-        public string PatientName { get; set; }
-        public string InsuranceNumber { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
-        public Nullable<int> Age { get; set; }
-        public string PhoneNumber { get; set; }
-        public Nullable<int> TotalAppointments { get; set; }
-        public Nullable<System.DateTime> LastAppointmentDate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Specialty()
+        {
+            this.Doctors = new HashSet<Doctor>();
+        }
+    
+        public int Id { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Doctor> Doctors { get; set; }
     }
 }

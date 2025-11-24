@@ -17,9 +17,9 @@ namespace ClinicManagement_proj.DAL
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public string Specialization { get; set; }
-        public string CurrentSchedule { get; set; }
-        public System.DateTime EffectiveDate { get; set; }
-        public string Availability { get; set; }
-        public int ScheduleId { get; set; }
+        public string DayOfWeek { get; set; }
+        public string StartTime { get; set; }
+        public string EndTime { get; set; }
+        public string LicenseNumber { get; set; }
     }
 }

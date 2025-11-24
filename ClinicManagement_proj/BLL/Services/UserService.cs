@@ -1,6 +1,7 @@
 ﻿using ClinicManagement_proj.BLL.DTO;
 using ClinicManagement_proj.DAL;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace ClinicManagement_proj.BLL.Services
@@ -11,11 +12,11 @@ namespace ClinicManagement_proj.BLL.Services
 
         public List<UserDTO> GetAllUsers()
         {
-            List<UserDTO> users = clinicDb.Users.Select(u => new UserDTO
+            List<UserDTO> users = clinicDb.Users.Include(u => u.Roles).Select(u => new UserDTO
             {
                 Id = u.Id,
                 Username = u.Username,
-                Role = u.Role
+                Role = u.Roles.FirstOrDefault().RoleName
             }).ToList();
             return users;
         }

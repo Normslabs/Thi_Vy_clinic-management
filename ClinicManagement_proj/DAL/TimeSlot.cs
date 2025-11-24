@@ -12,13 +12,19 @@ namespace ClinicManagement_proj.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class Schedule
+    public partial class TimeSlot
     {
-        public int Id { get; set; }
-        public int DoctorId { get; set; }
-        public string Schedule1 { get; set; }
-        public System.DateTime EffectiveDate { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public TimeSlot()
+        {
+            this.Appointments = new HashSet<Appointment>();
+        }
     
-        public virtual Doctor Doctor { get; set; }
+        public int Id { get; set; }
+        public int HourOfDay { get; set; }
+        public int MinuteOfHour { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Appointment> Appointments { get; set; }
     }
 }

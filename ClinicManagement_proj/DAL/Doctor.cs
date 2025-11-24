@@ -18,20 +18,22 @@ namespace ClinicManagement_proj.DAL
         public Doctor()
         {
             this.Appointments = new HashSet<Appointment>();
-            this.Schedules = new HashSet<Schedule>();
+            this.DoctorSchedules = new HashSet<DoctorSchedule>();
+            this.Specialties = new HashSet<Specialty>();
         }
     
-        public int z { get; set; }
-        public int UserId { get; set; }
+        public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Specialization { get; set; }
-        public string Availability { get; set; }
+        public string LicenseNumber { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+        public System.DateTime ModifiedAt { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Appointment> Appointments { get; set; }
-        public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Schedule> Schedules { get; set; }
+        public virtual ICollection<DoctorSchedule> DoctorSchedules { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Specialty> Specialties { get; set; }
     }
 }

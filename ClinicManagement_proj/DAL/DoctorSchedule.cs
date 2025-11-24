@@ -12,15 +12,16 @@ namespace ClinicManagement_proj.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class vw_PatientRecordsSummary
+    public partial class DoctorSchedule
     {
-        public int PatientId { get; set; }
-        public string PatientName { get; set; }
-        public string InsuranceNumber { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
-        public Nullable<int> Age { get; set; }
-        public string PhoneNumber { get; set; }
-        public Nullable<int> TotalAppointments { get; set; }
-        public Nullable<System.DateTime> LastAppointmentDate { get; set; }
+        public int Id { get; set; }
+        public int DoctorId { get; set; }
+        public string DayOfWeek { get; set; }
+        public System.DateTime WorkStartTime { get; set; }
+        public System.DateTime WorkEndTime { get; set; }
+        public System.DateTime CreatedAt { get; set; }
+        public System.DateTime ModifiedAt { get; set; }
+    
+        public virtual Doctor Doctor { get; set; }
     }
 }

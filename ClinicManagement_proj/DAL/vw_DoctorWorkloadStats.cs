@@ -17,10 +17,8 @@ namespace ClinicManagement_proj.DAL
         public int DoctorId { get; set; }
         public string DoctorName { get; set; }
         public string Specialization { get; set; }
-        public Nullable<int> PendingAppointments { get; set; }
-        public Nullable<int> ConfirmedAppointments { get; set; }
+        public Nullable<int> UpcomingAppointments { get; set; }
         public Nullable<int> CompletedAppointments { get; set; }
-        public Nullable<int> CancelledAppointments { get; set; }
-        public Nullable<int> TotalScheduledMinutes { get; set; }
+        public Nullable<int> TotalAppointments { get; set; }
     }
 }

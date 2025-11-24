@@ -29,15 +29,18 @@ namespace ClinicManagement_proj.DAL
     
         public virtual DbSet<Appointment> Appointments { get; set; }
         public virtual DbSet<Doctor> Doctors { get; set; }
+        public virtual DbSet<DoctorSchedule> DoctorSchedules { get; set; }
         public virtual DbSet<Patient> Patients { get; set; }
-        public virtual DbSet<Schedule> Schedules { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<Specialty> Specialties { get; set; }
+        public virtual DbSet<TimeSlot> TimeSlots { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<vw_DoctorCurrentSchedule> vw_DoctorCurrentSchedule { get; set; }
         public virtual DbSet<vw_DoctorWorkloadStats> vw_DoctorWorkloadStats { get; set; }
         public virtual DbSet<vw_PatientRecordsSummary> vw_PatientRecordsSummary { get; set; }
         public virtual DbSet<vw_UpcomingAppointments> vw_UpcomingAppointments { get; set; }
     
-        public virtual ObjectResult<sp_BookAppointment_Result> sp_BookAppointment(Nullable<int> patientId, Nullable<int> doctorId, Nullable<int> createdBy, string description, Nullable<System.DateTime> appointmentDate, Nullable<int> duration)
+        public virtual ObjectResult<sp_BookAppointment_Result> sp_BookAppointment(Nullable<int> patientId, Nullable<int> doctorId, Nullable<System.DateTime> appointmentDate, Nullable<int> timeSlotId, string notes)
         {
             var patientIdParameter = patientId.HasValue ?
                 new ObjectParameter("PatientId", patientId) :
@@ -47,23 +50,19 @@ namespace ClinicManagement_proj.DAL
                 new ObjectParameter("DoctorId", doctorId) :
                 new ObjectParameter("DoctorId", typeof(int));
     
-            var createdByParameter = createdBy.HasValue ?
-                new ObjectParameter("CreatedBy", createdBy) :
-                new ObjectParameter("CreatedBy", typeof(int));
-    
-            var descriptionParameter = description != null ?
-                new ObjectParameter("Description", description) :
-                new ObjectParameter("Description", typeof(string));
-    
             var appointmentDateParameter = appointmentDate.HasValue ?
                 new ObjectParameter("AppointmentDate", appointmentDate) :
                 new ObjectParameter("AppointmentDate", typeof(System.DateTime));
     
-            var durationParameter = duration.HasValue ?
-                new ObjectParameter("Duration", duration) :
-                new ObjectParameter("Duration", typeof(int));
+            var timeSlotIdParameter = timeSlotId.HasValue ?
+                new ObjectParameter("TimeSlotId", timeSlotId) :
+                new ObjectParameter("TimeSlotId", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_BookAppointment_Result>("sp_BookAppointment", patientIdParameter, doctorIdParameter, createdByParameter, descriptionParameter, appointmentDateParameter, durationParameter);
+            var notesParameter = notes != null ?
+                new ObjectParameter("Notes", notes) :
+                new ObjectParameter("Notes", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_BookAppointment_Result>("sp_BookAppointment", patientIdParameter, doctorIdParameter, appointmentDateParameter, timeSlotIdParameter, notesParameter);
         }
     
         public virtual ObjectResult<sp_CancelAppointment_Result> sp_CancelAppointment(Nullable<int> appointmentId)
