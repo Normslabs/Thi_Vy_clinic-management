@@ -13,7 +13,9 @@ namespace ClinicManagement_proj.UI
         private readonly Panel panel;
         private readonly UserService userService;
         private DataGridView dgvUsers => (DataGridView)panel.Controls["dgvUsers"];
-        private Button btnUsrSubmit => (Button)panel.Controls["btnUsrSubmit"];
+        private GroupBox grpAdminForm => (GroupBox)panel.Controls["grpAdminForm"];
+        private Panel pnlButtons => (Panel)grpAdminForm.Controls["pnlButtons"];
+        private Button btnUsrSubmit => (Button)pnlButtons.Controls["btnUsrSubmit"];
 
         public Panel Panel => panel;
 
@@ -43,9 +45,9 @@ namespace ClinicManagement_proj.UI
 
         private void BtnUsrSubmit_Click(object sender, EventArgs e)
         {
-            TextBox txtUsername = (TextBox)panel.Controls["txtUsrUsername"];
-            TextBox txtPassword = (TextBox)panel.Controls["txtUsrPassword"];
-            ComboBox comboRoles = (ComboBox)panel.Controls["comboRoles"];
+            TextBox txtUsername = (TextBox)grpAdminForm.Controls["txtUsrUsername"];
+            TextBox txtPassword = (TextBox)grpAdminForm.Controls["txtUsrPassword"];
+            ComboBox comboRoles = (ComboBox)grpAdminForm.Controls["comboRoles"];
 
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();

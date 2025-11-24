@@ -76,30 +76,39 @@ namespace ClinicManagement_proj.DAL
             // This is sample data for testing purposes. In production, data will come from real users.
 
             // Roles
-            context.Roles.Add(new RoleDTO { Id = 1, RoleName = "Administrator", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Roles.Add(new RoleDTO { Id = 2, RoleName = "Doctor", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Roles.Add(new RoleDTO { Id = 3, RoleName = "Receptionist", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            RoleDTO adminRole = context.Roles.Add(new RoleDTO { Id = 1, RoleName = "Administrator", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            RoleDTO doctorRole = context.Roles.Add(new RoleDTO { Id = 2, RoleName = "Doctor", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            RoleDTO receptionistRole = context.Roles.Add(new RoleDTO { Id = 3, RoleName = "Receptionist", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
 
             // Users
-            context.Users.Add(new UserDTO { Id = 1, Username = "admin", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Users.Add(new UserDTO { Id = 2, Username = "dr_who", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Users.Add(new UserDTO { Id = 3, Username = "dr_smith", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Users.Add(new UserDTO { Id = 4, Username = "dr_jones", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Users.Add(new UserDTO { Id = 5, Username = "receptionist1", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Users.Add(new UserDTO { Id = 6, Username = "receptionist2", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            UserDTO adm_1 = context.Users.Add(new UserDTO { Id = 1, Username = "admin", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            adm_1.Roles.Add(adminRole);
+            UserDTO dr_1 = context.Users.Add(new UserDTO { Id = 2, Username = "dr_who", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            dr_1.Roles.Add(doctorRole);
+            UserDTO dr_2 = context.Users.Add(new UserDTO { Id = 3, Username = "dr_smith", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            dr_2.Roles.Add(doctorRole);
+            UserDTO dr_3 = context.Users.Add(new UserDTO { Id = 4, Username = "dr_jones", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            dr_3.Roles.Add(doctorRole);
+            UserDTO rec_1 = context.Users.Add(new UserDTO { Id = 5, Username = "receptionist1", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            rec_1.Roles.Add(receptionistRole);
+            UserDTO rec_2 = context.Users.Add(new UserDTO { Id = 6, Username = "receptionist2", PasswordHash = "dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            rec_2.Roles.Add(receptionistRole);
 
             // UserRoles
             // Since many-to-many, add via collections or save changes, but for simplicity, assume seeded after
 
             // Specialties
-            context.Specialties.Add(new SpecialtyDTO { Id = 1, Name = "General Practice" });
-            context.Specialties.Add(new SpecialtyDTO { Id = 2, Name = "Cardiology" });
-            context.Specialties.Add(new SpecialtyDTO { Id = 3, Name = "Pediatrics" });
+            SpecialtyDTO specGeneral = context.Specialties.Add(new SpecialtyDTO { Id = 1, Name = "General Practice" });
+            SpecialtyDTO specCardiology = context.Specialties.Add(new SpecialtyDTO { Id = 2, Name = "Cardiology" });
+            SpecialtyDTO specPediatrics = context.Specialties.Add(new SpecialtyDTO { Id = 3, Name = "Pediatrics" });
 
             // Doctors
-            context.Doctors.Add(new DoctorDTO { Id = 1, FirstName = "John", LastName = "Who", LicenseNumber = "LIC001234", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Doctors.Add(new DoctorDTO { Id = 2, FirstName = "Sarah", LastName = "Smith", LicenseNumber = "LIC002345", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.Doctors.Add(new DoctorDTO { Id = 3, FirstName = "Michael", LastName = "Jones", LicenseNumber = "LIC003456", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            DoctorDTO doc_1 = context.Doctors.Add(new DoctorDTO { Id = 1, FirstName = "John", LastName = "Who", LicenseNumber = "LIC001234", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            doc_1.Specialties.Add(specGeneral);
+            DoctorDTO doc_2 = context.Doctors.Add(new DoctorDTO { Id = 2, FirstName = "Sarah", LastName = "Smith", LicenseNumber = "LIC002345", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            doc_2.Specialties.Add(specCardiology);
+            DoctorDTO doc_3 = context.Doctors.Add(new DoctorDTO { Id = 3, FirstName = "Michael", LastName = "Jones", LicenseNumber = "LIC003456", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            doc_3.Specialties.Add(specPediatrics);
 
             // DoctorSpecialties - handled by relationships
 
@@ -146,20 +155,6 @@ namespace ClinicManagement_proj.DAL
             context.Appointments.Add(new AppointmentDTO { Id = 4, PatientId = 4, DoctorId = 3, Date = new DateTime(2025, 11, 27), TimeSlotId = 15, Notes = "Child vaccination", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
             context.Appointments.Add(new AppointmentDTO { Id = 5, PatientId = 5, DoctorId = 2, Date = new DateTime(2025, 11, 23), TimeSlotId = 3, Notes = "Cardiac screening", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
             context.Appointments.Add(new AppointmentDTO { Id = 6, PatientId = 1, DoctorId = 2, Date = new DateTime(2025, 12, 1), TimeSlotId = 6, Notes = "Blood pressure check", CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-
-            // Set many-to-many relationships
-            // UserRoles
-            context.Users.Local.First(u => u.Id == 1).Roles.Add(context.Roles.Local.First(r => r.Id == 1)); // admin - Administrator
-            context.Users.Local.First(u => u.Id == 2).Roles.Add(context.Roles.Local.First(r => r.Id == 2)); // dr_who - Doctor
-            context.Users.Local.First(u => u.Id == 3).Roles.Add(context.Roles.Local.First(r => r.Id == 2)); // dr_smith - Doctor
-            context.Users.Local.First(u => u.Id == 4).Roles.Add(context.Roles.Local.First(r => r.Id == 2)); // dr_jones - Doctor
-            context.Users.Local.First(u => u.Id == 5).Roles.Add(context.Roles.Local.First(r => r.Id == 3)); // receptionist1 - Receptionist
-            context.Users.Local.First(u => u.Id == 6).Roles.Add(context.Roles.Local.First(r => r.Id == 3)); // receptionist2 - Receptionist
-
-            // DoctorSpecialties
-            context.Doctors.Local.First(d => d.Id == 1).Specialties.Add(context.Specialties.Local.First(s => s.Id == 1)); // Dr. Who - General Practice
-            context.Doctors.Local.First(d => d.Id == 2).Specialties.Add(context.Specialties.Local.First(s => s.Id == 2)); // Dr. Smith - Cardiology
-            context.Doctors.Local.First(d => d.Id == 3).Specialties.Add(context.Specialties.Local.First(s => s.Id == 3)); // Dr. Jones - Pediatrics
         }
     }
 }
