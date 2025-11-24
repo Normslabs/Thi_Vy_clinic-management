@@ -65,7 +65,7 @@
     <Compile Include="BLL\DTO\DoctorDTO.cs" />
     <Compile Include="BLL\DTO\PatientDTO.cs" />
     <Compile Include="BLL\DTO\RoleDTO.cs" />
-    <Compile Include="BLL\DTO\ScheduleConstraintDTO.cs" />
+    <Compile Include="BLL\DTO\DoctorScheduleDTO.cs" />
     <Compile Include="BLL\DTO\SpecialtyDTO.cs" />
     <Compile Include="BLL\DTO\TimeSlotDTO.cs" />
     <Compile Include="BLL\DTO\UserDTO.cs" />

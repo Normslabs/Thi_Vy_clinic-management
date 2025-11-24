@@ -9,7 +9,7 @@ namespace ClinicManagement_proj.DAL
     {
         public DbSet<AppointmentDTO> Appointments { get; set; }
         public DbSet<DoctorDTO> Doctors { get; set; }
-        public DbSet<ScheduleConstraintDTO> DoctorSchedules { get; set; }
+        public DbSet<DoctorScheduleDTO> DoctorSchedules { get; set; }
         public DbSet<PatientDTO> Patients { get; set; }
         public DbSet<RoleDTO> Roles { get; set; }
         public DbSet<SpecialtyDTO> Specialties { get; set; }
@@ -25,43 +25,43 @@ namespace ClinicManagement_proj.DAL
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Appointment>().HasKey(a => new { a.Id });
-            modelBuilder.Entity<Doctor>().HasKey(d => new { d.Id });
-            modelBuilder.Entity<DoctorSchedule>().HasKey(ds => new { ds.Id });
-            modelBuilder.Entity<Patient>().HasKey(p => new { p.Id });
-            modelBuilder.Entity<Role>().HasKey(r => new { r.Id });
-            modelBuilder.Entity<Specialty>().HasKey(s => new { s.Id });
-            modelBuilder.Entity<TimeSlot>().HasKey(ts => new { ts.Id });
-            modelBuilder.Entity<User>().HasKey(u => new { u.Id });
+            modelBuilder.Entity<AppointmentDTO>().HasKey(a => new { a.Id });
+            modelBuilder.Entity<DoctorDTO>().HasKey(d => new { d.Id });
+            modelBuilder.Entity<DoctorScheduleDTO>().HasKey(ds => new { ds.Id });
+            modelBuilder.Entity<PatientDTO>().HasKey(p => new { p.Id });
+            modelBuilder.Entity<RoleDTO>().HasKey(r => new { r.Id });
+            modelBuilder.Entity<SpecialtyDTO>().HasKey(s => new { s.Id });
+            modelBuilder.Entity<TimeSlotDTO>().HasKey(ts => new { ts.Id });
+            modelBuilder.Entity<UserDTO>().HasKey(u => new { u.Id });
 
             // Many-to-many relationships
-            modelBuilder.Entity<User>()
+            modelBuilder.Entity<UserDTO>()
                 .HasMany(u => u.Roles)
                 .WithMany(r => r.Users)
                 .Map(m => m.ToTable("UserRoles").MapLeftKey("UserId").MapRightKey("RoleId"));
 
-            modelBuilder.Entity<Doctor>()
+            modelBuilder.Entity<DoctorDTO>()
                 .HasMany(d => d.Specialties)
                 .WithMany(s => s.Doctors)
                 .Map(m => m.ToTable("DoctorSpecialties").MapLeftKey("DoctorId").MapRightKey("SpecialtyId"));
 
             // Foreign key relationships
-            modelBuilder.Entity<DoctorSchedule>()
+            modelBuilder.Entity<DoctorScheduleDTO>()
                 .HasRequired(ds => ds.Doctor)
                 .WithMany(d => d.DoctorSchedules)
                 .HasForeignKey(ds => ds.DoctorId);
 
-            modelBuilder.Entity<Appointment>()
+            modelBuilder.Entity<AppointmentDTO>()
                 .HasRequired(a => a.Doctor)
                 .WithMany(d => d.Appointments)
                 .HasForeignKey(a => a.DoctorId);
 
-            modelBuilder.Entity<Appointment>()
+            modelBuilder.Entity<AppointmentDTO>()
                 .HasRequired(a => a.Patient)
                 .WithMany(p => p.Appointments)
                 .HasForeignKey(a => a.PatientId);
 
-            modelBuilder.Entity<Appointment>()
+            modelBuilder.Entity<AppointmentDTO>()
                 .HasRequired(a => a.TimeSlot)
                 .WithMany(ts => ts.Appointments)
                 .HasForeignKey(a => a.TimeSlotId);
@@ -121,22 +121,22 @@ namespace ClinicManagement_proj.DAL
 
             // DoctorSchedules
             // Dr. Who (Id=1, Monday-Friday 9AM-5PM)
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 1, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Monday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 2, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Tuesday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 3, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Wednesday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 4, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Thursday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 5, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Friday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 1, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Monday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 2, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Tuesday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 3, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Wednesday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 4, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Thursday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 5, DoctorId = 1, DayOfWeek = DaysOfWeekEnum.Friday, WorkStartTime = new DateTime(2025, 1, 1, 9, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 17, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
             // Dr. Smith (Id=2, Monday-Thursday 8AM-4PM)
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 6, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Monday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 7, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Tuesday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 8, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Wednesday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 9, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Thursday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 6, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Monday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 7, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Tuesday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 8, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Wednesday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 9, DoctorId = 2, DayOfWeek = DaysOfWeekEnum.Thursday, WorkStartTime = new DateTime(2025, 1, 1, 8, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 16, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
             // Dr. Jones (Id=3, Tuesday-Saturday 10AM-6PM)
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 10, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Tuesday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 11, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Wednesday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 12, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Thursday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 13, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Friday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
-            context.DoctorSchedules.Add(new ScheduleConstraintDTO { Id = 14, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Saturday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 10, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Tuesday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 11, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Wednesday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 12, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Thursday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 13, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Friday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
+            context.DoctorSchedules.Add(new DoctorScheduleDTO { Id = 14, DoctorId = 3, DayOfWeek = DaysOfWeekEnum.Saturday, WorkStartTime = new DateTime(2025, 1, 1, 10, 0, 0), WorkEndTime = new DateTime(2025, 1, 1, 18, 0, 0), CreatedAt = DateTime.Now, ModifiedAt = DateTime.Now });
 
             // TimeSlots (30-minute intervals from 8AM to 6PM)
             int slotId = 1;

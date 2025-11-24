@@ -18,7 +18,7 @@ namespace ClinicManagement_proj.BLL.DTO
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
         public ICollection<AppointmentDTO> Appointments { get; set; }
-        public ICollection<DoctorScheduleDTO> ScheduleConstraints { get; set; }
+        public ICollection<DoctorScheduleDTO> DoctorSchedules { get; set; }
         public ICollection<SpecialtyDTO> Specialties { get; set; }
     }
 }
