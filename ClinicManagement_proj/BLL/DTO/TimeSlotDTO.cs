@@ -12,5 +12,10 @@ namespace ClinicManagement_proj.BLL.DTO
         public int HourOfDay { get; set; }
         public int MinuteOfHour { get; set; }
         public ICollection<AppointmentDTO> Appointments { get; set; }
+
+        public TimeSlotDTO()
+        {
+            Appointments = new List<AppointmentDTO>();
+        }
     }
 }

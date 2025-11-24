@@ -20,5 +20,12 @@ namespace ClinicManagement_proj.BLL.DTO
         public ICollection<AppointmentDTO> Appointments { get; set; }
         public ICollection<DoctorScheduleDTO> DoctorSchedules { get; set; }
         public ICollection<SpecialtyDTO> Specialties { get; set; }
+
+        public DoctorDTO()
+        {
+            Appointments = new List<AppointmentDTO>();
+            DoctorSchedules = new List<DoctorScheduleDTO>();
+            Specialties = new List<SpecialtyDTO>();
+        }
     }
 }

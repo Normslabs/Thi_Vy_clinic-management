@@ -13,19 +13,7 @@ namespace ClinicManagement_proj.BLL.Services
         public List<UserDTO> GetAllUsers()
         {
             return clinicDb.Users
-                .Include(u => u.Roles)
-                .Select(u => new UserDTO
-                {
-                    Id = u.Id,
-                    Username = u.Username,
-                    PasswordHash = u.PasswordHash,
-                    CreatedAt = u.CreatedAt,
-                    Roles = u.Roles.Select(r => new RoleDTO
-                    {
-                        Id = r.Id,
-                        RoleName = r.RoleName
-                    }).ToList()
-                }).ToList();
+                .Include(u => u.Roles).ToList();
         }
         public UserDTO GetUserById(int id)
         {
@@ -38,11 +26,7 @@ namespace ClinicManagement_proj.BLL.Services
                 Username = user.Username,
                 PasswordHash = user.PasswordHash,
                 CreatedAt = user.CreatedAt,
-                Roles = user.Roles.Select(r => new RoleDTO
-                {
-                    Id = r.Id,
-                    RoleName = r.RoleName
-                }).ToList()
+                Roles = user.Roles.ToList()
             };
         }
 
@@ -60,11 +44,7 @@ namespace ClinicManagement_proj.BLL.Services
                 Username = user.Username,
                 PasswordHash = user.PasswordHash,
                 CreatedAt = user.CreatedAt,
-                Roles = user.Roles.Select(r => new RoleDTO
-                {
-                    Id = r.Id,
-                    RoleName = r.RoleName
-                }).ToList()
+                Roles = user.Roles.ToList()
             };
         }
 
@@ -81,11 +61,7 @@ namespace ClinicManagement_proj.BLL.Services
             // Map roles if provided
             if (userDto.Roles != null)
             {
-                user.Roles = userDto.Roles.Select(r => new RoleDTO
-                {
-                    Id = r.Id,
-                    RoleName = r.RoleName
-                }).ToList();
+                user.Roles = userDto.Roles.ToList();
             }
 
             clinicDb.Users.Add(user);
@@ -105,11 +81,7 @@ namespace ClinicManagement_proj.BLL.Services
             user.Roles.Clear();
             if (userDto.Roles != null)
             {
-                user.Roles = userDto.Roles.Select(r => new RoleDTO
-                {
-                    Id = r.Id,
-                    RoleName = r.RoleName
-                }).ToList();
+                user.Roles = userDto.Roles.ToList();
             }
 
             clinicDb.SaveChanges();

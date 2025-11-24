@@ -15,5 +15,9 @@ namespace ClinicManagement_proj.BLL.DTO
         public DateTime ModifiedAt { get; set; }
         public ICollection<UserDTO> Users { get; set; }
 
+        public RoleDTO()
+        {
+            Users = new List<UserDTO>();
+        }
     }
 }
