@@ -71,7 +71,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public void CreateUser(UserDTO userDto)
         {
-            var user = new User
+            var user = new UserDTO
             {
                 Username = userDto.Username,
                 PasswordHash = userDto.PasswordHash,
@@ -81,7 +81,7 @@ namespace ClinicManagement_proj.BLL.Services
             // Map roles if provided
             if (userDto.Roles != null)
             {
-                user.Roles = userDto.Roles.Select(r => new Role
+                user.Roles = userDto.Roles.Select(r => new RoleDTO
                 {
                     Id = r.Id,
                     RoleName = r.RoleName
@@ -105,7 +105,7 @@ namespace ClinicManagement_proj.BLL.Services
             user.Roles.Clear();
             if (userDto.Roles != null)
             {
-                user.Roles = userDto.Roles.Select(r => new Role
+                user.Roles = userDto.Roles.Select(r => new RoleDTO
                 {
                     Id = r.Id,
                     RoleName = r.RoleName
