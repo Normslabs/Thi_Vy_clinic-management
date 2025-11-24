@@ -70,6 +70,7 @@
     <Compile Include="BLL\DTO\TimeSlotDTO.cs" />
     <Compile Include="BLL\DTO\UserDTO.cs" />
     <Compile Include="BLL\Services\PatientService.cs" />
+    <Compile Include="BLL\Services\RoleService.cs" />
     <Compile Include="BLL\Services\UserService.cs" />
     <Compile Include="BLL\Utils\Notification.cs" />
     <Compile Include="BLL\Utils\NotificationManager.cs" />
