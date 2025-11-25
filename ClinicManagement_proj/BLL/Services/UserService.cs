@@ -181,5 +181,25 @@ namespace ClinicManagement_proj.BLL.Services
             if (CurrentUser.User == null) return false;
             return CurrentUser.User.Roles.Any(r => r.Id == (int)role);
         }
+
+        /// <summary>
+        /// Searches users based on a specified criterion.
+        /// </summary>
+        /// <remarks>
+        /// The search is base both on the user's username and on its ID number:
+        /// Users with a username that begins with the passed criterion string will match and be returned.
+        /// Also, if the passed criterion string represents a numerical integer, the user with the equivalent
+        /// ID number will also be returned.
+        /// </remarks>
+        /// <param name="criterion">A string criterion for the search.</param>
+        /// <returns>A <see cref="List{T}"/> of users whose ID matches the criterion or whose username begins with the criterion.</returns>
+        public List<UserDTO> SearchUsers(string criterion) {
+            bool criterionIsInt = int.TryParse(criterion, out int intValue);
+            return this.clinicDb.Users
+                .Where(user => user.Username.ToLower().StartsWith(criterion.ToLower()) 
+                || (criterionIsInt && user.Id == intValue))
+                .Include(user => user.Roles)
+                .ToList();
+        }
     }
 }
