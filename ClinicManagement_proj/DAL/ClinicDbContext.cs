@@ -32,7 +32,7 @@ namespace ClinicManagement_proj.DAL
             modelBuilder.Entity<AppointmentDTO>()
                 .Property(a => a.Id).HasColumnName("Id");
             modelBuilder.Entity<AppointmentDTO>()
-                .Property(a => a.Date).HasColumnName("Date");
+                .Property(a => a.Date).HasColumnName("Date").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<AppointmentDTO>()
                 .Property(a => a.Notes).HasColumnName("Notes");
             modelBuilder.Entity<AppointmentDTO>()
@@ -42,9 +42,9 @@ namespace ClinicManagement_proj.DAL
             modelBuilder.Entity<AppointmentDTO>()
                 .Property(a => a.TimeSlotId).HasColumnName("TimeSlotId");
             modelBuilder.Entity<AppointmentDTO>()
-                .Property(a => a.CreatedAt).HasColumnName("CreatedAt");
+                .Property(a => a.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<AppointmentDTO>()
-                .Property(a => a.ModifiedAt).HasColumnName("ModifiedAt");
+                .Property(a => a.ModifiedAt).HasColumnName("ModifiedAt").HasColumnType("datetime2").HasPrecision(7);
 
             // DoctorDTO
             modelBuilder.Entity<DoctorDTO>()
@@ -59,9 +59,9 @@ namespace ClinicManagement_proj.DAL
             modelBuilder.Entity<DoctorDTO>()
                 .Property(d => d.LicenseNumber).HasColumnName("LicenseNumber");
             modelBuilder.Entity<DoctorDTO>()
-                .Property(d => d.CreatedAt).HasColumnName("CreatedAt");
+                .Property(d => d.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<DoctorDTO>()
-                .Property(d => d.ModifiedAt).HasColumnName("ModifiedAt");
+                .Property(d => d.ModifiedAt).HasColumnName("ModifiedAt").HasColumnType("datetime2").HasPrecision(7);
 
             // DoctorScheduleDTO
             modelBuilder.Entity<DoctorScheduleDTO>()
@@ -74,13 +74,13 @@ namespace ClinicManagement_proj.DAL
             modelBuilder.Entity<DoctorScheduleDTO>()
                 .Property(ds => ds.DayOfWeek).HasColumnName("DayOfWeek");
             modelBuilder.Entity<DoctorScheduleDTO>()
-                .Property(ds => ds.WorkStartTime).HasColumnName("WorkStartTime");
+                .Property(ds => ds.WorkStartTime).HasColumnName("WorkStartTime").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<DoctorScheduleDTO>()
-                .Property(ds => ds.WorkEndTime).HasColumnName("WorkEndTime");
+                .Property(ds => ds.WorkEndTime).HasColumnName("WorkEndTime").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<DoctorScheduleDTO>()
-                .Property(ds => ds.CreatedAt).HasColumnName("CreatedAt");
+                .Property(ds => ds.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<DoctorScheduleDTO>()
-                .Property(ds => ds.ModifiedAt).HasColumnName("ModifiedAt");
+                .Property(ds => ds.ModifiedAt).HasColumnName("ModifiedAt").HasColumnType("datetime2").HasPrecision(7);
 
             // PatientDTO
             modelBuilder.Entity<PatientDTO>()
@@ -95,13 +95,13 @@ namespace ClinicManagement_proj.DAL
             modelBuilder.Entity<PatientDTO>()
                 .Property(p => p.InsuranceNumber).HasColumnName("InsuranceNumber");
             modelBuilder.Entity<PatientDTO>()
-                .Property(p => p.DateOfBirth).HasColumnName("DateOfBirth");
+                .Property(p => p.DateOfBirth).HasColumnName("DateOfBirth").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<PatientDTO>()
                 .Property(p => p.PhoneNumber).HasColumnName("PhoneNumber");
             modelBuilder.Entity<PatientDTO>()
-                .Property(p => p.CreatedAt).HasColumnName("CreatedAt");
+                .Property(p => p.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<PatientDTO>()
-                .Property(p => p.ModifiedAt).HasColumnName("ModifiedAt");
+                .Property(p => p.ModifiedAt).HasColumnName("ModifiedAt").HasColumnType("datetime2").HasPrecision(7);
 
             // RoleDTO
             modelBuilder.Entity<RoleDTO>()
@@ -112,9 +112,9 @@ namespace ClinicManagement_proj.DAL
             modelBuilder.Entity<RoleDTO>()
                 .Property(r => r.RoleName).HasColumnName("RoleName");
             modelBuilder.Entity<RoleDTO>()
-                .Property(r => r.CreatedAt).HasColumnName("CreatedAt");
+                .Property(r => r.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<RoleDTO>()
-                .Property(r => r.ModifiedAt).HasColumnName("ModifiedAt");
+                .Property(r => r.ModifiedAt).HasColumnName("ModifiedAt").HasColumnType("datetime2").HasPrecision(7);
 
             // SpecialtyDTO
             modelBuilder.Entity<SpecialtyDTO>()
@@ -147,9 +147,9 @@ namespace ClinicManagement_proj.DAL
             modelBuilder.Entity<UserDTO>()
                 .Property(u => u.PasswordHash).HasColumnName("PasswordHash");
             modelBuilder.Entity<UserDTO>()
-                .Property(u => u.CreatedAt).HasColumnName("CreatedAt");
+                .Property(u => u.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<UserDTO>()
-                .Property(u => u.ModifiedAt).HasColumnName("ModifiedAt");
+                .Property(u => u.ModifiedAt).HasColumnName("ModifiedAt").HasColumnType("datetime2").HasPrecision(7);
 
             // Many-to-many relationships
             modelBuilder.Entity<UserDTO>()
@@ -186,7 +186,7 @@ namespace ClinicManagement_proj.DAL
     }
 
 
-    internal class ClinicDbContextInitializer : DropCreateDatabaseAlways<ClinicDbContext>
+    internal class ClinicDbContextInitializer : DropCreateDatabaseIfModelChanges<ClinicDbContext>
     {
         protected override void Seed(ClinicDbContext context)
         {

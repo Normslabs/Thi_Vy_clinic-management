@@ -382,9 +382,9 @@ namespace ClinicManagement_proj.UI
             // pnlMainContent
             // 
             this.pnlMainContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
+            this.pnlMainContent.Controls.Add(this.pnlPatientRegistration);
             this.pnlMainContent.Controls.Add(this.pnlDoctorScheduling);
             this.pnlMainContent.Controls.Add(this.pnlUserManagement);
-            this.pnlMainContent.Controls.Add(this.pnlPatientRegistration);
             this.pnlMainContent.Controls.Add(this.pnlDoctorManagement);
             this.pnlMainContent.Controls.Add(this.pnlAppointmentManagement);
             this.pnlMainContent.Controls.Add(this.pnlReports);
