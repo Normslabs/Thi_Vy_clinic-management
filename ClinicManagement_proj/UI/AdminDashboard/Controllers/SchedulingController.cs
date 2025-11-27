@@ -10,6 +10,7 @@ namespace ClinicManagement_proj.UI
     public class SchedulingController : IPanelController
     {
         private readonly Panel panel;
+        private AdminDashboard adminDashboard => (AdminDashboard)panel.FindForm();
         private GroupBox grpScheduling => (GroupBox)panel.Controls["grpDoctorScheduling"];
         private TableLayoutPanel schedulingLayout => (TableLayoutPanel)grpScheduling.Controls["layoutSchedulingContent"];
         private ListBox lbSunday => (ListBox)schedulingLayout.Controls["lbSunday"];
@@ -30,11 +31,18 @@ namespace ClinicManagement_proj.UI
         public void Initialize()
         {
             SetupSchedulingListViews();
+            adminDashboard.ResizeEnd += new System.EventHandler(AdminDashboard_ResizeEnd);
         }
 
         public void OnShow()
         {
             RefreshSchedulingListViews();
+        }
+
+        private void AdminDashboard_ResizeEnd(object sender, System.EventArgs e)
+        {
+            if (panel.Visible)
+                RefreshSchedulingListViews();
         }
 
         /// <summary>
@@ -50,16 +58,11 @@ namespace ClinicManagement_proj.UI
 
             foreach (ListBox lb in dayListBoxes)
             {
-                if (lb.Items.Count != 24)
+                lb.Items.Clear();
+                for (int i = 0; i < 24; i++)
                 {
-                    lb.Items.Clear();
-                    for (int i = 0; i < 24; i++)
-                    {
-                        lb.Items.Add("");
-                    }
+                    lb.Items.Add("");
                 }
-
-                lb.ItemHeight = lb.ClientSize.Height / 24;
             }
         }
 
@@ -78,6 +81,15 @@ namespace ClinicManagement_proj.UI
 
             foreach (ListBox lb in dayListBoxes)
             {
+                lb.DrawMode = DrawMode.OwnerDrawVariable;
+                lb.MeasureItem += (s, e) =>
+                {
+                    int totalHeight = lb.ClientSize.Height;
+                    int baseHeight = totalHeight / 24;
+                    int remainder = totalHeight % 24;
+                    e.ItemHeight = baseHeight + (e.Index < remainder ? 1 : 0);
+                };
+
                 lb.DrawItem += (s, e) =>
                 {
                     e.DrawBackground();
@@ -88,6 +100,14 @@ namespace ClinicManagement_proj.UI
                         e.Graphics.FillRectangle(SystemBrushes.Window, e.Bounds);
 
                     e.Graphics.DrawRectangle(Pens.Gray, e.Bounds);
+                };
+
+                lb.MouseDown += (s, e) =>
+                {
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        lb.SelectedIndex = -1;
+                    }
                 };
             }
         }

@@ -108,7 +108,6 @@ namespace ClinicManagement_proj.UI
         private void btnDoctorScheduling_Click(object sender, EventArgs e)
         {
             navigationManager.NavigateTo(btnDoctorScheduling);
-            schedulingController.RefreshSchedulingListViews();
         }
 
         private void btnPatientRegistration_Click(object sender, EventArgs e)
@@ -119,14 +118,6 @@ namespace ClinicManagement_proj.UI
         private void btnAppointmentManagement_Click(object sender, EventArgs e)
         {
             navigationManager.NavigateTo(btnAppointmentManagement);
-        }
-
-        private void AdminDashboard_ResizeEnd(object sender, EventArgs e)
-        {
-            if (pnlDoctorScheduling.Visible)
-            {
-                schedulingController.RefreshSchedulingListViews();
-            }
         }
 
         /// <summary>

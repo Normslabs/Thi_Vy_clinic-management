@@ -46,49 +46,6 @@ namespace ClinicManagement_proj.UI
             this.pnlSidebarHeader = new System.Windows.Forms.Panel();
             this.lblSidebarTitle = new System.Windows.Forms.Label();
             this.pnlMainContent = new System.Windows.Forms.Panel();
-            this.pnlPatientRegistration = new System.Windows.Forms.Panel();
-            this.dgvRegPatients = new System.Windows.Forms.DataGridView();
-            this.grpPatientRegistration = new System.Windows.Forms.GroupBox();
-            this.layoutPatientButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnPCreate = new System.Windows.Forms.Button();
-            this.btnPUpdate = new System.Windows.Forms.Button();
-            this.btnPSearch = new System.Windows.Forms.Button();
-            this.btnPDelete = new System.Windows.Forms.Button();
-            this.btnPDisplay = new System.Windows.Forms.Button();
-            this.btnPCancel = new System.Windows.Forms.Button();
-            this.txtPPhone = new System.Windows.Forms.TextBox();
-            this.lblPPhone = new System.Windows.Forms.Label();
-            this.dateDoB = new System.Windows.Forms.DateTimePicker();
-            this.lblDoB = new System.Windows.Forms.Label();
-            this.txtPatientId = new System.Windows.Forms.TextBox();
-            this.lblPatientId = new System.Windows.Forms.Label();
-            this.txtMedicalNumber = new System.Windows.Forms.TextBox();
-            this.lblMedicalNumber = new System.Windows.Forms.Label();
-            this.txtPLName = new System.Windows.Forms.TextBox();
-            this.lblPLName = new System.Windows.Forms.Label();
-            this.txtPFName = new System.Windows.Forms.TextBox();
-            this.lblPFName = new System.Windows.Forms.Label();
-            this.pnlUserManagement = new System.Windows.Forms.Panel();
-            this.dgvUsers = new System.Windows.Forms.DataGridView();
-            this.grpAdminForm = new System.Windows.Forms.GroupBox();
-            this.txtUsrId = new System.Windows.Forms.TextBox();
-            this.lblUsrId = new System.Windows.Forms.Label();
-            this.pnlButtons = new System.Windows.Forms.TableLayoutPanel();
-            this.btnGenPassword = new System.Windows.Forms.Button();
-            this.btnUsrCreate = new System.Windows.Forms.Button();
-            this.btnUsrUpdate = new System.Windows.Forms.Button();
-            this.btnUsrSearch = new System.Windows.Forms.Button();
-            this.btnUsrCancel = new System.Windows.Forms.Button();
-            this.btnUsrDisplay = new System.Windows.Forms.Button();
-            this.btnUsrDelete = new System.Windows.Forms.Button();
-            this.pnlPassword = new System.Windows.Forms.TableLayoutPanel();
-            this.btnTogglePassword = new System.Windows.Forms.Button();
-            this.txtUsrPassword = new System.Windows.Forms.TextBox();
-            this.comboRoles = new System.Windows.Forms.ComboBox();
-            this.lblRole = new System.Windows.Forms.Label();
-            this.lblPassword = new System.Windows.Forms.Label();
-            this.txtUsrUsername = new System.Windows.Forms.TextBox();
-            this.lblUsername = new System.Windows.Forms.Label();
             this.pnlDoctorScheduling = new System.Windows.Forms.Panel();
             this.grpDoctorScheduling = new System.Windows.Forms.GroupBox();
             this.layoutSchedulingContent = new System.Windows.Forms.TableLayoutPanel();
@@ -120,19 +77,55 @@ namespace ClinicManagement_proj.UI
             this.lbFriday = new System.Windows.Forms.ListBox();
             this.lbSaturday = new System.Windows.Forms.ListBox();
             this.layoutSchedulingHeader = new System.Windows.Forms.TableLayoutPanel();
-            this.pnlSchedulePicker = new System.Windows.Forms.Panel();
-            this.comboSchedules = new System.Windows.Forms.ComboBox();
-            this.lblSchedules = new System.Windows.Forms.Label();
             this.pnlDoctorPicker = new System.Windows.Forms.Panel();
             this.comboDoctorSelect = new System.Windows.Forms.ComboBox();
             this.lblDoctorSelect = new System.Windows.Forms.Label();
-            this.pnlEffectiveDate = new System.Windows.Forms.Panel();
-            this.dtEffectiveDate = new System.Windows.Forms.DateTimePicker();
-            this.lblEffectiveDate = new System.Windows.Forms.Label();
             this.layoutSchedulingActions = new System.Windows.Forms.TableLayoutPanel();
-            this.btnSchedulingDelete = new System.Windows.Forms.Button();
             this.btnSchedulingUpdate = new System.Windows.Forms.Button();
             this.btnScheduleSave = new System.Windows.Forms.Button();
+            this.pnlUserManagement = new System.Windows.Forms.Panel();
+            this.dgvUsers = new System.Windows.Forms.DataGridView();
+            this.grpAdminForm = new System.Windows.Forms.GroupBox();
+            this.txtUsrId = new System.Windows.Forms.TextBox();
+            this.lblUsrId = new System.Windows.Forms.Label();
+            this.pnlButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.btnGenPassword = new System.Windows.Forms.Button();
+            this.btnUsrCreate = new System.Windows.Forms.Button();
+            this.btnUsrUpdate = new System.Windows.Forms.Button();
+            this.btnUsrSearch = new System.Windows.Forms.Button();
+            this.btnUsrCancel = new System.Windows.Forms.Button();
+            this.btnUsrDisplay = new System.Windows.Forms.Button();
+            this.btnUsrDelete = new System.Windows.Forms.Button();
+            this.pnlPassword = new System.Windows.Forms.TableLayoutPanel();
+            this.btnTogglePassword = new System.Windows.Forms.Button();
+            this.txtUsrPassword = new System.Windows.Forms.TextBox();
+            this.comboRoles = new System.Windows.Forms.ComboBox();
+            this.lblRole = new System.Windows.Forms.Label();
+            this.lblPassword = new System.Windows.Forms.Label();
+            this.txtUsrUsername = new System.Windows.Forms.TextBox();
+            this.lblUsername = new System.Windows.Forms.Label();
+            this.pnlPatientRegistration = new System.Windows.Forms.Panel();
+            this.dgvRegPatients = new System.Windows.Forms.DataGridView();
+            this.grpPatientRegistration = new System.Windows.Forms.GroupBox();
+            this.layoutPatientButtons = new System.Windows.Forms.TableLayoutPanel();
+            this.btnPCreate = new System.Windows.Forms.Button();
+            this.btnPUpdate = new System.Windows.Forms.Button();
+            this.btnPSearch = new System.Windows.Forms.Button();
+            this.btnPDelete = new System.Windows.Forms.Button();
+            this.btnPDisplay = new System.Windows.Forms.Button();
+            this.btnPCancel = new System.Windows.Forms.Button();
+            this.txtPPhone = new System.Windows.Forms.TextBox();
+            this.lblPPhone = new System.Windows.Forms.Label();
+            this.dateDoB = new System.Windows.Forms.DateTimePicker();
+            this.lblDoB = new System.Windows.Forms.Label();
+            this.txtPatientId = new System.Windows.Forms.TextBox();
+            this.lblPatientId = new System.Windows.Forms.Label();
+            this.txtMedicalNumber = new System.Windows.Forms.TextBox();
+            this.lblMedicalNumber = new System.Windows.Forms.Label();
+            this.txtPLName = new System.Windows.Forms.TextBox();
+            this.lblPLName = new System.Windows.Forms.Label();
+            this.txtPFName = new System.Windows.Forms.TextBox();
+            this.lblPFName = new System.Windows.Forms.Label();
             this.pnlDoctorManagement = new System.Windows.Forms.Panel();
             this.dgvDoctors = new System.Windows.Forms.DataGridView();
             this.grpDoctorMgmt = new System.Windows.Forms.GroupBox();
@@ -173,24 +166,22 @@ namespace ClinicManagement_proj.UI
             this.pnlSidebar.SuspendLayout();
             this.pnlSidebarHeader.SuspendLayout();
             this.pnlMainContent.SuspendLayout();
-            this.pnlPatientRegistration.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegPatients)).BeginInit();
-            this.grpPatientRegistration.SuspendLayout();
-            this.layoutPatientButtons.SuspendLayout();
-            this.pnlUserManagement.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
-            this.grpAdminForm.SuspendLayout();
-            this.pnlButtons.SuspendLayout();
-            this.pnlPassword.SuspendLayout();
             this.pnlDoctorScheduling.SuspendLayout();
             this.grpDoctorScheduling.SuspendLayout();
             this.layoutSchedulingContent.SuspendLayout();
             this.layoutHours.SuspendLayout();
             this.layoutSchedulingHeader.SuspendLayout();
-            this.pnlSchedulePicker.SuspendLayout();
             this.pnlDoctorPicker.SuspendLayout();
-            this.pnlEffectiveDate.SuspendLayout();
             this.layoutSchedulingActions.SuspendLayout();
+            this.pnlUserManagement.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).BeginInit();
+            this.grpAdminForm.SuspendLayout();
+            this.pnlButtons.SuspendLayout();
+            this.pnlPassword.SuspendLayout();
+            this.pnlPatientRegistration.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegPatients)).BeginInit();
+            this.grpPatientRegistration.SuspendLayout();
+            this.layoutPatientButtons.SuspendLayout();
             this.pnlDoctorManagement.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).BeginInit();
             this.grpDoctorMgmt.SuspendLayout();
@@ -391,9 +382,9 @@ namespace ClinicManagement_proj.UI
             // pnlMainContent
             // 
             this.pnlMainContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(240)))), ((int)(((byte)(241)))));
-            this.pnlMainContent.Controls.Add(this.pnlPatientRegistration);
-            this.pnlMainContent.Controls.Add(this.pnlUserManagement);
             this.pnlMainContent.Controls.Add(this.pnlDoctorScheduling);
+            this.pnlMainContent.Controls.Add(this.pnlUserManagement);
+            this.pnlMainContent.Controls.Add(this.pnlPatientRegistration);
             this.pnlMainContent.Controls.Add(this.pnlDoctorManagement);
             this.pnlMainContent.Controls.Add(this.pnlAppointmentManagement);
             this.pnlMainContent.Controls.Add(this.pnlReports);
@@ -405,334 +396,570 @@ namespace ClinicManagement_proj.UI
             this.pnlMainContent.Size = new System.Drawing.Size(1376, 700);
             this.pnlMainContent.TabIndex = 3;
             // 
-            // pnlPatientRegistration
+            // pnlDoctorScheduling
             // 
-            this.pnlPatientRegistration.Controls.Add(this.dgvRegPatients);
-            this.pnlPatientRegistration.Controls.Add(this.grpPatientRegistration);
-            this.pnlPatientRegistration.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlPatientRegistration.Location = new System.Drawing.Point(20, 20);
-            this.pnlPatientRegistration.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlPatientRegistration.Name = "pnlPatientRegistration";
-            this.pnlPatientRegistration.Size = new System.Drawing.Size(1336, 660);
-            this.pnlPatientRegistration.TabIndex = 3;
-            this.pnlPatientRegistration.Visible = false;
+            this.pnlDoctorScheduling.Controls.Add(this.grpDoctorScheduling);
+            this.pnlDoctorScheduling.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDoctorScheduling.Location = new System.Drawing.Point(20, 20);
+            this.pnlDoctorScheduling.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlDoctorScheduling.Name = "pnlDoctorScheduling";
+            this.pnlDoctorScheduling.Size = new System.Drawing.Size(1336, 660);
+            this.pnlDoctorScheduling.TabIndex = 4;
+            this.pnlDoctorScheduling.Visible = false;
             // 
-            // dgvRegPatients
+            // grpDoctorScheduling
             // 
-            this.dgvRegPatients.AllowUserToAddRows = false;
-            this.dgvRegPatients.AllowUserToDeleteRows = false;
-            this.dgvRegPatients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.grpDoctorScheduling.Controls.Add(this.layoutSchedulingContent);
+            this.grpDoctorScheduling.Controls.Add(this.layoutSchedulingHeader);
+            this.grpDoctorScheduling.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.grpDoctorScheduling.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpDoctorScheduling.Location = new System.Drawing.Point(0, 0);
+            this.grpDoctorScheduling.Margin = new System.Windows.Forms.Padding(2);
+            this.grpDoctorScheduling.Name = "grpDoctorScheduling";
+            this.grpDoctorScheduling.Padding = new System.Windows.Forms.Padding(25);
+            this.grpDoctorScheduling.Size = new System.Drawing.Size(1336, 660);
+            this.grpDoctorScheduling.TabIndex = 6;
+            this.grpDoctorScheduling.TabStop = false;
+            this.grpDoctorScheduling.Text = "Adjust a Doctor\'s Schedule";
+            // 
+            // layoutSchedulingContent
+            // 
+            this.layoutSchedulingContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvRegPatients.BackgroundColor = System.Drawing.Color.White;
-            this.dgvRegPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvRegPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRegPatients.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.dgvRegPatients.Location = new System.Drawing.Point(616, 3);
-            this.dgvRegPatients.Margin = new System.Windows.Forms.Padding(2);
-            this.dgvRegPatients.MultiSelect = false;
-            this.dgvRegPatients.Name = "dgvRegPatients";
-            this.dgvRegPatients.ReadOnly = true;
-            this.dgvRegPatients.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dgvRegPatients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
-            this.dgvRegPatients.RowTemplate.Height = 24;
-            this.dgvRegPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRegPatients.Size = new System.Drawing.Size(720, 670);
-            this.dgvRegPatients.TabIndex = 7;
+            this.layoutSchedulingContent.ColumnCount = 8;
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 14.28571F));
+            this.layoutSchedulingContent.Controls.Add(this.layoutHours, 0, 1);
+            this.layoutSchedulingContent.Controls.Add(this.lblDay1, 1, 0);
+            this.layoutSchedulingContent.Controls.Add(this.lblDay2, 2, 0);
+            this.layoutSchedulingContent.Controls.Add(this.lblDay3, 3, 0);
+            this.layoutSchedulingContent.Controls.Add(this.lblDay4, 4, 0);
+            this.layoutSchedulingContent.Controls.Add(this.lblDay5, 5, 0);
+            this.layoutSchedulingContent.Controls.Add(this.lblDay6, 6, 0);
+            this.layoutSchedulingContent.Controls.Add(this.lblDay7, 7, 0);
+            this.layoutSchedulingContent.Controls.Add(this.lbSunday, 1, 1);
+            this.layoutSchedulingContent.Controls.Add(this.lbMonday, 2, 1);
+            this.layoutSchedulingContent.Controls.Add(this.lbTuesday, 3, 1);
+            this.layoutSchedulingContent.Controls.Add(this.lbWednesday, 4, 1);
+            this.layoutSchedulingContent.Controls.Add(this.lbThursday, 5, 1);
+            this.layoutSchedulingContent.Controls.Add(this.lbFriday, 6, 1);
+            this.layoutSchedulingContent.Controls.Add(this.lbSaturday, 7, 1);
+            this.layoutSchedulingContent.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
+            this.layoutSchedulingContent.Location = new System.Drawing.Point(25, 131);
+            this.layoutSchedulingContent.Margin = new System.Windows.Forms.Padding(2);
+            this.layoutSchedulingContent.Name = "layoutSchedulingContent";
+            this.layoutSchedulingContent.RowCount = 2;
+            this.layoutSchedulingContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
+            this.layoutSchedulingContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutSchedulingContent.Size = new System.Drawing.Size(1286, 502);
+            this.layoutSchedulingContent.TabIndex = 10;
             // 
-            // grpPatientRegistration
+            // layoutHours
             // 
-            this.grpPatientRegistration.Controls.Add(this.layoutPatientButtons);
-            this.grpPatientRegistration.Controls.Add(this.txtPPhone);
-            this.grpPatientRegistration.Controls.Add(this.lblPPhone);
-            this.grpPatientRegistration.Controls.Add(this.dateDoB);
-            this.grpPatientRegistration.Controls.Add(this.lblDoB);
-            this.grpPatientRegistration.Controls.Add(this.txtPatientId);
-            this.grpPatientRegistration.Controls.Add(this.lblPatientId);
-            this.grpPatientRegistration.Controls.Add(this.txtMedicalNumber);
-            this.grpPatientRegistration.Controls.Add(this.lblMedicalNumber);
-            this.grpPatientRegistration.Controls.Add(this.txtPLName);
-            this.grpPatientRegistration.Controls.Add(this.lblPLName);
-            this.grpPatientRegistration.Controls.Add(this.txtPFName);
-            this.grpPatientRegistration.Controls.Add(this.lblPFName);
-            this.grpPatientRegistration.Dock = System.Windows.Forms.DockStyle.Left;
-            this.grpPatientRegistration.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpPatientRegistration.Location = new System.Drawing.Point(0, 0);
-            this.grpPatientRegistration.Margin = new System.Windows.Forms.Padding(2);
-            this.grpPatientRegistration.Name = "grpPatientRegistration";
-            this.grpPatientRegistration.Padding = new System.Windows.Forms.Padding(25);
-            this.grpPatientRegistration.Size = new System.Drawing.Size(610, 660);
-            this.grpPatientRegistration.TabIndex = 6;
-            this.grpPatientRegistration.TabStop = false;
-            this.grpPatientRegistration.Text = "Register Patient";
+            this.layoutHours.ColumnCount = 1;
+            this.layoutHours.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutHours.Controls.Add(this.lblHour12, 0, 23);
+            this.layoutHours.Controls.Add(this.lblHour11, 0, 21);
+            this.layoutHours.Controls.Add(this.lblHour10, 0, 19);
+            this.layoutHours.Controls.Add(this.lblHour9, 0, 17);
+            this.layoutHours.Controls.Add(this.lblHour8, 0, 15);
+            this.layoutHours.Controls.Add(this.lblHour7, 0, 13);
+            this.layoutHours.Controls.Add(this.lblHour6, 0, 11);
+            this.layoutHours.Controls.Add(this.lblHour5, 0, 9);
+            this.layoutHours.Controls.Add(this.lblHour4, 0, 7);
+            this.layoutHours.Controls.Add(this.lblHour3, 0, 5);
+            this.layoutHours.Controls.Add(this.lblHour2, 0, 3);
+            this.layoutHours.Controls.Add(this.lblHour1, 0, 1);
+            this.layoutHours.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutHours.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.layoutHours.Location = new System.Drawing.Point(2, 47);
+            this.layoutHours.Margin = new System.Windows.Forms.Padding(2);
+            this.layoutHours.Name = "layoutHours";
+            this.layoutHours.RowCount = 24;
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.030012F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.030012F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 0.03001201F));
+            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.303322F));
+            this.layoutHours.Size = new System.Drawing.Size(76, 453);
+            this.layoutHours.TabIndex = 1;
             // 
-            // layoutPatientButtons
+            // lblHour12
             // 
-            this.layoutPatientButtons.ColumnCount = 4;
-            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.layoutPatientButtons.Controls.Add(this.btnPCreate, 0, 0);
-            this.layoutPatientButtons.Controls.Add(this.btnPUpdate, 1, 0);
-            this.layoutPatientButtons.Controls.Add(this.btnPSearch, 2, 0);
-            this.layoutPatientButtons.Controls.Add(this.btnPDelete, 3, 0);
-            this.layoutPatientButtons.Controls.Add(this.btnPDisplay, 0, 1);
-            this.layoutPatientButtons.Controls.Add(this.btnPCancel, 1, 1);
-            this.layoutPatientButtons.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-            this.layoutPatientButtons.Location = new System.Drawing.Point(25, 499);
-            this.layoutPatientButtons.Margin = new System.Windows.Forms.Padding(2);
-            this.layoutPatientButtons.Name = "layoutPatientButtons";
-            this.layoutPatientButtons.RowCount = 2;
-            this.layoutPatientButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.layoutPatientButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.layoutPatientButtons.Size = new System.Drawing.Size(560, 116);
-            this.layoutPatientButtons.TabIndex = 10;
+            this.lblHour12.AutoSize = true;
+            this.lblHour12.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour12.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour12.Location = new System.Drawing.Point(2, 407);
+            this.lblHour12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour12.Name = "lblHour12";
+            this.lblHour12.Size = new System.Drawing.Size(72, 46);
+            this.lblHour12.TabIndex = 11;
+            this.lblHour12.Text = "22:00";
+            this.lblHour12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnPCreate
+            // lblHour11
             // 
-            this.btnPCreate.AutoSize = true;
-            this.btnPCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.btnPCreate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPCreate.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPCreate.ForeColor = System.Drawing.Color.White;
-            this.btnPCreate.Location = new System.Drawing.Point(2, 2);
-            this.btnPCreate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPCreate.Name = "btnPCreate";
-            this.btnPCreate.Size = new System.Drawing.Size(136, 54);
-            this.btnPCreate.TabIndex = 5;
-            this.btnPCreate.Text = "Create";
-            this.btnPCreate.UseVisualStyleBackColor = false;
+            this.lblHour11.AutoSize = true;
+            this.lblHour11.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour11.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour11.Location = new System.Drawing.Point(2, 370);
+            this.lblHour11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour11.Name = "lblHour11";
+            this.lblHour11.Size = new System.Drawing.Size(72, 37);
+            this.lblHour11.TabIndex = 10;
+            this.lblHour11.Text = "20:00";
+            this.lblHour11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnPUpdate
+            // lblHour10
             // 
-            this.btnPUpdate.AutoSize = true;
-            this.btnPUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.btnPUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPUpdate.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnPUpdate.Location = new System.Drawing.Point(142, 2);
-            this.btnPUpdate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPUpdate.Name = "btnPUpdate";
-            this.btnPUpdate.Size = new System.Drawing.Size(136, 54);
-            this.btnPUpdate.TabIndex = 11;
-            this.btnPUpdate.Text = "Update";
-            this.btnPUpdate.UseVisualStyleBackColor = false;
+            this.lblHour10.AutoSize = true;
+            this.lblHour10.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour10.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour10.Location = new System.Drawing.Point(2, 333);
+            this.lblHour10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour10.Name = "lblHour10";
+            this.lblHour10.Size = new System.Drawing.Size(72, 37);
+            this.lblHour10.TabIndex = 9;
+            this.lblHour10.Text = "18:00";
+            this.lblHour10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnPSearch
+            // lblHour9
             // 
-            this.btnPSearch.AutoSize = true;
-            this.btnPSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
-            this.btnPSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPSearch.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPSearch.ForeColor = System.Drawing.Color.White;
-            this.btnPSearch.Location = new System.Drawing.Point(282, 2);
-            this.btnPSearch.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPSearch.Name = "btnPSearch";
-            this.btnPSearch.Size = new System.Drawing.Size(136, 54);
-            this.btnPSearch.TabIndex = 4;
-            this.btnPSearch.Text = "Search";
-            this.btnPSearch.UseVisualStyleBackColor = false;
+            this.lblHour9.AutoSize = true;
+            this.lblHour9.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour9.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour9.Location = new System.Drawing.Point(2, 296);
+            this.lblHour9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour9.Name = "lblHour9";
+            this.lblHour9.Size = new System.Drawing.Size(72, 37);
+            this.lblHour9.TabIndex = 8;
+            this.lblHour9.Text = "16:00";
+            this.lblHour9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnPDelete
+            // lblHour8
             // 
-            this.btnPDelete.AutoSize = true;
-            this.btnPDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnPDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPDelete.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPDelete.ForeColor = System.Drawing.Color.White;
-            this.btnPDelete.Location = new System.Drawing.Point(422, 2);
-            this.btnPDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPDelete.Name = "btnPDelete";
-            this.btnPDelete.Size = new System.Drawing.Size(136, 54);
-            this.btnPDelete.TabIndex = 7;
-            this.btnPDelete.Text = "Delete";
-            this.btnPDelete.UseVisualStyleBackColor = false;
+            this.lblHour8.AutoSize = true;
+            this.lblHour8.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour8.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour8.Location = new System.Drawing.Point(2, 259);
+            this.lblHour8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour8.Name = "lblHour8";
+            this.lblHour8.Size = new System.Drawing.Size(72, 37);
+            this.lblHour8.TabIndex = 7;
+            this.lblHour8.Text = "14:00";
+            this.lblHour8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnPDisplay
+            // lblHour7
             // 
-            this.btnPDisplay.AutoSize = true;
-            this.btnPDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
-            this.btnPDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPDisplay.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPDisplay.ForeColor = System.Drawing.Color.White;
-            this.btnPDisplay.Location = new System.Drawing.Point(2, 60);
-            this.btnPDisplay.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPDisplay.Name = "btnPDisplay";
-            this.btnPDisplay.Size = new System.Drawing.Size(136, 54);
-            this.btnPDisplay.TabIndex = 10;
-            this.btnPDisplay.Text = "Display";
-            this.btnPDisplay.UseVisualStyleBackColor = false;
+            this.lblHour7.AutoSize = true;
+            this.lblHour7.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour7.Location = new System.Drawing.Point(2, 222);
+            this.lblHour7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour7.Name = "lblHour7";
+            this.lblHour7.Size = new System.Drawing.Size(72, 37);
+            this.lblHour7.TabIndex = 6;
+            this.lblHour7.Text = "12:00";
+            this.lblHour7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btnPCancel
+            // lblHour6
             // 
-            this.btnPCancel.AutoSize = true;
-            this.btnPCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
-            this.btnPCancel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPCancel.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPCancel.ForeColor = System.Drawing.Color.White;
-            this.btnPCancel.Location = new System.Drawing.Point(142, 60);
-            this.btnPCancel.Margin = new System.Windows.Forms.Padding(2);
-            this.btnPCancel.Name = "btnPCancel";
-            this.btnPCancel.Size = new System.Drawing.Size(136, 54);
-            this.btnPCancel.TabIndex = 9;
-            this.btnPCancel.Text = "Cancel";
-            this.btnPCancel.UseVisualStyleBackColor = false;
+            this.lblHour6.AutoSize = true;
+            this.lblHour6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour6.Location = new System.Drawing.Point(2, 185);
+            this.lblHour6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour6.Name = "lblHour6";
+            this.lblHour6.Size = new System.Drawing.Size(72, 37);
+            this.lblHour6.TabIndex = 5;
+            this.lblHour6.Text = "10:00";
+            this.lblHour6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // txtPPhone
+            // lblHour5
             // 
-            this.txtPPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblHour5.AutoSize = true;
+            this.lblHour5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour5.Location = new System.Drawing.Point(2, 148);
+            this.lblHour5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour5.Name = "lblHour5";
+            this.lblHour5.Size = new System.Drawing.Size(72, 37);
+            this.lblHour5.TabIndex = 4;
+            this.lblHour5.Text = "08:00";
+            this.lblHour5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblHour4
+            // 
+            this.lblHour4.AutoSize = true;
+            this.lblHour4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour4.Location = new System.Drawing.Point(2, 111);
+            this.lblHour4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour4.Name = "lblHour4";
+            this.lblHour4.Size = new System.Drawing.Size(72, 37);
+            this.lblHour4.TabIndex = 3;
+            this.lblHour4.Text = "06:00";
+            this.lblHour4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblHour3
+            // 
+            this.lblHour3.AutoSize = true;
+            this.lblHour3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour3.Location = new System.Drawing.Point(2, 74);
+            this.lblHour3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour3.Name = "lblHour3";
+            this.lblHour3.Size = new System.Drawing.Size(72, 37);
+            this.lblHour3.TabIndex = 2;
+            this.lblHour3.Text = "04:00";
+            this.lblHour3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblHour2
+            // 
+            this.lblHour2.AutoSize = true;
+            this.lblHour2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour2.Location = new System.Drawing.Point(2, 37);
+            this.lblHour2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour2.Name = "lblHour2";
+            this.lblHour2.Size = new System.Drawing.Size(72, 37);
+            this.lblHour2.TabIndex = 1;
+            this.lblHour2.Text = "02:00";
+            this.lblHour2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblHour1
+            // 
+            this.lblHour1.AutoSize = true;
+            this.lblHour1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lblHour1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblHour1.Location = new System.Drawing.Point(2, 0);
+            this.lblHour1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblHour1.Name = "lblHour1";
+            this.lblHour1.Size = new System.Drawing.Size(72, 37);
+            this.lblHour1.TabIndex = 0;
+            this.lblHour1.Text = "00:00";
+            this.lblHour1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // lblDay1
+            // 
+            this.lblDay1.AutoSize = true;
+            this.lblDay1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDay1.Location = new System.Drawing.Point(82, 0);
+            this.lblDay1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDay1.Name = "lblDay1";
+            this.lblDay1.Size = new System.Drawing.Size(168, 45);
+            this.lblDay1.TabIndex = 2;
+            this.lblDay1.Text = "Sunday";
+            this.lblDay1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDay2
+            // 
+            this.lblDay2.AutoSize = true;
+            this.lblDay2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDay2.Location = new System.Drawing.Point(254, 0);
+            this.lblDay2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDay2.Name = "lblDay2";
+            this.lblDay2.Size = new System.Drawing.Size(168, 45);
+            this.lblDay2.TabIndex = 15;
+            this.lblDay2.Text = "Monday";
+            this.lblDay2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDay3
+            // 
+            this.lblDay3.AutoSize = true;
+            this.lblDay3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDay3.Location = new System.Drawing.Point(426, 0);
+            this.lblDay3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDay3.Name = "lblDay3";
+            this.lblDay3.Size = new System.Drawing.Size(168, 45);
+            this.lblDay3.TabIndex = 16;
+            this.lblDay3.Text = "Tuesday";
+            this.lblDay3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDay4
+            // 
+            this.lblDay4.AutoSize = true;
+            this.lblDay4.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDay4.Location = new System.Drawing.Point(598, 0);
+            this.lblDay4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDay4.Name = "lblDay4";
+            this.lblDay4.Size = new System.Drawing.Size(168, 45);
+            this.lblDay4.TabIndex = 17;
+            this.lblDay4.Text = "Wednesday";
+            this.lblDay4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDay5
+            // 
+            this.lblDay5.AutoSize = true;
+            this.lblDay5.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDay5.Location = new System.Drawing.Point(770, 0);
+            this.lblDay5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDay5.Name = "lblDay5";
+            this.lblDay5.Size = new System.Drawing.Size(168, 45);
+            this.lblDay5.TabIndex = 16;
+            this.lblDay5.Text = "Thursday";
+            this.lblDay5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDay6
+            // 
+            this.lblDay6.AutoSize = true;
+            this.lblDay6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDay6.Location = new System.Drawing.Point(942, 0);
+            this.lblDay6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDay6.Name = "lblDay6";
+            this.lblDay6.Size = new System.Drawing.Size(168, 45);
+            this.lblDay6.TabIndex = 16;
+            this.lblDay6.Text = "Friday";
+            this.lblDay6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDay7
+            // 
+            this.lblDay7.AutoSize = true;
+            this.lblDay7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblDay7.Location = new System.Drawing.Point(1114, 0);
+            this.lblDay7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDay7.Name = "lblDay7";
+            this.lblDay7.Size = new System.Drawing.Size(170, 45);
+            this.lblDay7.TabIndex = 16;
+            this.lblDay7.Text = "Saturday";
+            this.lblDay7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lbSunday
+            // 
+            this.lbSunday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPPhone.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPPhone.Location = new System.Drawing.Point(24, 422);
-            this.txtPPhone.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtPPhone.Name = "txtPPhone";
-            this.txtPPhone.Size = new System.Drawing.Size(559, 31);
-            this.txtPPhone.TabIndex = 5;
+            this.lbSunday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbSunday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbSunday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSunday.ItemHeight = 25;
+            this.lbSunday.Location = new System.Drawing.Point(82, 47);
+            this.lbSunday.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSunday.Name = "lbSunday";
+            this.lbSunday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbSunday.Size = new System.Drawing.Size(168, 450);
+            this.lbSunday.TabIndex = 18;
             // 
-            // lblPPhone
+            // lbMonday
             // 
-            this.lblPPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbMonday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPPhone.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPPhone.Location = new System.Drawing.Point(24, 382);
-            this.lblPPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPPhone.Name = "lblPPhone";
-            this.lblPPhone.Size = new System.Drawing.Size(560, 35);
-            this.lblPPhone.TabIndex = 4;
-            this.lblPPhone.Text = "Phone Number";
-            this.lblPPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbMonday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbMonday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbMonday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMonday.ItemHeight = 25;
+            this.lbMonday.Location = new System.Drawing.Point(254, 47);
+            this.lbMonday.Margin = new System.Windows.Forms.Padding(2);
+            this.lbMonday.Name = "lbMonday";
+            this.lbMonday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbMonday.Size = new System.Drawing.Size(168, 450);
+            this.lbMonday.TabIndex = 19;
             // 
-            // dateDoB
+            // lbTuesday
             // 
-            this.dateDoB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbTuesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dateDoB.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dateDoB.Location = new System.Drawing.Point(24, 248);
-            this.dateDoB.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.dateDoB.Name = "dateDoB";
-            this.dateDoB.Size = new System.Drawing.Size(559, 31);
-            this.dateDoB.TabIndex = 5;
+            this.lbTuesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbTuesday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbTuesday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTuesday.ItemHeight = 25;
+            this.lbTuesday.Location = new System.Drawing.Point(426, 47);
+            this.lbTuesday.Margin = new System.Windows.Forms.Padding(2);
+            this.lbTuesday.Name = "lbTuesday";
+            this.lbTuesday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbTuesday.Size = new System.Drawing.Size(168, 450);
+            this.lbTuesday.TabIndex = 19;
             // 
-            // lblDoB
+            // lbWednesday
             // 
-            this.lblDoB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbWednesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblDoB.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoB.Location = new System.Drawing.Point(24, 208);
-            this.lblDoB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDoB.Name = "lblDoB";
-            this.lblDoB.Size = new System.Drawing.Size(560, 35);
-            this.lblDoB.TabIndex = 4;
-            this.lblDoB.Text = "Date of Birth";
-            this.lblDoB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbWednesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbWednesday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbWednesday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbWednesday.ItemHeight = 25;
+            this.lbWednesday.Location = new System.Drawing.Point(598, 47);
+            this.lbWednesday.Margin = new System.Windows.Forms.Padding(2);
+            this.lbWednesday.Name = "lbWednesday";
+            this.lbWednesday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbWednesday.Size = new System.Drawing.Size(168, 450);
+            this.lbWednesday.TabIndex = 19;
             // 
-            // txtPatientId
+            // lbThursday
             // 
-            this.txtPatientId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbThursday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPatientId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPatientId.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPatientId.Location = new System.Drawing.Point(25, 75);
-            this.txtPatientId.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtPatientId.Name = "txtPatientId";
-            this.txtPatientId.Size = new System.Drawing.Size(559, 31);
-            this.txtPatientId.TabIndex = 5;
+            this.lbThursday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbThursday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbThursday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbThursday.ItemHeight = 25;
+            this.lbThursday.Location = new System.Drawing.Point(770, 47);
+            this.lbThursday.Margin = new System.Windows.Forms.Padding(2);
+            this.lbThursday.Name = "lbThursday";
+            this.lbThursday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbThursday.Size = new System.Drawing.Size(168, 450);
+            this.lbThursday.TabIndex = 19;
             // 
-            // lblPatientId
+            // lbFriday
             // 
-            this.lblPatientId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbFriday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPatientId.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPatientId.Location = new System.Drawing.Point(25, 35);
-            this.lblPatientId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPatientId.Name = "lblPatientId";
-            this.lblPatientId.Size = new System.Drawing.Size(560, 35);
-            this.lblPatientId.TabIndex = 4;
-            this.lblPatientId.Text = "Patient Id";
-            this.lblPatientId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.lbFriday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbFriday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbFriday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbFriday.ItemHeight = 25;
+            this.lbFriday.Location = new System.Drawing.Point(942, 47);
+            this.lbFriday.Margin = new System.Windows.Forms.Padding(2);
+            this.lbFriday.Name = "lbFriday";
+            this.lbFriday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbFriday.Size = new System.Drawing.Size(168, 450);
+            this.lbFriday.TabIndex = 20;
             // 
-            // txtMedicalNumber
+            // lbSaturday
             // 
-            this.txtMedicalNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lbSaturday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtMedicalNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtMedicalNumber.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMedicalNumber.Location = new System.Drawing.Point(24, 335);
-            this.txtMedicalNumber.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtMedicalNumber.Name = "txtMedicalNumber";
-            this.txtMedicalNumber.Size = new System.Drawing.Size(559, 31);
-            this.txtMedicalNumber.TabIndex = 5;
+            this.lbSaturday.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbSaturday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.lbSaturday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbSaturday.ItemHeight = 25;
+            this.lbSaturday.Location = new System.Drawing.Point(1114, 47);
+            this.lbSaturday.Margin = new System.Windows.Forms.Padding(2);
+            this.lbSaturday.Name = "lbSaturday";
+            this.lbSaturday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.lbSaturday.Size = new System.Drawing.Size(170, 450);
+            this.lbSaturday.TabIndex = 19;
             // 
-            // lblMedicalNumber
+            // layoutSchedulingHeader
             // 
-            this.lblMedicalNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.layoutSchedulingHeader.ColumnCount = 2;
+            this.layoutSchedulingHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.layoutSchedulingHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.layoutSchedulingHeader.Controls.Add(this.pnlDoctorPicker, 0, 0);
+            this.layoutSchedulingHeader.Controls.Add(this.layoutSchedulingActions, 1, 0);
+            this.layoutSchedulingHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.layoutSchedulingHeader.Location = new System.Drawing.Point(25, 49);
+            this.layoutSchedulingHeader.Margin = new System.Windows.Forms.Padding(2);
+            this.layoutSchedulingHeader.Name = "layoutSchedulingHeader";
+            this.layoutSchedulingHeader.RowCount = 1;
+            this.layoutSchedulingHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutSchedulingHeader.Size = new System.Drawing.Size(1286, 78);
+            this.layoutSchedulingHeader.TabIndex = 17;
+            // 
+            // pnlDoctorPicker
+            // 
+            this.pnlDoctorPicker.Controls.Add(this.comboDoctorSelect);
+            this.pnlDoctorPicker.Controls.Add(this.lblDoctorSelect);
+            this.pnlDoctorPicker.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlDoctorPicker.Location = new System.Drawing.Point(2, 2);
+            this.pnlDoctorPicker.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlDoctorPicker.Name = "pnlDoctorPicker";
+            this.pnlDoctorPicker.Size = new System.Drawing.Size(767, 74);
+            this.pnlDoctorPicker.TabIndex = 0;
+            // 
+            // comboDoctorSelect
+            // 
+            this.comboDoctorSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblMedicalNumber.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMedicalNumber.Location = new System.Drawing.Point(24, 295);
-            this.lblMedicalNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblMedicalNumber.Name = "lblMedicalNumber";
-            this.lblMedicalNumber.Size = new System.Drawing.Size(560, 35);
-            this.lblMedicalNumber.TabIndex = 4;
-            this.lblMedicalNumber.Text = "Health Card Number";
-            this.lblMedicalNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.comboDoctorSelect.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboDoctorSelect.FormattingEnabled = true;
+            this.comboDoctorSelect.Location = new System.Drawing.Point(15, 34);
+            this.comboDoctorSelect.Margin = new System.Windows.Forms.Padding(2);
+            this.comboDoctorSelect.Name = "comboDoctorSelect";
+            this.comboDoctorSelect.Size = new System.Drawing.Size(750, 31);
+            this.comboDoctorSelect.TabIndex = 14;
             // 
-            // txtPLName
+            // lblDoctorSelect
             // 
-            this.txtPLName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPLName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPLName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPLName.Location = new System.Drawing.Point(318, 163);
-            this.txtPLName.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtPLName.Name = "txtPLName";
-            this.txtPLName.Size = new System.Drawing.Size(267, 31);
-            this.txtPLName.TabIndex = 5;
+            this.lblDoctorSelect.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDoctorSelect.Location = new System.Drawing.Point(11, 0);
+            this.lblDoctorSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDoctorSelect.Name = "lblDoctorSelect";
+            this.lblDoctorSelect.Size = new System.Drawing.Size(240, 32);
+            this.lblDoctorSelect.TabIndex = 13;
+            this.lblDoctorSelect.Text = "Doctor";
+            this.lblDoctorSelect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblPLName
+            // layoutSchedulingActions
             // 
-            this.lblPLName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPLName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPLName.Location = new System.Drawing.Point(318, 121);
-            this.lblPLName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPLName.Name = "lblPLName";
-            this.lblPLName.Size = new System.Drawing.Size(268, 35);
-            this.lblPLName.TabIndex = 4;
-            this.lblPLName.Text = "Last Name";
-            this.lblPLName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.layoutSchedulingActions.ColumnCount = 2;
+            this.layoutSchedulingActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.layoutSchedulingActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.layoutSchedulingActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
+            this.layoutSchedulingActions.Controls.Add(this.btnSchedulingUpdate, 1, 0);
+            this.layoutSchedulingActions.Controls.Add(this.btnScheduleSave, 0, 0);
+            this.layoutSchedulingActions.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.layoutSchedulingActions.Location = new System.Drawing.Point(774, 3);
+            this.layoutSchedulingActions.Name = "layoutSchedulingActions";
+            this.layoutSchedulingActions.Padding = new System.Windows.Forms.Padding(10);
+            this.layoutSchedulingActions.RowCount = 1;
+            this.layoutSchedulingActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.layoutSchedulingActions.Size = new System.Drawing.Size(509, 72);
+            this.layoutSchedulingActions.TabIndex = 2;
             // 
-            // txtPFName
+            // btnSchedulingUpdate
             // 
-            this.txtPFName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPFName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPFName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPFName.Location = new System.Drawing.Point(25, 163);
-            this.txtPFName.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtPFName.Name = "txtPFName";
-            this.txtPFName.Size = new System.Drawing.Size(268, 31);
-            this.txtPFName.TabIndex = 5;
+            this.btnSchedulingUpdate.AutoSize = true;
+            this.btnSchedulingUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
+            this.btnSchedulingUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSchedulingUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSchedulingUpdate.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSchedulingUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnSchedulingUpdate.Location = new System.Drawing.Point(256, 12);
+            this.btnSchedulingUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnSchedulingUpdate.Name = "btnSchedulingUpdate";
+            this.btnSchedulingUpdate.Size = new System.Drawing.Size(241, 48);
+            this.btnSchedulingUpdate.TabIndex = 7;
+            this.btnSchedulingUpdate.Text = "Revert";
+            this.btnSchedulingUpdate.UseVisualStyleBackColor = false;
             // 
-            // lblPFName
+            // btnScheduleSave
             // 
-            this.lblPFName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblPFName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPFName.Location = new System.Drawing.Point(25, 121);
-            this.lblPFName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblPFName.Name = "lblPFName";
-            this.lblPFName.Size = new System.Drawing.Size(269, 35);
-            this.lblPFName.TabIndex = 4;
-            this.lblPFName.Text = "First Name";
-            this.lblPFName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnScheduleSave.AutoSize = true;
+            this.btnScheduleSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnScheduleSave.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnScheduleSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnScheduleSave.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnScheduleSave.ForeColor = System.Drawing.Color.White;
+            this.btnScheduleSave.Location = new System.Drawing.Point(12, 12);
+            this.btnScheduleSave.Margin = new System.Windows.Forms.Padding(2);
+            this.btnScheduleSave.Name = "btnScheduleSave";
+            this.btnScheduleSave.Size = new System.Drawing.Size(240, 48);
+            this.btnScheduleSave.TabIndex = 6;
+            this.btnScheduleSave.Text = "Save";
+            this.btnScheduleSave.UseVisualStyleBackColor = false;
             // 
             // pnlUserManagement
             // 
@@ -1069,636 +1296,334 @@ namespace ClinicManagement_proj.UI
             this.lblUsername.Text = "Username";
             this.lblUsername.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // pnlDoctorScheduling
+            // pnlPatientRegistration
             // 
-            this.pnlDoctorScheduling.Controls.Add(this.grpDoctorScheduling);
-            this.pnlDoctorScheduling.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDoctorScheduling.Location = new System.Drawing.Point(20, 20);
-            this.pnlDoctorScheduling.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlDoctorScheduling.Name = "pnlDoctorScheduling";
-            this.pnlDoctorScheduling.Size = new System.Drawing.Size(1336, 660);
-            this.pnlDoctorScheduling.TabIndex = 4;
-            this.pnlDoctorScheduling.Visible = false;
+            this.pnlPatientRegistration.Controls.Add(this.dgvRegPatients);
+            this.pnlPatientRegistration.Controls.Add(this.grpPatientRegistration);
+            this.pnlPatientRegistration.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pnlPatientRegistration.Location = new System.Drawing.Point(20, 20);
+            this.pnlPatientRegistration.Margin = new System.Windows.Forms.Padding(2);
+            this.pnlPatientRegistration.Name = "pnlPatientRegistration";
+            this.pnlPatientRegistration.Size = new System.Drawing.Size(1336, 660);
+            this.pnlPatientRegistration.TabIndex = 3;
+            this.pnlPatientRegistration.Visible = false;
             // 
-            // grpDoctorScheduling
+            // dgvRegPatients
             // 
-            this.grpDoctorScheduling.Controls.Add(this.layoutSchedulingContent);
-            this.grpDoctorScheduling.Controls.Add(this.layoutSchedulingHeader);
-            this.grpDoctorScheduling.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.grpDoctorScheduling.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpDoctorScheduling.Location = new System.Drawing.Point(0, 0);
-            this.grpDoctorScheduling.Margin = new System.Windows.Forms.Padding(2);
-            this.grpDoctorScheduling.Name = "grpDoctorScheduling";
-            this.grpDoctorScheduling.Padding = new System.Windows.Forms.Padding(25);
-            this.grpDoctorScheduling.Size = new System.Drawing.Size(1336, 660);
-            this.grpDoctorScheduling.TabIndex = 6;
-            this.grpDoctorScheduling.TabStop = false;
-            this.grpDoctorScheduling.Text = "Adjust a Doctor\'s Schedule";
-            // 
-            // layoutSchedulingContent
-            // 
-            this.layoutSchedulingContent.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.dgvRegPatients.AllowUserToAddRows = false;
+            this.dgvRegPatients.AllowUserToDeleteRows = false;
+            this.dgvRegPatients.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.layoutSchedulingContent.ColumnCount = 8;
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 4.959054F));
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.57728F));
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.57728F));
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.57728F));
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.57728F));
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.57728F));
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.57728F));
-            this.layoutSchedulingContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 13.57728F));
-            this.layoutSchedulingContent.Controls.Add(this.layoutHours, 0, 1);
-            this.layoutSchedulingContent.Controls.Add(this.lblDay1, 1, 0);
-            this.layoutSchedulingContent.Controls.Add(this.lblDay2, 2, 0);
-            this.layoutSchedulingContent.Controls.Add(this.lblDay3, 3, 0);
-            this.layoutSchedulingContent.Controls.Add(this.lblDay4, 4, 0);
-            this.layoutSchedulingContent.Controls.Add(this.lblDay5, 5, 0);
-            this.layoutSchedulingContent.Controls.Add(this.lblDay6, 6, 0);
-            this.layoutSchedulingContent.Controls.Add(this.lblDay7, 7, 0);
-            this.layoutSchedulingContent.Controls.Add(this.lbSunday, 1, 1);
-            this.layoutSchedulingContent.Controls.Add(this.lbMonday, 2, 1);
-            this.layoutSchedulingContent.Controls.Add(this.lbTuesday, 3, 1);
-            this.layoutSchedulingContent.Controls.Add(this.lbWednesday, 4, 1);
-            this.layoutSchedulingContent.Controls.Add(this.lbThursday, 5, 1);
-            this.layoutSchedulingContent.Controls.Add(this.lbFriday, 6, 1);
-            this.layoutSchedulingContent.Controls.Add(this.lbSaturday, 7, 1);
-            this.layoutSchedulingContent.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
-            this.layoutSchedulingContent.Location = new System.Drawing.Point(25, 131);
-            this.layoutSchedulingContent.Margin = new System.Windows.Forms.Padding(2);
-            this.layoutSchedulingContent.Name = "layoutSchedulingContent";
-            this.layoutSchedulingContent.RowCount = 2;
-            this.layoutSchedulingContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.layoutSchedulingContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutSchedulingContent.Size = new System.Drawing.Size(1286, 502);
-            this.layoutSchedulingContent.TabIndex = 10;
+            this.dgvRegPatients.BackgroundColor = System.Drawing.Color.White;
+            this.dgvRegPatients.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvRegPatients.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvRegPatients.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.dgvRegPatients.Location = new System.Drawing.Point(616, 3);
+            this.dgvRegPatients.Margin = new System.Windows.Forms.Padding(2);
+            this.dgvRegPatients.MultiSelect = false;
+            this.dgvRegPatients.Name = "dgvRegPatients";
+            this.dgvRegPatients.ReadOnly = true;
+            this.dgvRegPatients.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgvRegPatients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dgvRegPatients.RowTemplate.Height = 24;
+            this.dgvRegPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvRegPatients.Size = new System.Drawing.Size(720, 670);
+            this.dgvRegPatients.TabIndex = 7;
             // 
-            // layoutHours
+            // grpPatientRegistration
             // 
-            this.layoutHours.ColumnCount = 1;
-            this.layoutHours.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutHours.Controls.Add(this.lblHour12, 0, 11);
-            this.layoutHours.Controls.Add(this.lblHour11, 0, 10);
-            this.layoutHours.Controls.Add(this.lblHour10, 0, 9);
-            this.layoutHours.Controls.Add(this.lblHour9, 0, 8);
-            this.layoutHours.Controls.Add(this.lblHour8, 0, 7);
-            this.layoutHours.Controls.Add(this.lblHour7, 0, 6);
-            this.layoutHours.Controls.Add(this.lblHour6, 0, 5);
-            this.layoutHours.Controls.Add(this.lblHour5, 0, 4);
-            this.layoutHours.Controls.Add(this.lblHour4, 0, 3);
-            this.layoutHours.Controls.Add(this.lblHour3, 0, 2);
-            this.layoutHours.Controls.Add(this.lblHour2, 0, 1);
-            this.layoutHours.Controls.Add(this.lblHour1, 0, 0);
-            this.layoutHours.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutHours.Font = new System.Drawing.Font("Lucida Sans", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.layoutHours.Location = new System.Drawing.Point(2, 47);
-            this.layoutHours.Margin = new System.Windows.Forms.Padding(2);
-            this.layoutHours.Name = "layoutHours";
-            this.layoutHours.RowCount = 12;
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 8.333335F));
-            this.layoutHours.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.layoutHours.Size = new System.Drawing.Size(59, 453);
-            this.layoutHours.TabIndex = 1;
+            this.grpPatientRegistration.Controls.Add(this.layoutPatientButtons);
+            this.grpPatientRegistration.Controls.Add(this.txtPPhone);
+            this.grpPatientRegistration.Controls.Add(this.lblPPhone);
+            this.grpPatientRegistration.Controls.Add(this.dateDoB);
+            this.grpPatientRegistration.Controls.Add(this.lblDoB);
+            this.grpPatientRegistration.Controls.Add(this.txtPatientId);
+            this.grpPatientRegistration.Controls.Add(this.lblPatientId);
+            this.grpPatientRegistration.Controls.Add(this.txtMedicalNumber);
+            this.grpPatientRegistration.Controls.Add(this.lblMedicalNumber);
+            this.grpPatientRegistration.Controls.Add(this.txtPLName);
+            this.grpPatientRegistration.Controls.Add(this.lblPLName);
+            this.grpPatientRegistration.Controls.Add(this.txtPFName);
+            this.grpPatientRegistration.Controls.Add(this.lblPFName);
+            this.grpPatientRegistration.Dock = System.Windows.Forms.DockStyle.Left;
+            this.grpPatientRegistration.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpPatientRegistration.Location = new System.Drawing.Point(0, 0);
+            this.grpPatientRegistration.Margin = new System.Windows.Forms.Padding(2);
+            this.grpPatientRegistration.Name = "grpPatientRegistration";
+            this.grpPatientRegistration.Padding = new System.Windows.Forms.Padding(25);
+            this.grpPatientRegistration.Size = new System.Drawing.Size(610, 660);
+            this.grpPatientRegistration.TabIndex = 6;
+            this.grpPatientRegistration.TabStop = false;
+            this.grpPatientRegistration.Text = "Register Patient";
             // 
-            // lblHour12
+            // layoutPatientButtons
             // 
-            this.lblHour12.AutoSize = true;
-            this.lblHour12.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour12.Location = new System.Drawing.Point(2, 407);
-            this.lblHour12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour12.Name = "lblHour12";
-            this.lblHour12.Size = new System.Drawing.Size(55, 46);
-            this.lblHour12.TabIndex = 11;
-            this.lblHour12.Text = "22:00";
-            this.lblHour12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.layoutPatientButtons.ColumnCount = 4;
+            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.layoutPatientButtons.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.layoutPatientButtons.Controls.Add(this.btnPCreate, 0, 0);
+            this.layoutPatientButtons.Controls.Add(this.btnPUpdate, 1, 0);
+            this.layoutPatientButtons.Controls.Add(this.btnPSearch, 2, 0);
+            this.layoutPatientButtons.Controls.Add(this.btnPDelete, 3, 0);
+            this.layoutPatientButtons.Controls.Add(this.btnPDisplay, 0, 1);
+            this.layoutPatientButtons.Controls.Add(this.btnPCancel, 1, 1);
+            this.layoutPatientButtons.GrowStyle = System.Windows.Forms.TableLayoutPanelGrowStyle.AddColumns;
+            this.layoutPatientButtons.Location = new System.Drawing.Point(25, 499);
+            this.layoutPatientButtons.Margin = new System.Windows.Forms.Padding(2);
+            this.layoutPatientButtons.Name = "layoutPatientButtons";
+            this.layoutPatientButtons.RowCount = 2;
+            this.layoutPatientButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutPatientButtons.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.layoutPatientButtons.Size = new System.Drawing.Size(560, 116);
+            this.layoutPatientButtons.TabIndex = 10;
             // 
-            // lblHour11
+            // btnPCreate
             // 
-            this.lblHour11.AutoSize = true;
-            this.lblHour11.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour11.Location = new System.Drawing.Point(2, 370);
-            this.lblHour11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour11.Name = "lblHour11";
-            this.lblHour11.Size = new System.Drawing.Size(55, 37);
-            this.lblHour11.TabIndex = 10;
-            this.lblHour11.Text = "20:00";
-            this.lblHour11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPCreate.AutoSize = true;
+            this.btnPCreate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnPCreate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPCreate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPCreate.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPCreate.ForeColor = System.Drawing.Color.White;
+            this.btnPCreate.Location = new System.Drawing.Point(2, 2);
+            this.btnPCreate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPCreate.Name = "btnPCreate";
+            this.btnPCreate.Size = new System.Drawing.Size(136, 54);
+            this.btnPCreate.TabIndex = 5;
+            this.btnPCreate.Text = "Create";
+            this.btnPCreate.UseVisualStyleBackColor = false;
             // 
-            // lblHour10
+            // btnPUpdate
             // 
-            this.lblHour10.AutoSize = true;
-            this.lblHour10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour10.Location = new System.Drawing.Point(2, 333);
-            this.lblHour10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour10.Name = "lblHour10";
-            this.lblHour10.Size = new System.Drawing.Size(55, 37);
-            this.lblHour10.TabIndex = 9;
-            this.lblHour10.Text = "18:00";
-            this.lblHour10.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPUpdate.AutoSize = true;
+            this.btnPUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
+            this.btnPUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPUpdate.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnPUpdate.Location = new System.Drawing.Point(142, 2);
+            this.btnPUpdate.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPUpdate.Name = "btnPUpdate";
+            this.btnPUpdate.Size = new System.Drawing.Size(136, 54);
+            this.btnPUpdate.TabIndex = 11;
+            this.btnPUpdate.Text = "Update";
+            this.btnPUpdate.UseVisualStyleBackColor = false;
             // 
-            // lblHour9
+            // btnPSearch
             // 
-            this.lblHour9.AutoSize = true;
-            this.lblHour9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour9.Location = new System.Drawing.Point(2, 296);
-            this.lblHour9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour9.Name = "lblHour9";
-            this.lblHour9.Size = new System.Drawing.Size(55, 37);
-            this.lblHour9.TabIndex = 8;
-            this.lblHour9.Text = "16:00";
-            this.lblHour9.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPSearch.AutoSize = true;
+            this.btnPSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(41)))), ((int)(((byte)(128)))), ((int)(((byte)(185)))));
+            this.btnPSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPSearch.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPSearch.ForeColor = System.Drawing.Color.White;
+            this.btnPSearch.Location = new System.Drawing.Point(282, 2);
+            this.btnPSearch.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPSearch.Name = "btnPSearch";
+            this.btnPSearch.Size = new System.Drawing.Size(136, 54);
+            this.btnPSearch.TabIndex = 4;
+            this.btnPSearch.Text = "Search";
+            this.btnPSearch.UseVisualStyleBackColor = false;
             // 
-            // lblHour8
+            // btnPDelete
             // 
-            this.lblHour8.AutoSize = true;
-            this.lblHour8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour8.Location = new System.Drawing.Point(2, 259);
-            this.lblHour8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour8.Name = "lblHour8";
-            this.lblHour8.Size = new System.Drawing.Size(55, 37);
-            this.lblHour8.TabIndex = 7;
-            this.lblHour8.Text = "14:00";
-            this.lblHour8.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPDelete.AutoSize = true;
+            this.btnPDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
+            this.btnPDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPDelete.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDelete.ForeColor = System.Drawing.Color.White;
+            this.btnPDelete.Location = new System.Drawing.Point(422, 2);
+            this.btnPDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPDelete.Name = "btnPDelete";
+            this.btnPDelete.Size = new System.Drawing.Size(136, 54);
+            this.btnPDelete.TabIndex = 7;
+            this.btnPDelete.Text = "Delete";
+            this.btnPDelete.UseVisualStyleBackColor = false;
             // 
-            // lblHour7
+            // btnPDisplay
             // 
-            this.lblHour7.AutoSize = true;
-            this.lblHour7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour7.Location = new System.Drawing.Point(2, 222);
-            this.lblHour7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour7.Name = "lblHour7";
-            this.lblHour7.Size = new System.Drawing.Size(55, 37);
-            this.lblHour7.TabIndex = 6;
-            this.lblHour7.Text = "12:00";
-            this.lblHour7.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPDisplay.AutoSize = true;
+            this.btnPDisplay.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
+            this.btnPDisplay.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPDisplay.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPDisplay.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPDisplay.ForeColor = System.Drawing.Color.White;
+            this.btnPDisplay.Location = new System.Drawing.Point(2, 60);
+            this.btnPDisplay.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPDisplay.Name = "btnPDisplay";
+            this.btnPDisplay.Size = new System.Drawing.Size(136, 54);
+            this.btnPDisplay.TabIndex = 10;
+            this.btnPDisplay.Text = "Display";
+            this.btnPDisplay.UseVisualStyleBackColor = false;
             // 
-            // lblHour6
+            // btnPCancel
             // 
-            this.lblHour6.AutoSize = true;
-            this.lblHour6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour6.Location = new System.Drawing.Point(2, 185);
-            this.lblHour6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour6.Name = "lblHour6";
-            this.lblHour6.Size = new System.Drawing.Size(55, 37);
-            this.lblHour6.TabIndex = 5;
-            this.lblHour6.Text = "10:00";
-            this.lblHour6.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btnPCancel.AutoSize = true;
+            this.btnPCancel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
+            this.btnPCancel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPCancel.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPCancel.ForeColor = System.Drawing.Color.White;
+            this.btnPCancel.Location = new System.Drawing.Point(142, 60);
+            this.btnPCancel.Margin = new System.Windows.Forms.Padding(2);
+            this.btnPCancel.Name = "btnPCancel";
+            this.btnPCancel.Size = new System.Drawing.Size(136, 54);
+            this.btnPCancel.TabIndex = 9;
+            this.btnPCancel.Text = "Cancel";
+            this.btnPCancel.UseVisualStyleBackColor = false;
             // 
-            // lblHour5
+            // txtPPhone
             // 
-            this.lblHour5.AutoSize = true;
-            this.lblHour5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour5.Location = new System.Drawing.Point(2, 148);
-            this.lblHour5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour5.Name = "lblHour5";
-            this.lblHour5.Size = new System.Drawing.Size(55, 37);
-            this.lblHour5.TabIndex = 4;
-            this.lblHour5.Text = "08:00";
-            this.lblHour5.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblHour4
-            // 
-            this.lblHour4.AutoSize = true;
-            this.lblHour4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour4.Location = new System.Drawing.Point(2, 111);
-            this.lblHour4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour4.Name = "lblHour4";
-            this.lblHour4.Size = new System.Drawing.Size(55, 37);
-            this.lblHour4.TabIndex = 3;
-            this.lblHour4.Text = "06:00";
-            this.lblHour4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblHour3
-            // 
-            this.lblHour3.AutoSize = true;
-            this.lblHour3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour3.Location = new System.Drawing.Point(2, 74);
-            this.lblHour3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour3.Name = "lblHour3";
-            this.lblHour3.Size = new System.Drawing.Size(55, 37);
-            this.lblHour3.TabIndex = 2;
-            this.lblHour3.Text = "04:00";
-            this.lblHour3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblHour2
-            // 
-            this.lblHour2.AutoSize = true;
-            this.lblHour2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour2.Location = new System.Drawing.Point(2, 37);
-            this.lblHour2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour2.Name = "lblHour2";
-            this.lblHour2.Size = new System.Drawing.Size(55, 37);
-            this.lblHour2.TabIndex = 1;
-            this.lblHour2.Text = "02:00";
-            this.lblHour2.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblHour1
-            // 
-            this.lblHour1.AutoSize = true;
-            this.lblHour1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblHour1.Location = new System.Drawing.Point(2, 0);
-            this.lblHour1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblHour1.Name = "lblHour1";
-            this.lblHour1.Size = new System.Drawing.Size(55, 37);
-            this.lblHour1.TabIndex = 0;
-            this.lblHour1.Text = "00:00";
-            this.lblHour1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            // 
-            // lblDay1
-            // 
-            this.lblDay1.AutoSize = true;
-            this.lblDay1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDay1.Location = new System.Drawing.Point(65, 0);
-            this.lblDay1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDay1.Name = "lblDay1";
-            this.lblDay1.Size = new System.Drawing.Size(170, 45);
-            this.lblDay1.TabIndex = 2;
-            this.lblDay1.Text = "Sunday";
-            this.lblDay1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDay2
-            // 
-            this.lblDay2.AutoSize = true;
-            this.lblDay2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDay2.Location = new System.Drawing.Point(239, 0);
-            this.lblDay2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDay2.Name = "lblDay2";
-            this.lblDay2.Size = new System.Drawing.Size(170, 45);
-            this.lblDay2.TabIndex = 15;
-            this.lblDay2.Text = "Monday";
-            this.lblDay2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDay3
-            // 
-            this.lblDay3.AutoSize = true;
-            this.lblDay3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDay3.Location = new System.Drawing.Point(413, 0);
-            this.lblDay3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDay3.Name = "lblDay3";
-            this.lblDay3.Size = new System.Drawing.Size(170, 45);
-            this.lblDay3.TabIndex = 16;
-            this.lblDay3.Text = "Tuesday";
-            this.lblDay3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDay4
-            // 
-            this.lblDay4.AutoSize = true;
-            this.lblDay4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDay4.Location = new System.Drawing.Point(587, 0);
-            this.lblDay4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDay4.Name = "lblDay4";
-            this.lblDay4.Size = new System.Drawing.Size(170, 45);
-            this.lblDay4.TabIndex = 17;
-            this.lblDay4.Text = "Wednesday";
-            this.lblDay4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDay5
-            // 
-            this.lblDay5.AutoSize = true;
-            this.lblDay5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDay5.Location = new System.Drawing.Point(761, 0);
-            this.lblDay5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDay5.Name = "lblDay5";
-            this.lblDay5.Size = new System.Drawing.Size(170, 45);
-            this.lblDay5.TabIndex = 16;
-            this.lblDay5.Text = "Thursday";
-            this.lblDay5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDay6
-            // 
-            this.lblDay6.AutoSize = true;
-            this.lblDay6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDay6.Location = new System.Drawing.Point(935, 0);
-            this.lblDay6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDay6.Name = "lblDay6";
-            this.lblDay6.Size = new System.Drawing.Size(170, 45);
-            this.lblDay6.TabIndex = 16;
-            this.lblDay6.Text = "Friday";
-            this.lblDay6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblDay7
-            // 
-            this.lblDay7.AutoSize = true;
-            this.lblDay7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblDay7.Location = new System.Drawing.Point(1109, 0);
-            this.lblDay7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDay7.Name = "lblDay7";
-            this.lblDay7.Size = new System.Drawing.Size(175, 45);
-            this.lblDay7.TabIndex = 16;
-            this.lblDay7.Text = "Saturday";
-            this.lblDay7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lbSunday
-            // 
-            this.lbSunday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbSunday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbSunday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbSunday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSunday.ItemHeight = 25;
-            this.lbSunday.Location = new System.Drawing.Point(65, 47);
-            this.lbSunday.Margin = new System.Windows.Forms.Padding(2);
-            this.lbSunday.Name = "lbSunday";
-            this.lbSunday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbSunday.Size = new System.Drawing.Size(170, 450);
-            this.lbSunday.TabIndex = 18;
+            this.txtPPhone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPPhone.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPPhone.Location = new System.Drawing.Point(24, 422);
+            this.txtPPhone.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.txtPPhone.Name = "txtPPhone";
+            this.txtPPhone.Size = new System.Drawing.Size(559, 31);
+            this.txtPPhone.TabIndex = 5;
             // 
-            // lbMonday
+            // lblPPhone
             // 
-            this.lbMonday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPPhone.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbMonday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbMonday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbMonday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMonday.ItemHeight = 25;
-            this.lbMonday.Location = new System.Drawing.Point(239, 47);
-            this.lbMonday.Margin = new System.Windows.Forms.Padding(2);
-            this.lbMonday.Name = "lbMonday";
-            this.lbMonday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbMonday.Size = new System.Drawing.Size(170, 450);
-            this.lbMonday.TabIndex = 19;
+            this.lblPPhone.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPPhone.Location = new System.Drawing.Point(24, 382);
+            this.lblPPhone.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPPhone.Name = "lblPPhone";
+            this.lblPPhone.Size = new System.Drawing.Size(560, 35);
+            this.lblPPhone.TabIndex = 4;
+            this.lblPPhone.Text = "Phone Number";
+            this.lblPPhone.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbTuesday
+            // dateDoB
             // 
-            this.lbTuesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dateDoB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbTuesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbTuesday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbTuesday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTuesday.ItemHeight = 25;
-            this.lbTuesday.Location = new System.Drawing.Point(413, 47);
-            this.lbTuesday.Margin = new System.Windows.Forms.Padding(2);
-            this.lbTuesday.Name = "lbTuesday";
-            this.lbTuesday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbTuesday.Size = new System.Drawing.Size(170, 450);
-            this.lbTuesday.TabIndex = 19;
+            this.dateDoB.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateDoB.Location = new System.Drawing.Point(24, 248);
+            this.dateDoB.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.dateDoB.Name = "dateDoB";
+            this.dateDoB.Size = new System.Drawing.Size(559, 31);
+            this.dateDoB.TabIndex = 5;
             // 
-            // lbWednesday
+            // lblDoB
             // 
-            this.lbWednesday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblDoB.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbWednesday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbWednesday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbWednesday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbWednesday.ItemHeight = 25;
-            this.lbWednesday.Location = new System.Drawing.Point(587, 47);
-            this.lbWednesday.Margin = new System.Windows.Forms.Padding(2);
-            this.lbWednesday.Name = "lbWednesday";
-            this.lbWednesday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbWednesday.Size = new System.Drawing.Size(170, 450);
-            this.lbWednesday.TabIndex = 19;
+            this.lblDoB.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDoB.Location = new System.Drawing.Point(24, 208);
+            this.lblDoB.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblDoB.Name = "lblDoB";
+            this.lblDoB.Size = new System.Drawing.Size(560, 35);
+            this.lblDoB.TabIndex = 4;
+            this.lblDoB.Text = "Date of Birth";
+            this.lblDoB.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbThursday
+            // txtPatientId
             // 
-            this.lbThursday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPatientId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbThursday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbThursday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbThursday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbThursday.ItemHeight = 25;
-            this.lbThursday.Location = new System.Drawing.Point(761, 47);
-            this.lbThursday.Margin = new System.Windows.Forms.Padding(2);
-            this.lbThursday.Name = "lbThursday";
-            this.lbThursday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbThursday.Size = new System.Drawing.Size(170, 450);
-            this.lbThursday.TabIndex = 19;
+            this.txtPatientId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPatientId.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPatientId.Location = new System.Drawing.Point(25, 75);
+            this.txtPatientId.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.txtPatientId.Name = "txtPatientId";
+            this.txtPatientId.Size = new System.Drawing.Size(559, 31);
+            this.txtPatientId.TabIndex = 5;
             // 
-            // lbFriday
+            // lblPatientId
             // 
-            this.lbFriday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPatientId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbFriday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbFriday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbFriday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbFriday.ItemHeight = 25;
-            this.lbFriday.Location = new System.Drawing.Point(935, 47);
-            this.lbFriday.Margin = new System.Windows.Forms.Padding(2);
-            this.lbFriday.Name = "lbFriday";
-            this.lbFriday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbFriday.Size = new System.Drawing.Size(170, 450);
-            this.lbFriday.TabIndex = 20;
+            this.lblPatientId.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPatientId.Location = new System.Drawing.Point(25, 35);
+            this.lblPatientId.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPatientId.Name = "lblPatientId";
+            this.lblPatientId.Size = new System.Drawing.Size(560, 35);
+            this.lblPatientId.TabIndex = 4;
+            this.lblPatientId.Text = "Patient Id";
+            this.lblPatientId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lbSaturday
+            // txtMedicalNumber
             // 
-            this.lbSaturday.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtMedicalNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbSaturday.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lbSaturday.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
-            this.lbSaturday.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbSaturday.ItemHeight = 25;
-            this.lbSaturday.Location = new System.Drawing.Point(1109, 47);
-            this.lbSaturday.Margin = new System.Windows.Forms.Padding(2);
-            this.lbSaturday.Name = "lbSaturday";
-            this.lbSaturday.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.lbSaturday.Size = new System.Drawing.Size(175, 450);
-            this.lbSaturday.TabIndex = 19;
+            this.txtMedicalNumber.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtMedicalNumber.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMedicalNumber.Location = new System.Drawing.Point(24, 335);
+            this.txtMedicalNumber.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.txtMedicalNumber.Name = "txtMedicalNumber";
+            this.txtMedicalNumber.Size = new System.Drawing.Size(559, 31);
+            this.txtMedicalNumber.TabIndex = 5;
             // 
-            // layoutSchedulingHeader
+            // lblMedicalNumber
             // 
-            this.layoutSchedulingHeader.ColumnCount = 4;
-            this.layoutSchedulingHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.layoutSchedulingHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.layoutSchedulingHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 20F));
-            this.layoutSchedulingHeader.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
-            this.layoutSchedulingHeader.Controls.Add(this.pnlSchedulePicker, 2, 0);
-            this.layoutSchedulingHeader.Controls.Add(this.pnlDoctorPicker, 0, 0);
-            this.layoutSchedulingHeader.Controls.Add(this.pnlEffectiveDate, 1, 0);
-            this.layoutSchedulingHeader.Controls.Add(this.layoutSchedulingActions, 3, 0);
-            this.layoutSchedulingHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.layoutSchedulingHeader.Location = new System.Drawing.Point(25, 49);
-            this.layoutSchedulingHeader.Margin = new System.Windows.Forms.Padding(2);
-            this.layoutSchedulingHeader.Name = "layoutSchedulingHeader";
-            this.layoutSchedulingHeader.RowCount = 1;
-            this.layoutSchedulingHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutSchedulingHeader.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 78F));
-            this.layoutSchedulingHeader.Size = new System.Drawing.Size(1286, 78);
-            this.layoutSchedulingHeader.TabIndex = 17;
-            // 
-            // pnlSchedulePicker
-            // 
-            this.pnlSchedulePicker.Controls.Add(this.comboSchedules);
-            this.pnlSchedulePicker.Controls.Add(this.lblSchedules);
-            this.pnlSchedulePicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlSchedulePicker.Location = new System.Drawing.Point(516, 2);
-            this.pnlSchedulePicker.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlSchedulePicker.Name = "pnlSchedulePicker";
-            this.pnlSchedulePicker.Size = new System.Drawing.Size(253, 74);
-            this.pnlSchedulePicker.TabIndex = 3;
-            // 
-            // comboSchedules
-            // 
-            this.comboSchedules.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblMedicalNumber.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboSchedules.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboSchedules.FormattingEnabled = true;
-            this.comboSchedules.Location = new System.Drawing.Point(15, 34);
-            this.comboSchedules.Margin = new System.Windows.Forms.Padding(2);
-            this.comboSchedules.Name = "comboSchedules";
-            this.comboSchedules.Size = new System.Drawing.Size(236, 31);
-            this.comboSchedules.TabIndex = 14;
+            this.lblMedicalNumber.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMedicalNumber.Location = new System.Drawing.Point(24, 295);
+            this.lblMedicalNumber.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblMedicalNumber.Name = "lblMedicalNumber";
+            this.lblMedicalNumber.Size = new System.Drawing.Size(560, 35);
+            this.lblMedicalNumber.TabIndex = 4;
+            this.lblMedicalNumber.Text = "Health Card Number";
+            this.lblMedicalNumber.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblSchedules
+            // txtPLName
             // 
-            this.lblSchedules.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSchedules.Location = new System.Drawing.Point(11, 0);
-            this.lblSchedules.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblSchedules.Name = "lblSchedules";
-            this.lblSchedules.Size = new System.Drawing.Size(240, 32);
-            this.lblSchedules.TabIndex = 13;
-            this.lblSchedules.Text = "Other Schedules";
-            this.lblSchedules.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnlDoctorPicker
-            // 
-            this.pnlDoctorPicker.Controls.Add(this.comboDoctorSelect);
-            this.pnlDoctorPicker.Controls.Add(this.lblDoctorSelect);
-            this.pnlDoctorPicker.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlDoctorPicker.Location = new System.Drawing.Point(2, 2);
-            this.pnlDoctorPicker.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlDoctorPicker.Name = "pnlDoctorPicker";
-            this.pnlDoctorPicker.Size = new System.Drawing.Size(253, 74);
-            this.pnlDoctorPicker.TabIndex = 0;
-            // 
-            // comboDoctorSelect
-            // 
-            this.comboDoctorSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtPLName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboDoctorSelect.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboDoctorSelect.FormattingEnabled = true;
-            this.comboDoctorSelect.Location = new System.Drawing.Point(15, 34);
-            this.comboDoctorSelect.Margin = new System.Windows.Forms.Padding(2);
-            this.comboDoctorSelect.Name = "comboDoctorSelect";
-            this.comboDoctorSelect.Size = new System.Drawing.Size(236, 31);
-            this.comboDoctorSelect.TabIndex = 14;
+            this.txtPLName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPLName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPLName.Location = new System.Drawing.Point(318, 163);
+            this.txtPLName.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.txtPLName.Name = "txtPLName";
+            this.txtPLName.Size = new System.Drawing.Size(267, 31);
+            this.txtPLName.TabIndex = 5;
             // 
-            // lblDoctorSelect
+            // lblPLName
             // 
-            this.lblDoctorSelect.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDoctorSelect.Location = new System.Drawing.Point(11, 0);
-            this.lblDoctorSelect.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblDoctorSelect.Name = "lblDoctorSelect";
-            this.lblDoctorSelect.Size = new System.Drawing.Size(240, 32);
-            this.lblDoctorSelect.TabIndex = 13;
-            this.lblDoctorSelect.Text = "Doctor";
-            this.lblDoctorSelect.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pnlEffectiveDate
-            // 
-            this.pnlEffectiveDate.Controls.Add(this.dtEffectiveDate);
-            this.pnlEffectiveDate.Controls.Add(this.lblEffectiveDate);
-            this.pnlEffectiveDate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlEffectiveDate.Location = new System.Drawing.Point(259, 2);
-            this.pnlEffectiveDate.Margin = new System.Windows.Forms.Padding(2);
-            this.pnlEffectiveDate.Name = "pnlEffectiveDate";
-            this.pnlEffectiveDate.Size = new System.Drawing.Size(253, 74);
-            this.pnlEffectiveDate.TabIndex = 1;
-            // 
-            // dtEffectiveDate
-            // 
-            this.dtEffectiveDate.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPLName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dtEffectiveDate.Font = new System.Drawing.Font("Lucida Sans", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dtEffectiveDate.Location = new System.Drawing.Point(16, 34);
-            this.dtEffectiveDate.Margin = new System.Windows.Forms.Padding(2);
-            this.dtEffectiveDate.Name = "dtEffectiveDate";
-            this.dtEffectiveDate.Size = new System.Drawing.Size(223, 28);
-            this.dtEffectiveDate.TabIndex = 16;
+            this.lblPLName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPLName.Location = new System.Drawing.Point(318, 121);
+            this.lblPLName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPLName.Name = "lblPLName";
+            this.lblPLName.Size = new System.Drawing.Size(268, 35);
+            this.lblPLName.TabIndex = 4;
+            this.lblPLName.Text = "Last Name";
+            this.lblPLName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // lblEffectiveDate
+            // txtPFName
             // 
-            this.lblEffectiveDate.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEffectiveDate.Location = new System.Drawing.Point(15, 0);
-            this.lblEffectiveDate.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblEffectiveDate.Name = "lblEffectiveDate";
-            this.lblEffectiveDate.Size = new System.Drawing.Size(236, 32);
-            this.lblEffectiveDate.TabIndex = 15;
-            this.lblEffectiveDate.Text = "Effective Date";
-            this.lblEffectiveDate.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.txtPFName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtPFName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPFName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPFName.Location = new System.Drawing.Point(25, 163);
+            this.txtPFName.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.txtPFName.Name = "txtPFName";
+            this.txtPFName.Size = new System.Drawing.Size(268, 31);
+            this.txtPFName.TabIndex = 5;
             // 
-            // layoutSchedulingActions
+            // lblPFName
             // 
-            this.layoutSchedulingActions.ColumnCount = 3;
-            this.layoutSchedulingActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.layoutSchedulingActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.layoutSchedulingActions.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
-            this.layoutSchedulingActions.Controls.Add(this.btnSchedulingDelete, 2, 0);
-            this.layoutSchedulingActions.Controls.Add(this.btnSchedulingUpdate, 1, 0);
-            this.layoutSchedulingActions.Controls.Add(this.btnScheduleSave, 0, 0);
-            this.layoutSchedulingActions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.layoutSchedulingActions.Location = new System.Drawing.Point(774, 3);
-            this.layoutSchedulingActions.Name = "layoutSchedulingActions";
-            this.layoutSchedulingActions.Padding = new System.Windows.Forms.Padding(10);
-            this.layoutSchedulingActions.RowCount = 1;
-            this.layoutSchedulingActions.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.layoutSchedulingActions.Size = new System.Drawing.Size(509, 72);
-            this.layoutSchedulingActions.TabIndex = 2;
-            // 
-            // btnSchedulingDelete
-            // 
-            this.btnSchedulingDelete.AutoSize = true;
-            this.btnSchedulingDelete.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(76)))), ((int)(((byte)(60)))));
-            this.btnSchedulingDelete.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSchedulingDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedulingDelete.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedulingDelete.ForeColor = System.Drawing.Color.White;
-            this.btnSchedulingDelete.Location = new System.Drawing.Point(338, 12);
-            this.btnSchedulingDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSchedulingDelete.Name = "btnSchedulingDelete";
-            this.btnSchedulingDelete.Size = new System.Drawing.Size(159, 48);
-            this.btnSchedulingDelete.TabIndex = 8;
-            this.btnSchedulingDelete.Text = "Delete";
-            this.btnSchedulingDelete.UseVisualStyleBackColor = false;
-            // 
-            // btnSchedulingUpdate
-            // 
-            this.btnSchedulingUpdate.AutoSize = true;
-            this.btnSchedulingUpdate.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.btnSchedulingUpdate.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSchedulingUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSchedulingUpdate.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSchedulingUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnSchedulingUpdate.Location = new System.Drawing.Point(175, 12);
-            this.btnSchedulingUpdate.Margin = new System.Windows.Forms.Padding(2);
-            this.btnSchedulingUpdate.Name = "btnSchedulingUpdate";
-            this.btnSchedulingUpdate.Size = new System.Drawing.Size(159, 48);
-            this.btnSchedulingUpdate.TabIndex = 7;
-            this.btnSchedulingUpdate.Text = "Update";
-            this.btnSchedulingUpdate.UseVisualStyleBackColor = false;
-            // 
-            // btnScheduleSave
-            // 
-            this.btnScheduleSave.AutoSize = true;
-            this.btnScheduleSave.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(174)))), ((int)(((byte)(96)))));
-            this.btnScheduleSave.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnScheduleSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnScheduleSave.Font = new System.Drawing.Font("Lucida Sans", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnScheduleSave.ForeColor = System.Drawing.Color.White;
-            this.btnScheduleSave.Location = new System.Drawing.Point(12, 12);
-            this.btnScheduleSave.Margin = new System.Windows.Forms.Padding(2);
-            this.btnScheduleSave.Name = "btnScheduleSave";
-            this.btnScheduleSave.Size = new System.Drawing.Size(159, 48);
-            this.btnScheduleSave.TabIndex = 6;
-            this.btnScheduleSave.Text = "Save";
-            this.btnScheduleSave.UseVisualStyleBackColor = false;
+            this.lblPFName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblPFName.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPFName.Location = new System.Drawing.Point(25, 121);
+            this.lblPFName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblPFName.Name = "lblPFName";
+            this.lblPFName.Size = new System.Drawing.Size(269, 35);
+            this.lblPFName.TabIndex = 4;
+            this.lblPFName.Text = "First Name";
+            this.lblPFName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // pnlDoctorManagement
             // 
@@ -2246,16 +2171,19 @@ namespace ClinicManagement_proj.UI
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Dashboard";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
-            this.ResizeEnd += new System.EventHandler(this.AdminDashboard_ResizeEnd);
             this.pnlSidebar.ResumeLayout(false);
             this.pnlSidebarHeader.ResumeLayout(false);
             this.pnlMainContent.ResumeLayout(false);
-            this.pnlPatientRegistration.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRegPatients)).EndInit();
-            this.grpPatientRegistration.ResumeLayout(false);
-            this.grpPatientRegistration.PerformLayout();
-            this.layoutPatientButtons.ResumeLayout(false);
-            this.layoutPatientButtons.PerformLayout();
+            this.pnlDoctorScheduling.ResumeLayout(false);
+            this.grpDoctorScheduling.ResumeLayout(false);
+            this.layoutSchedulingContent.ResumeLayout(false);
+            this.layoutSchedulingContent.PerformLayout();
+            this.layoutHours.ResumeLayout(false);
+            this.layoutHours.PerformLayout();
+            this.layoutSchedulingHeader.ResumeLayout(false);
+            this.pnlDoctorPicker.ResumeLayout(false);
+            this.layoutSchedulingActions.ResumeLayout(false);
+            this.layoutSchedulingActions.PerformLayout();
             this.pnlUserManagement.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsers)).EndInit();
             this.grpAdminForm.ResumeLayout(false);
@@ -2264,18 +2192,12 @@ namespace ClinicManagement_proj.UI
             this.pnlButtons.PerformLayout();
             this.pnlPassword.ResumeLayout(false);
             this.pnlPassword.PerformLayout();
-            this.pnlDoctorScheduling.ResumeLayout(false);
-            this.grpDoctorScheduling.ResumeLayout(false);
-            this.layoutSchedulingContent.ResumeLayout(false);
-            this.layoutSchedulingContent.PerformLayout();
-            this.layoutHours.ResumeLayout(false);
-            this.layoutHours.PerformLayout();
-            this.layoutSchedulingHeader.ResumeLayout(false);
-            this.pnlSchedulePicker.ResumeLayout(false);
-            this.pnlDoctorPicker.ResumeLayout(false);
-            this.pnlEffectiveDate.ResumeLayout(false);
-            this.layoutSchedulingActions.ResumeLayout(false);
-            this.layoutSchedulingActions.PerformLayout();
+            this.pnlPatientRegistration.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvRegPatients)).EndInit();
+            this.grpPatientRegistration.ResumeLayout(false);
+            this.grpPatientRegistration.PerformLayout();
+            this.layoutPatientButtons.ResumeLayout(false);
+            this.layoutPatientButtons.PerformLayout();
             this.pnlDoctorManagement.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
             this.grpDoctorMgmt.ResumeLayout(false);
@@ -2384,9 +2306,6 @@ namespace ClinicManagement_proj.UI
         private System.Windows.Forms.Panel pnlDoctorPicker;
         private System.Windows.Forms.ComboBox comboDoctorSelect;
         private System.Windows.Forms.Label lblDoctorSelect;
-        private System.Windows.Forms.Panel pnlEffectiveDate;
-        private System.Windows.Forms.DateTimePicker dtEffectiveDate;
-        private System.Windows.Forms.Label lblEffectiveDate;
         private System.Windows.Forms.Panel pnlHeader;
         private System.Windows.Forms.GroupBox grpNotifications;
         private System.Windows.Forms.Button btnNotifications;
@@ -2415,12 +2334,8 @@ namespace ClinicManagement_proj.UI
         private System.Windows.Forms.Button btnDoctorCancel;
         private System.Windows.Forms.TextBox txtDoctorId;
         private System.Windows.Forms.TableLayoutPanel layoutSchedulingActions;
-        private System.Windows.Forms.Button btnSchedulingDelete;
         private System.Windows.Forms.Button btnSchedulingUpdate;
         private System.Windows.Forms.Button btnScheduleSave;
-        private System.Windows.Forms.Panel pnlSchedulePicker;
-        private System.Windows.Forms.ComboBox comboSchedules;
-        private System.Windows.Forms.Label lblSchedules;
         private System.Windows.Forms.TextBox txtUsrId;
         private System.Windows.Forms.Label lblUsrId;
         private System.Windows.Forms.TableLayoutPanel pnlButtons;
