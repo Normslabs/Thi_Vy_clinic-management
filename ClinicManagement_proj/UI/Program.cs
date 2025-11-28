@@ -1,4 +1,5 @@
-﻿using ClinicManagement_proj.UI;
+﻿using ClinicManagement_proj.BLL;
+using ClinicManagement_proj.UI;
 using System;
 using System.Windows.Forms;
 
@@ -14,7 +15,12 @@ namespace ClinicManagement_proj
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+
+            // TODO: SUGGESTION
+            // Replaced the straight to Form initialization with the
+            // ClinicApp bootstrapping & initialization
+            new ClinicApp().Run();
+            //Application.Run(new LoginForm());
         }
     }
 }

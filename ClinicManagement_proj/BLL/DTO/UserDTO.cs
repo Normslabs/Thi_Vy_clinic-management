@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Text;
 
 namespace ClinicManagement_proj.BLL.DTO
 {
@@ -19,6 +21,14 @@ namespace ClinicManagement_proj.BLL.DTO
         public UserDTO()
         {
             Roles = new List<RoleDTO>();
+        }
+
+        // TODO: SUGGESTION
+        // Added constructor with just the necesaryparameters (nothing that is database auto-populated
+        public UserDTO(string username, string passwordHash, ICollection<RoleDTO> roles = null) {
+            Username = username;
+            PasswordHash = passwordHash;
+            Roles = roles ?? new List<RoleDTO>();
         }
 
         public UserDTO(string username, string passwordHash, DateTime createdAt, DateTime modifiedAt, ICollection<RoleDTO> roles = null)
@@ -48,5 +58,27 @@ namespace ClinicManagement_proj.BLL.DTO
             CreatedAt = createdAt;
             Roles = new List<RoleDTO>();
         }
+
+
+        /// <summary>
+        /// Generates a human-readable string representing the user.
+        /// <para>
+        /// Used notably by WinForms UI controls like ListBox and ComboBox
+        /// to display representations of the objects as list entries.
+        /// </para>
+        /// </summary>
+        /// <returns>A human-readable string representing the user.</returns>
+        public override string ToString() {
+            StringBuilder sb = new StringBuilder();
+            _ = sb.Append("Id: ")
+                .Append(this.Id)
+                .Append(", ")
+                .Append(this.Username)
+                .Append(" - ")
+                .Append(string.Join<string>(", ", this.Roles.Select(role => role.RoleName)));
+
+            return sb.ToString();
+        }
+
     }
 }

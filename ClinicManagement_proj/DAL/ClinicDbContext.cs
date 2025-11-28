@@ -3,7 +3,10 @@ using System.Data.Entity;
 
 namespace ClinicManagement_proj.DAL
 {
-    internal class ClinicDbContext : DbContext
+
+    // TODO: SUGGESTION
+    // Made the context class public to be usable across namespaces (in services notably)
+    public class ClinicDbContext : DbContext
     {
         public DbSet<AppointmentDTO> Appointments { get; set; }
         public DbSet<DoctorDTO> Doctors { get; set; }

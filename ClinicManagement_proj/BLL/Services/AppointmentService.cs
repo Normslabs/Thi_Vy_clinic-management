@@ -6,9 +6,19 @@ using System.Linq;
 
 namespace ClinicManagement_proj.BLL.Services
 {
-    internal class AppointmentService
+    public class AppointmentService
     {
-        private readonly ClinicDbContext clinicDb = new ClinicDbContext();
+
+        // TODO: SUGGESTION
+        // Added a constructor for the service that needs to receive a ClinicDbContext from somewhere
+        // instead of creating a new context in here in order to make sure that the same context is
+        // shared across the app.
+        private readonly ClinicDbContext clinicDb;
+        public AppointmentService(ClinicDbContext context) {
+            this.clinicDb = context;
+        }
+
+
 
         public int CreateAppointment(AppointmentDTO appointmentDTO)
         {

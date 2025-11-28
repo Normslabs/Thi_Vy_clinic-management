@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\EntityFramework.6.5.1\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.5.1\build\EntityFramework.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ClinicApp.cs" />
     <Compile Include="BLL\CurrentUser.cs" />
     <Compile Include="BLL\DTO\AppointmentDTO.cs" />
     <Compile Include="BLL\DTO\DaysOfWeekEnum.cs" />
@@ -150,6 +151,13 @@
     </Compile>
     <Compile Include="UI\Controllers\AppointmentManagementController.cs" />
     <Compile Include="UI\Controllers\DoctorManagementController.cs" />
+    <Compile Include="UI\CustomPanels\IDashboardPanel.cs" />
+    <Compile Include="UI\CustomPanels\UserManagementPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CustomPanels\UserManagementPanel.Designer.cs">
+      <DependentUpon>UserManagementPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\Utils\ImageHelper.cs" />
     <Compile Include="UI\IPanelController.cs" />
     <Compile Include="UI\Utils\NavigationManager.cs" />
@@ -183,6 +191,7 @@
     <Compile Include="UI\ReceptionistDashboard.Designer.cs">
       <DependentUpon>ReceptionistDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Utils\Theme.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -195,6 +204,9 @@
     </Compile>
     <EmbeddedResource Include="UI\AdminDashboard.resx">
       <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CustomPanels\UserManagementPanel.resx">
+      <DependentUpon>UserManagementPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\DoctorDashboard.resx">
       <DependentUpon>DoctorDashboard.cs</DependentUpon>
