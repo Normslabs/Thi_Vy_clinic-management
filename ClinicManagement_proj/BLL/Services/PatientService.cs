@@ -2,6 +2,7 @@
 using ClinicManagement_proj.DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace ClinicManagement_proj.BLL.Services
@@ -12,25 +13,43 @@ namespace ClinicManagement_proj.BLL.Services
 
         public List<PatientDTO> GetAll()
         {
-            return clinicDb.Patients.ToList();
-        }
-        public void AddPatient(PatientDTO dto)
-        {
-            //var patient = new Patient
-            //{
-            //    Id = dto.Id,
-            //    FirstName = dto.FirstName,
-            //    LastName = dto.LastName,
-            //    InsuranceNumber = dto.InsuranceNumber,
-            //    DateOfBirth = dto.DateOfBirth,
-            //    PhoneNumber = dto.PhoneNumber
-            //};
-            clinicDb.Patients.Add(dto);
-            clinicDb.SaveChanges();
+            // TODO: SUGGESTION
+            // Added the eager-loading 'Include()' call for the patient's appointments
+            return clinicDb.Patients
+                .Include(pat => pat.Appointments)
+                .ToList();
         }
 
-        public void UpdatePatient(PatientDTO patientDto)
+        public PatientDTO GetPatientById(int id) 
         {
+            // TODO: SUGGESTION
+            // Added the eager-loading 'Include()' call for the patient's appointments
+            return clinicDb.Patients
+                .Include(pat => pat.Appointments)
+                .FirstOrDefault(s => s.Id == id);
+        }
+
+        public PatientDTO AddPatient(PatientDTO dto)
+        {
+            // TODO: SUGGESTION
+            // It can be a good idea to return the DTO after a DB action has been completed.
+            // It allows to use the service method call directly as the parameter of some other function call.
+            // I'll apply this in every class I review
+
+            clinicDb.Patients.Add(dto);
+            clinicDb.SaveChanges();
+            return dto;
+        }
+
+        public PatientDTO UpdatePatient(PatientDTO patientDto)
+        {
+            // TODO: SUGGESTION
+            // Technically, you shouldn't have to do this, in fact it might cause more problems in the long run.
+            // If the PatientDTO instance received as argument was retrieved from the DB, then it is tracked by EF6
+            // and you do not need to re-get it before saving the changes. Just calling SaveChanges() should be
+            // sufficient.
+
+            /*
             var patient = clinicDb.Patients.FirstOrDefault(p => p.Id == patientDto.Id);
             if (patient != null)
             {
@@ -43,6 +62,13 @@ namespace ClinicManagement_proj.BLL.Services
 
                 clinicDb.SaveChanges();
             }
+            */
+
+            // Update the last modified date
+            patientDto.ModifiedAt = DateTime.Now;
+
+            clinicDb.SaveChanges();
+            return patientDto;
         }
 
         public void DeletePatient(int id)
@@ -56,8 +82,29 @@ namespace ClinicManagement_proj.BLL.Services
             }
         }
 
-        public PatientDTO Search(int id)
-        {
+        // TODO: SUGGESTION
+        // Added a 'delete-by-DTO' version of the delete (by id)
+        public PatientDTO DeletePatient(PatientDTO patient) {
+            clinicDb.Patients.Remove(patient);
+            clinicDb.SaveChanges();
+            return patient;
+        }
+
+        // TODO: SUGGESTION
+        // Better 'search' function. Added a copy of the original search as GetPatientById(int id)
+        public List<PatientDTO> Search(string criterion) {
+            bool isIntCriterion = int.TryParse(criterion, out int intValue);
+            return clinicDb.Patients.Where(
+                    pat => string.Join(" ", pat.FirstName, pat.LastName).ToLower().StartsWith(criterion.ToLower())
+                    || string.Join(", ", pat.LastName, pat.FirstName).ToLower().StartsWith(criterion.ToLower())
+                    || pat.InsuranceNumber.ToLower().StartsWith(criterion.ToLower())
+                    || (isIntCriterion && pat.Id == intValue)
+                )
+                .Include(pat => pat.Appointments)
+                .ToList();
+
+        }
+        public PatientDTO Search(int id) {
             return clinicDb.Patients.FirstOrDefault(s => s.Id == id);
 
         }
