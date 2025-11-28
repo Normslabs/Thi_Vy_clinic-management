@@ -7,8 +7,25 @@ namespace ClinicManagement_proj.UI
 {
     public partial class LoginForm : Form
     {
-        public LoginForm()
-        {
+
+        // TODO: SUGGESTION
+        // Added fields for the diverse services that need to be passed to the panel controllers
+        private RoleService roleService;
+        private UserService userService;
+        private PatientService patientService;
+        private DoctorService doctorService;
+        private AppointmentService appointmentService;
+
+        // TODO: SUGGESTION
+        // changed constructor to use the UserService instead of the LoginService and
+        // to receive it instead of creating it in-class
+        public LoginForm(RoleService roleService, UserService userService, PatientService patientService, 
+            DoctorService doctorService, AppointmentService appointmentService) {
+            this.roleService = roleService;
+            this.userService = userService;
+            this.patientService = patientService;
+            this.doctorService = doctorService;
+            this.appointmentService = appointmentService;
             InitializeComponent();
         }
 
@@ -26,8 +43,16 @@ namespace ClinicManagement_proj.UI
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
-            var loginService = new LoginService();
-            var user = loginService.Authenticate(txtUsername.Text, txtPassword.Text);
+
+            // TODO: SUGGESTION
+            // removed on-the-spot creation of the login service and switch to using the
+            // constructor-received one.
+            //var userService = new LoginService();
+
+            // TODO: SUGGESTION
+            // Changed to the new LoginService.LogUserIn method
+            var user = userService.LogUserIn(txtUsername.Text, txtPassword.Text);
+            //var user = userService.Authenticate(txtUsername.Text, txtPassword.Text);
 
             if (user != null)
             {
@@ -53,7 +78,8 @@ namespace ClinicManagement_proj.UI
                 // Determine dashboard based on role
                 if (UserService.CurrentUserHasRole(UserService.UserRoles.Administrator))
                 {
-                    dashboard = new AdminDashboard();
+                    dashboard = new AdminDashboard(this.roleService, this.userService, 
+                        this.patientService, this.doctorService, this.appointmentService);
                 }
                 else if (UserService.CurrentUserHasRole(UserService.UserRoles.Doctor))
                 {

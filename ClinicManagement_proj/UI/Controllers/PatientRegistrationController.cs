@@ -11,7 +11,7 @@ namespace ClinicManagement_proj.UI
     /// </summary>
     public class PatientRegistrationController : IPanelController
     {
-        private readonly PatientService patientService = new PatientService();
+        private readonly PatientService patientService;
 
 
 
@@ -63,8 +63,12 @@ namespace ClinicManagement_proj.UI
 
         public Panel Panel => panel;
 
-        public PatientRegistrationController(Panel panel)
+
+        // TODO: SUGGESTION
+        // Changed the constructor to receive the PatientService instead of creating one on the spot.
+        public PatientRegistrationController(Panel panel, PatientService patientService)
         {
+            this.patientService = patientService;
             this.panel = panel;
         }
 

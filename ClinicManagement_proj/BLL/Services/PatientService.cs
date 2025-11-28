@@ -9,7 +9,16 @@ namespace ClinicManagement_proj.BLL.Services
 {
     public class PatientService
     {
-        private ClinicDbContext clinicDb = new ClinicDbContext();
+        private ClinicDbContext clinicDb;
+
+
+
+        // TODO: SUGGESTION
+        // Added a constructor to specifically receive the ClinicDbContext instead of creating a new one
+        public PatientService(ClinicDbContext context) {
+            this.clinicDb = context;
+        }
+
 
         public List<PatientDTO> GetAll()
         {

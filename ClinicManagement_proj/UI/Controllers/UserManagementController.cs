@@ -41,11 +41,13 @@ namespace ClinicManagement_proj.UI
 
         public Panel Panel => panel;
 
-        public UserManagementController(Panel panel)
+        // TODO: SUGGESTION
+        // Added parameters for the diverse services that need to be passed to this controller
+        public UserManagementController(Panel panel, RoleService roleService, UserService userService)
         {
             this.panel = panel;
-            this.userService = new UserService();
-            this.roleService = new RoleService();
+            this.userService = userService;
+            this.roleService = roleService;
         }
 
         public void Initialize()

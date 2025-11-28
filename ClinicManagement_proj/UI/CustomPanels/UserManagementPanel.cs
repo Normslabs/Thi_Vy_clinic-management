@@ -126,7 +126,7 @@ namespace ClinicManagement_proj.UI.CustomPanels {
             this.userUsernameField.Text = user.Username;
             this.userPasswordField.Text = string.Empty;
             this.userPasswordField.Enabled = false;
-            this.userPasswordChangeButton.Enabled = true;
+            this.actionButtonPasswordChange.Enabled = true;
             this.userCreatedAtField.Text = user.CreatedAt.ToString("dddd, MMMM dd, yyyy hh:mm:ss");
             this.userModifiedAtField.Text = user.ModifiedAt.ToString("dddd, MMMM dd, yyyy hh:mm:ss");
             this.userRolesField.SelectedItems.Clear();
@@ -145,9 +145,9 @@ namespace ClinicManagement_proj.UI.CustomPanels {
         }
 
         private void activatePasswordChangeButton() {
-            this.userPasswordChangeButton.BackColor = Theme.OK_COLOR;
-            this.userPasswordChangeButton.Enabled = true;
-            this.userPasswordChangeButton.Cursor = Cursors.Hand;
+            this.actionButtonPasswordChange.BackColor = Theme.OK_COLOR;
+            this.actionButtonPasswordChange.Enabled = true;
+            this.actionButtonPasswordChange.Cursor = Cursors.Hand;
         }
 
         private void activateUserCreateButton() {
@@ -170,9 +170,9 @@ namespace ClinicManagement_proj.UI.CustomPanels {
 
 
         private void deactivatePasswordChangeButton() {
-            this.userPasswordChangeButton.BackColor = Theme.DISABLED_COLOR;
-            this.userPasswordChangeButton.Enabled = false;
-            this.userPasswordChangeButton.Cursor = Cursors.No;
+            this.actionButtonPasswordChange.BackColor = Theme.DISABLED_COLOR;
+            this.actionButtonPasswordChange.Enabled = false;
+            this.actionButtonPasswordChange.Cursor = Cursors.No;
         }
 
         private void deactivateUserCreateButton() {

@@ -60,6 +60,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BLL\ClinicApp.cs" />
     <Compile Include="BLL\CurrentUser.cs" />
     <Compile Include="BLL\DTO\AppointmentDTO.cs" />
     <Compile Include="BLL\DTO\DaysOfWeekEnum.cs" />
@@ -190,6 +191,7 @@
     <Compile Include="UI\ReceptionistDashboard.Designer.cs">
       <DependentUpon>ReceptionistDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\Utils\Theme.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

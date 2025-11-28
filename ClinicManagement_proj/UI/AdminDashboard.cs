@@ -1,4 +1,5 @@
-﻿using ClinicManagement_proj.BLL.Utils;
+﻿using ClinicManagement_proj.BLL.Services;
+using ClinicManagement_proj.BLL.Utils;
 using System;
 using System.Drawing;
 using System.Linq;
@@ -12,6 +13,15 @@ namespace ClinicManagement_proj.UI
         private readonly Color SIDEBAR_ACTIVE = Color.FromArgb(52, 73, 94);
         private readonly Color HEADER_BG = Color.FromArgb(41, 128, 185);
 
+
+        // TODO: SUGGESTION
+        // Added fields for the diverse services that need to be passed to the panel controllers
+        private RoleService roleService;
+        private UserService userService;
+        private PatientService patientService;
+        private DoctorService doctorService;
+        private AppointmentService appointmentService;
+
         private NavigationManager navigationManager;
         private UserManagementController userManagementController;
         private DoctorManagementController doctorManagementController;
@@ -20,8 +30,18 @@ namespace ClinicManagement_proj.UI
         private AppointmentManagementController appointmentManagementController;
         private ReportsController reportsController;
 
-        public AdminDashboard()
+
+        // TODO: SUGGESTION
+        // Added parameters for the diverse services that need to be passed to the panel controllers
+        public AdminDashboard(RoleService roleService, UserService userService, 
+            PatientService patientService, DoctorService doctorService, AppointmentService appointmentService)
         {
+            this.roleService = roleService;
+            this.userService = userService;
+            this.patientService = patientService;
+            this.doctorService = doctorService;
+            this.appointmentService = appointmentService;
+            
             InitializeComponent();
             InitializeManagers();
             SetupNavigation();
@@ -37,12 +57,22 @@ namespace ClinicManagement_proj.UI
             navigationManager = new NavigationManager(SIDEBAR_BG, SIDEBAR_ACTIVE);
 
             // Initialize panel controllers
-            userManagementController = new UserManagementController(pnlUserManagement);
-            doctorManagementController = new DoctorManagementController(pnlDoctorManagement);
-            schedulingController = new SchedulingController(pnlDoctorScheduling);
-            patientRegistrationController = new PatientRegistrationController(pnlPatientRegistration);
-            reportsController = new ReportsController(pnlReports);
-            appointmentManagementController = new AppointmentManagementController(pnlAppointmentManagement);
+            // TODO: SUGGESTION
+            // changed the constructors of the controllers to receive their required services
+            // those are actually received by this AdminDashboard's own constructor and are
+            // passed here.
+            userManagementController = 
+                new UserManagementController(pnlUserManagement, this.roleService, this.userService);
+            doctorManagementController = 
+                new DoctorManagementController(pnlDoctorManagement);
+            schedulingController = 
+                new SchedulingController(pnlDoctorScheduling);
+            patientRegistrationController = 
+                new PatientRegistrationController(pnlPatientRegistration, this.patientService);
+            reportsController = 
+                new ReportsController(pnlReports);
+            appointmentManagementController = 
+                new AppointmentManagementController(pnlAppointmentManagement);
         }
 
         /// <summary>
