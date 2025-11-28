@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManagement_proj.BLL.DTO
 {
@@ -10,7 +7,7 @@ namespace ClinicManagement_proj.BLL.DTO
     {
         public static int FIRSTNAME_MAX_LENGTH = 64;
         public static int LASTNAME_MAX_LENGTH = 64;
-        public static int LICENSE_MAX_LENGTH = 24; 
+        public static int LICENSE_MAX_LENGTH = 24;
         public int Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }

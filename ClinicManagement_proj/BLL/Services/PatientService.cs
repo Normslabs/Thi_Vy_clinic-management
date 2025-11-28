@@ -2,17 +2,13 @@
 using ClinicManagement_proj.DAL;
 using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClinicManagement_proj.BLL.Services
 {
     public class PatientService
     {
-        private  ClinicDbContext clinicDb = new ClinicDbContext();
+        private ClinicDbContext clinicDb = new ClinicDbContext();
 
         public List<PatientDTO> GetAll()
         {
@@ -46,7 +42,7 @@ namespace ClinicManagement_proj.BLL.Services
                 patient.ModifiedAt = DateTime.UtcNow;
 
                 clinicDb.SaveChanges();
-            }           
+            }
         }
 
         public void DeletePatient(int id)
@@ -56,7 +52,7 @@ namespace ClinicManagement_proj.BLL.Services
             {
                 clinicDb.Patients.Remove(patient);
                 clinicDb.SaveChanges();
-                
+
             }
         }
 

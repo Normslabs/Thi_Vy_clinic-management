@@ -8,7 +8,7 @@ namespace ClinicManagement_proj.BLL.DTO
         public static int USERNAME_MAX_LENGTH = 32;
         public static int PASSWORD_MAX_LENGTH = 32;
         public static int PASSWORDHASH_MAX_LENGTH = 256;
-        
+
         public int Id { get; set; }
         public string Username { get; set; }
         public string PasswordHash { get; set; }

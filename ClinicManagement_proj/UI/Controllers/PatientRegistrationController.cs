@@ -1,6 +1,5 @@
 using ClinicManagement_proj.BLL.DTO;
 using ClinicManagement_proj.BLL.Services;
-using ClinicManagement_proj.BLL.Utils;
 using System;
 using System.Windows.Forms;
 
@@ -57,7 +56,7 @@ namespace ClinicManagement_proj.UI
         {
             LoadPatients();
             ResetPatientForm();
-            
+
         }
 
         private void LoadPatients()
@@ -67,7 +66,7 @@ namespace ClinicManagement_proj.UI
             dgvPatients.AutoGenerateColumns = true;
         }
 
-      
+
         /// <summary>
         /// Reset the patient registration form to initial state
         /// </summary>
@@ -94,9 +93,9 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void dgvPatients_Click(object sender, EventArgs e)
         {
-            if(dgvPatients.CurrentRow != null)
+            if (dgvPatients.CurrentRow != null)
             {
-                
+
                 int selectedUserId = (int)dgvPatients.CurrentRow.Cells["Id"].Value;
                 txtPatientId.Text = selectedUserId.ToString();
                 var user = patientService.Search(selectedUserId);
@@ -118,7 +117,7 @@ namespace ClinicManagement_proj.UI
             ResetPatientForm();
         }
 
-   
+
 
         private void btnPatientDisplay_Click(object sender, EventArgs e)
         {
@@ -160,7 +159,7 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnPatientCreate_Click(object sender, EventArgs e)
         {
-            
+
             //if (!int.TryParse(txtPatientId.Text, out int id))
             //{
             //    MessageBox.Show("Patient ID must be a number.");
@@ -231,7 +230,7 @@ namespace ClinicManagement_proj.UI
             patientService.UpdatePatient(dto);
             LoadPatients();
             //ResetPatientForm();
-            
+
         }
 
         /// <summary>

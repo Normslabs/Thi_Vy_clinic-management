@@ -1,6 +1,5 @@
 using ClinicManagement_proj.BLL.Utils;
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 
 namespace ClinicManagement_proj.UI
@@ -57,7 +56,7 @@ namespace ClinicManagement_proj.UI
         {
             txtDoctorFName.Text = string.Empty;
             txtDoctorLName.Text = string.Empty;
-            
+
             // TODO: Load specializations when enum is available
             comboSpecialization.SelectedIndex = -1;
 

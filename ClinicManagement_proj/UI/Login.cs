@@ -1,8 +1,7 @@
-﻿using System;
-using System.Windows.Forms;
+﻿using ClinicManagement_proj.BLL;
 using ClinicManagement_proj.BLL.Services;
-using ClinicManagement_proj.BLL;
-using System.Linq;
+using System;
+using System.Windows.Forms;
 
 namespace ClinicManagement_proj.UI
 {
@@ -52,7 +51,7 @@ namespace ClinicManagement_proj.UI
                 Form dashboard = null;
 
                 // Determine dashboard based on role
-                if (UserService.CurrentUserHasRole(UserService.UserRoles.Admin))
+                if (UserService.CurrentUserHasRole(UserService.UserRoles.Administrator))
                 {
                     dashboard = new AdminDashboard();
                 }

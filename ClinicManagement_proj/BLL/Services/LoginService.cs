@@ -1,6 +1,4 @@
 using ClinicManagement_proj.BLL.DTO;
-using ClinicManagement_proj.BLL.Services;
-using System.Linq;
 
 namespace ClinicManagement_proj.BLL.Services
 {

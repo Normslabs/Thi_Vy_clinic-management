@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ClinicManagement_proj.BLL.DTO
@@ -20,8 +16,8 @@ namespace ClinicManagement_proj.BLL.DTO
             get { return (DaysOfWeekEnum)Enum.Parse(typeof(DaysOfWeekEnum), DayOfWeek); }
             set { DayOfWeek = value.ToString(); }
         }
-        public DateTime WorkStartTime { get; set; }
-        public DateTime WorkEndTime { get; set; }
+        public TimeSpan WorkStartTime { get; set; }
+        public TimeSpan WorkEndTime { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
         public DoctorDTO Doctor { get; set; }
@@ -30,7 +26,7 @@ namespace ClinicManagement_proj.BLL.DTO
         {
         }
 
-        public DoctorScheduleDTO(int doctorId, DaysOfWeekEnum dayOfWeek, DateTime workStartTime, DateTime workEndTime, DateTime createdAt, DateTime modifiedAt)
+        public DoctorScheduleDTO(int doctorId, DaysOfWeekEnum dayOfWeek, TimeSpan workStartTime, TimeSpan workEndTime, DateTime createdAt, DateTime modifiedAt)
         {
             DoctorId = doctorId;
             DayOfWeekEnum = dayOfWeek;

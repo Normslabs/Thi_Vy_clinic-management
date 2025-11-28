@@ -11,14 +11,14 @@ namespace ClinicManagement_proj.BLL.Services
     {
         private readonly ClinicDbContext clinicDb = new ClinicDbContext();
 
-       
+
         public List<RoleDTO> GetAllRoles()
         {
             var roles = clinicDb.Roles.Include(r => r.Users).ToList();
             return roles.Select(r => new RoleDTO(r.Id, r.RoleName, r.CreatedAt, r.ModifiedAt, r.Users.Select(u => new UserDTO(u.Id, u.Username, u.PasswordHash, u.CreatedAt)).ToList())).ToList();
         }
 
-        
+
         public RoleDTO GetRoleById(int id)
         {
             var role = clinicDb.Roles
@@ -30,7 +30,7 @@ namespace ClinicManagement_proj.BLL.Services
             return new RoleDTO(role.Id, role.RoleName, role.CreatedAt, role.ModifiedAt, role.Users.Select(u => new UserDTO(u.Id, u.Username, u.PasswordHash, u.CreatedAt)).ToList());
         }
 
-        
+
         public RoleDTO GetRoleByName(string roleName)
         {
             var role = clinicDb.Roles
@@ -42,7 +42,7 @@ namespace ClinicManagement_proj.BLL.Services
             return new RoleDTO(role.Id, role.RoleName, role.CreatedAt, role.ModifiedAt, role.Users.Select(u => new UserDTO(u.Id, u.Username, u.PasswordHash, u.CreatedAt)).ToList());
         }
 
-        
+
         public int CreateRole(RoleDTO roleDto)
         {
             var role = new RoleDTO(roleDto.RoleName, DateTime.UtcNow, DateTime.UtcNow);
@@ -53,7 +53,7 @@ namespace ClinicManagement_proj.BLL.Services
             return role.Id;
         }
 
-        
+
         public bool UpdateRole(RoleDTO roleDto)
         {
             var role = clinicDb.Roles.FirstOrDefault(r => r.Id == roleDto.Id);

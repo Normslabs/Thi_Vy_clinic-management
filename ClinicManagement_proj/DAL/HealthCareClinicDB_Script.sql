@@ -93,7 +93,7 @@ GO
 
 -- TABLE: Users
 CREATE TABLE dbo.Users (
-    Id INT NOT NULL PRIMARY KEY,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Username VARCHAR(32) NOT NULL UNIQUE,
     PasswordHash VARCHAR(256) NOT NULL,
     CreatedAt DATETIME2(7) NOT NULL DEFAULT(GETDATE()),
@@ -103,8 +103,8 @@ GO
 
 -- TABLE: Roles
 CREATE TABLE dbo.Roles (
-    Id INT NOT NULL PRIMARY KEY,
-    RoleName VARCHAR(64) NOT NULL,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
+    RoleName VARCHAR(64) NOT NULL UNIQUE,
     CreatedAt DATETIME2(7) NOT NULL DEFAULT(GETDATE()),
     ModifiedAt DATETIME2(7) NOT NULL DEFAULT(GETDATE())
 );
@@ -122,7 +122,7 @@ GO
 
 -- TABLE: Patient
 CREATE TABLE dbo.Patient(
-    Id INT NOT NULL PRIMARY KEY,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     FirstName VARCHAR(64) NOT NULL,
     LastName VARCHAR(64) NOT NULL,
     InsuranceNumber VARCHAR(24) NOT NULL UNIQUE,
@@ -149,14 +149,14 @@ GO
 
 -- TABLE: Specialties
 CREATE TABLE dbo.Specialties (
-    Id INT NOT NULL PRIMARY KEY,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Name VARCHAR(64) NOT NULL UNIQUE
 );
 GO
 
 -- TABLE: Doctor
 CREATE TABLE dbo.Doctor(
-    Id INT NOT NULL PRIMARY KEY,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     FirstName VARCHAR(64) NOT NULL,
     LastName VARCHAR(64) NOT NULL,
     LicenseNumber VARCHAR(24) NOT NULL UNIQUE,
@@ -177,11 +177,11 @@ GO
 
 -- TABLE: DoctorSchedule
 CREATE TABLE dbo.DoctorSchedule(
-    Id INT NOT NULL PRIMARY KEY,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     DoctorId INT NOT NULL,
     DayOfWeek VARCHAR(10) NOT NULL CHECK (DayOfWeek IN ('SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY')),
-    WorkStartTime DATETIME2(7) NOT NULL,
-    WorkEndTime DATETIME2(7) NOT NULL,
+    WorkStartTime TIME NOT NULL,
+    WorkEndTime TIME NOT NULL,
     CreatedAt DATETIME2(7) NOT NULL DEFAULT(GETDATE()),
     ModifiedAt DATETIME2(7) NOT NULL DEFAULT(GETDATE()),
     CONSTRAINT FK_DoctorSchedule_Doctor FOREIGN KEY (DoctorId) REFERENCES dbo.Doctor(Id) ON DELETE CASCADE
@@ -190,7 +190,7 @@ GO
 
 -- TABLE: TimeSlots
 CREATE TABLE dbo.TimeSlots(
-    Id INT NOT NULL PRIMARY KEY,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     HourOfDay INT NOT NULL,
     MinuteOfHour INT NOT NULL,
     CONSTRAINT UQ_TimeSlots_Time UNIQUE (HourOfDay, MinuteOfHour),
@@ -201,7 +201,7 @@ GO
 
 -- TABLE: Appointment
 CREATE TABLE dbo.Appointment(
-    Id INT NOT NULL PRIMARY KEY,
+    Id INT IDENTITY(1,1) NOT NULL PRIMARY KEY,
     Date DATE NOT NULL,
     Notes VARCHAR(512) NULL,
     PatientId INT NOT NULL,
@@ -218,93 +218,94 @@ GO
 
 -- INSERT SAMPLE DATA
 
--- Roles
-INSERT INTO dbo.Roles (Id, RoleName, CreatedAt, ModifiedAt) VALUES
-(1, 'Administrator', GETDATE(), GETDATE()),
-(2, 'Doctor', GETDATE(), GETDATE()),
-(3, 'Receptionist', GETDATE(), GETDATE());
-GO
+DECLARE @RoleId1 INT, @RoleId2 INT, @RoleId3 INT;
+INSERT INTO dbo.Roles (RoleName, CreatedAt, ModifiedAt) VALUES ('Administrator', GETDATE(), GETDATE());
+SET @RoleId1 = SCOPE_IDENTITY();
+INSERT INTO dbo.Roles (RoleName, CreatedAt, ModifiedAt) VALUES ('Doctor', GETDATE(), GETDATE());
+SET @RoleId2 = SCOPE_IDENTITY();
+INSERT INTO dbo.Roles (RoleName, CreatedAt, ModifiedAt) VALUES ('Receptionist', GETDATE(), GETDATE());
+SET @RoleId3 = SCOPE_IDENTITY();
 
--- Users
-INSERT INTO dbo.Users (Id, Username, PasswordHash, CreatedAt, ModifiedAt) VALUES
-(1, 'admin', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE()),
-(2, 'dr_who', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE()),
-(3, 'dr_smith', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE()),
-(4, 'dr_jones', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE()),
-(5, 'receptionist1', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE()),
-(6, 'receptionist2', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE());
-GO
+DECLARE @UserId1 INT, @UserId2 INT, @UserId3 INT, @UserId4 INT, @UserId5 INT, @UserId6 INT;
+INSERT INTO dbo.Users (Username, PasswordHash, CreatedAt, ModifiedAt) VALUES ('admin', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE());
+SET @UserId1 = SCOPE_IDENTITY();
+INSERT INTO dbo.Users (Username, PasswordHash, CreatedAt, ModifiedAt) VALUES ('dr_who', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE());
+SET @UserId2 = SCOPE_IDENTITY();
+INSERT INTO dbo.Users (Username, PasswordHash, CreatedAt, ModifiedAt) VALUES ('dr_smith', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE());
+SET @UserId3 = SCOPE_IDENTITY();
+INSERT INTO dbo.Users (Username, PasswordHash, CreatedAt, ModifiedAt) VALUES ('dr_jones', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE());
+SET @UserId4 = SCOPE_IDENTITY();
+INSERT INTO dbo.Users (Username, PasswordHash, CreatedAt, ModifiedAt) VALUES ('receptionist1', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE());
+SET @UserId5 = SCOPE_IDENTITY();
+INSERT INTO dbo.Users (Username, PasswordHash, CreatedAt, ModifiedAt) VALUES ('receptionist2', 'dHsKcdUmGyLbbM2LlD8u5L7RmODA7o4S9Aab9y4tcTCj21Ut', GETDATE(), GETDATE());
+SET @UserId6 = SCOPE_IDENTITY();
 
--- UserRoles
 INSERT INTO dbo.UserRoles (UserId, RoleId) VALUES
-(1, 1), -- admin -> Administrator
-(2, 2), -- dr_who -> Doctor
-(3, 2), -- dr_smith -> Doctor
-(4, 2), -- dr_jones -> Doctor
-(5, 3), -- receptionist1 -> Receptionist
-(6, 3); -- receptionist2 -> Receptionist
-GO
+(@UserId1, @RoleId1), -- admin -> Administrator
+(@UserId2, @RoleId2), -- dr_who -> Doctor
+(@UserId3, @RoleId2), -- dr_smith -> Doctor
+(@UserId4, @RoleId2), -- dr_jones -> Doctor
+(@UserId5, @RoleId3), -- receptionist1 -> Receptionist
+(@UserId6, @RoleId3); -- receptionist2 -> Receptionist
 
--- Specialties
-INSERT INTO dbo.Specialties (Id, Name) VALUES
-(1, 'General Practice'),
-(2, 'Cardiology'),
-(3, 'Pediatrics');
-GO
+DECLARE @SpecialtyId1 INT, @SpecialtyId2 INT, @SpecialtyId3 INT;
+INSERT INTO dbo.Specialties (Name) VALUES ('General Practice');
+SET @SpecialtyId1 = SCOPE_IDENTITY();
+INSERT INTO dbo.Specialties (Name) VALUES ('Cardiology');
+SET @SpecialtyId2 = SCOPE_IDENTITY();
+INSERT INTO dbo.Specialties (Name) VALUES ('Pediatrics');
+SET @SpecialtyId3 = SCOPE_IDENTITY();
 
--- Doctors
-INSERT INTO dbo.Doctor (Id, FirstName, LastName, LicenseNumber, CreatedAt, ModifiedAt) VALUES
-(1, 'John', 'Who', 'LIC001234', GETDATE(), GETDATE()),
-(2, 'Sarah', 'Smith', 'LIC002345', GETDATE(), GETDATE()),
-(3, 'Michael', 'Jones', 'LIC003456', GETDATE(), GETDATE());
-GO
+DECLARE @DoctorId1 INT, @DoctorId2 INT, @DoctorId3 INT;
+INSERT INTO dbo.Doctor (FirstName, LastName, LicenseNumber, CreatedAt, ModifiedAt) VALUES ('John', 'Who', 'LIC001234', GETDATE(), GETDATE());
+SET @DoctorId1 = SCOPE_IDENTITY();
+INSERT INTO dbo.Doctor (FirstName, LastName, LicenseNumber, CreatedAt, ModifiedAt) VALUES ('Sarah', 'Smith', 'LIC002345', GETDATE(), GETDATE());
+SET @DoctorId2 = SCOPE_IDENTITY();
+INSERT INTO dbo.Doctor (FirstName, LastName, LicenseNumber, CreatedAt, ModifiedAt) VALUES ('Michael', 'Jones', 'LIC003456', GETDATE(), GETDATE());
+SET @DoctorId3 = SCOPE_IDENTITY();
 
--- DoctorSpecialties
 INSERT INTO dbo.DoctorSpecialties (DoctorId, SpecialtyId) VALUES
-(1, 1), -- Dr. Who -> General Practice
-(2, 2), -- Dr. Smith -> Cardiology
-(3, 3); -- Dr. Jones -> Pediatrics
-GO
+(@DoctorId1, @SpecialtyId1), -- Dr. Who -> General Practice
+(@DoctorId2, @SpecialtyId2), -- Dr. Smith -> Cardiology
+(@DoctorId3, @SpecialtyId3); -- Dr. Jones -> Pediatrics
 
--- Patients (using Quebec Health Card format: 4 letters + 8 digits + space + 2 digits)
-INSERT INTO dbo.Patient (Id, FirstName, LastName, DateOfBirth, InsuranceNumber, PhoneNumber, CreatedAt, ModifiedAt) VALUES
-(1,'Emma','Wilson','1985-03-15','WILE85031500 01','555-0101',GETDATE(),GETDATE()),
-(2,'James','Brown','1990-07-22','BROJ90072200 02','555-0102',GETDATE(),GETDATE()),
-(3,'Olivia','Davis','1978-11-30','DAVO78113000 03','555-0103',GETDATE(),GETDATE()),
-(4,'William','Miller','2015-05-10','MILW15051000 04','555-0104',GETDATE(),GETDATE()),
-(5,'Sophia','Garcia','1995-09-18','GARS95091800 05','555-0105',GETDATE(),GETDATE());
-GO
+DECLARE @PatientId1 INT, @PatientId2 INT, @PatientId3 INT, @PatientId4 INT, @PatientId5 INT;
+INSERT INTO dbo.Patient (FirstName, LastName, DateOfBirth, InsuranceNumber, PhoneNumber, CreatedAt, ModifiedAt) VALUES ('Emma','Wilson','1985-03-15','WILE85031500 01','555-0101',GETDATE(),GETDATE());
+SET @PatientId1 = SCOPE_IDENTITY();
+INSERT INTO dbo.Patient (FirstName, LastName, DateOfBirth, InsuranceNumber, PhoneNumber, CreatedAt, ModifiedAt) VALUES ('James','Brown','1990-07-22','BROJ90072200 02','555-0102',GETDATE(),GETDATE());
+SET @PatientId2 = SCOPE_IDENTITY();
+INSERT INTO dbo.Patient (FirstName, LastName, DateOfBirth, InsuranceNumber, PhoneNumber, CreatedAt, ModifiedAt) VALUES ('Olivia','Davis','1978-11-30','DAVO78113000 03','555-0103',GETDATE(),GETDATE());
+SET @PatientId3 = SCOPE_IDENTITY();
+INSERT INTO dbo.Patient (FirstName, LastName, DateOfBirth, InsuranceNumber, PhoneNumber, CreatedAt, ModifiedAt) VALUES ('William','Miller','2015-05-10','MILW15051000 04','555-0104',GETDATE(),GETDATE());
+SET @PatientId4 = SCOPE_IDENTITY();
+INSERT INTO dbo.Patient (FirstName, LastName, DateOfBirth, InsuranceNumber, PhoneNumber, CreatedAt, ModifiedAt) VALUES ('Sophia','Garcia','1995-09-18','GARS95091800 05','555-0105',GETDATE(),GETDATE());
+SET @PatientId5 = SCOPE_IDENTITY();
 
--- DoctorSchedule
-INSERT INTO dbo.DoctorSchedule (Id, DoctorId, DayOfWeek, WorkStartTime, WorkEndTime, CreatedAt, ModifiedAt) VALUES
+INSERT INTO dbo.DoctorSchedule (DoctorId, DayOfWeek, WorkStartTime, WorkEndTime, CreatedAt, ModifiedAt) VALUES
 -- Dr. Who (Monday-Friday 9AM-5PM)
-(1, 1, 'MONDAY', '2025-01-01 09:00:00', '2025-01-01 17:00:00', GETDATE(), GETDATE()),
-(2, 1, 'TUESDAY', '2025-01-01 09:00:00', '2025-01-01 17:00:00', GETDATE(), GETDATE()),
-(3, 1, 'WEDNESDAY', '2025-01-01 09:00:00', '2025-01-01 17:00:00', GETDATE(), GETDATE()),
-(4, 1, 'THURSDAY', '2025-01-01 09:00:00', '2025-01-01 17:00:00', GETDATE(), GETDATE()),
-(5, 1, 'FRIDAY', '2025-01-01 09:00:00', '2025-01-01 17:00:00', GETDATE(), GETDATE()),
+(@DoctorId1, 'MONDAY', '09:00:00', '17:00:00', GETDATE(), GETDATE()),
+(@DoctorId1, 'TUESDAY', '09:00:00', '17:00:00', GETDATE(), GETDATE()),
+(@DoctorId1, 'WEDNESDAY', '09:00:00', '17:00:00', GETDATE(), GETDATE()),
+(@DoctorId1, 'THURSDAY', '09:00:00', '17:00:00', GETDATE(), GETDATE()),
+(@DoctorId1, 'FRIDAY', '09:00:00', '17:00:00', GETDATE(), GETDATE()),
 -- Dr. Smith (Monday-Thursday 8AM-4PM)
-(6, 2, 'MONDAY', '2025-01-01 08:00:00', '2025-01-01 16:00:00', GETDATE(), GETDATE()),
-(7, 2, 'TUESDAY', '2025-01-01 08:00:00', '2025-01-01 16:00:00', GETDATE(), GETDATE()),
-(8, 2, 'WEDNESDAY', '2025-01-01 08:00:00', '2025-01-01 16:00:00', GETDATE(), GETDATE()),
-(9, 2, 'THURSDAY', '2025-01-01 08:00:00', '2025-01-01 16:00:00', GETDATE(), GETDATE()),
+(@DoctorId2, 'MONDAY', '08:00:00', '16:00:00', GETDATE(), GETDATE()),
+(@DoctorId2, 'TUESDAY', '08:00:00', '16:00:00', GETDATE(), GETDATE()),
+(@DoctorId2, 'WEDNESDAY', '08:00:00', '16:00:00', GETDATE(), GETDATE()),
+(@DoctorId2, 'THURSDAY', '08:00:00', '16:00:00', GETDATE(), GETDATE()),
 -- Dr. Jones (Tuesday-Saturday 10AM-6PM)
-(10, 3, 'TUESDAY', '2025-01-01 10:00:00', '2025-01-01 18:00:00', GETDATE(), GETDATE()),
-(11, 3, 'WEDNESDAY', '2025-01-01 10:00:00', '2025-01-01 18:00:00', GETDATE(), GETDATE()),
-(12, 3, 'THURSDAY', '2025-01-01 10:00:00', '2025-01-01 18:00:00', GETDATE(), GETDATE()),
-(13, 3, 'FRIDAY', '2025-01-01 10:00:00', '2025-01-01 18:00:00', GETDATE(), GETDATE()),
-(14, 3, 'SATURDAY', '2025-01-01 10:00:00', '2025-01-01 18:00:00', GETDATE(), GETDATE());
-GO
+(@DoctorId3, 'TUESDAY', '10:00:00', '18:00:00', GETDATE(), GETDATE()),
+(@DoctorId3, 'WEDNESDAY', '10:00:00', '18:00:00', GETDATE(), GETDATE()),
+(@DoctorId3, 'THURSDAY', '10:00:00', '18:00:00', GETDATE(), GETDATE()),
+(@DoctorId3, 'FRIDAY', '10:00:00', '18:00:00', GETDATE(), GETDATE()),
+(@DoctorId3, 'SATURDAY', '10:00:00', '18:00:00', GETDATE(), GETDATE());
 
--- TimeSlots (30-minute intervals from 8AM to 6PM)
 DECLARE @hour INT = 8;
 DECLARE @minute INT = 0;
-DECLARE @slotId INT = 1;
 
 WHILE @hour < 18
 BEGIN
-    INSERT INTO dbo.TimeSlots (Id, HourOfDay, MinuteOfHour) VALUES (@slotId, @hour, @minute);
-    SET @slotId = @slotId + 1;
+    INSERT INTO dbo.TimeSlots (HourOfDay, MinuteOfHour) VALUES (@hour, @minute);
     SET @minute = @minute + 30;
     IF @minute >= 60
     BEGIN
@@ -312,16 +313,15 @@ BEGIN
         SET @hour = @hour + 1;
     END
 END
-GO
 
--- Appointments (using TimeSlot references)
-INSERT INTO dbo.Appointment (Id, PatientId, DoctorId, TimeSlotId, Date, Notes, CreatedAt, ModifiedAt) VALUES
-(1, 1, 1, 5, '2025-11-25', 'Annual checkup', GETDATE(), GETDATE()), -- 10:00 AM
-(2, 2, 2, 13, '2025-11-26', 'Heart consultation', GETDATE(), GETDATE()), -- 2:00 PM
-(3, 3, 1, 7, '2025-11-22', 'Follow-up visit', GETDATE(), GETDATE()), -- 11:00 AM
-(4, 4, 3, 15, '2025-11-27', 'Child vaccination', GETDATE(), GETDATE()), -- 3:00 PM
-(5, 5, 2, 3, '2025-11-23', 'Cardiac screening', GETDATE(), GETDATE()), -- 9:00 AM
-(6, 1, 2, 6, '2025-12-01', 'Blood pressure check', GETDATE(), GETDATE()); -- 10:30 AM
+INSERT INTO dbo.Appointment (PatientId, DoctorId, TimeSlotId, Date, Notes, CreatedAt, ModifiedAt) VALUES
+(@PatientId1, @DoctorId1, 5, '2025-11-25', 'Annual checkup', GETDATE(), GETDATE()), -- 10:00 AM
+(@PatientId2, @DoctorId2, 13, '2025-11-26', 'Heart consultation', GETDATE(), GETDATE()), -- 2:00 PM
+(@PatientId3, @DoctorId1, 7, '2025-11-22', 'Follow-up visit', GETDATE(), GETDATE()), -- 11:00 AM
+(@PatientId4, @DoctorId3, 15, '2025-11-27', 'Child vaccination', GETDATE(), GETDATE()), -- 3:00 PM
+(@PatientId5, @DoctorId2, 3, '2025-11-23', 'Cardiac screening', GETDATE(), GETDATE()), -- 9:00 AM
+(@PatientId1, @DoctorId2, 6, '2025-12-01', 'Blood pressure check', GETDATE(), GETDATE()); -- 10:30 AM
+
 GO
 
 -- VIEW 1: Doctor's Current Schedule
@@ -486,14 +486,14 @@ BEGIN
         RETURN;
     END
     
-    -- Get next available ID
-    SELECT @NewId = ISNULL(MAX(Id), 0) + 1 FROM dbo.Appointment;
-    
     -- Insert new appointment
     INSERT INTO dbo.Appointment 
-        (Id, PatientId, DoctorId, Date, TimeSlotId, Notes, CreatedAt, ModifiedAt)
+        (PatientId, DoctorId, Date, TimeSlotId, Notes, CreatedAt, ModifiedAt)
     VALUES 
-        (@NewId, @PatientId, @DoctorId, @AppointmentDate, @TimeSlotId, @Notes, GETDATE(), GETDATE());
+        (@PatientId, @DoctorId, @AppointmentDate, @TimeSlotId, @Notes, GETDATE(), GETDATE());
+    
+    -- Get the new ID
+    SET @NewId = SCOPE_IDENTITY();
     
     -- Return the new appointment details
     SELECT 

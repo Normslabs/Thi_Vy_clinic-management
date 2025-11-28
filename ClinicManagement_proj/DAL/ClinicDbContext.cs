@@ -1,7 +1,5 @@
-﻿using System;
+﻿using ClinicManagement_proj.BLL.DTO;
 using System.Data.Entity;
-using System.Linq;
-using ClinicManagement_proj.BLL.DTO;
 
 namespace ClinicManagement_proj.DAL
 {
@@ -87,9 +85,9 @@ namespace ClinicManagement_proj.DAL
                 .HasMaxLength(DoctorScheduleDTO.DAYOFWEEK_MAX_LENGTH)
                 .HasColumnName("DayOfWeek");
             modelBuilder.Entity<DoctorScheduleDTO>()
-                .Property(ds => ds.WorkStartTime).HasColumnName("WorkStartTime").HasColumnType("datetime2").HasPrecision(7);
+                .Property(ds => ds.WorkStartTime).HasColumnName("WorkStartTime").HasColumnType("time");
             modelBuilder.Entity<DoctorScheduleDTO>()
-                .Property(ds => ds.WorkEndTime).HasColumnName("WorkEndTime").HasColumnType("datetime2").HasPrecision(7);
+                .Property(ds => ds.WorkEndTime).HasColumnName("WorkEndTime").HasColumnType("time");
             modelBuilder.Entity<DoctorScheduleDTO>()
                 .Property(ds => ds.CreatedAt).HasColumnName("CreatedAt").HasColumnType("datetime2").HasPrecision(7);
             modelBuilder.Entity<DoctorScheduleDTO>()

@@ -4,9 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
 using System.Security.Cryptography;
-using ClinicManagement_proj.BLL;
 
 namespace ClinicManagement_proj.BLL.Services
 {
@@ -16,8 +14,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public enum UserRoles
         {
-            _,
-            Admin,
+            Administrator,
             Doctor,
             Receptionist
         }
@@ -53,7 +50,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public List<UserDTO> GetAllUsers()
         {
-            if (!CurrentUserHasRole(UserRoles.Admin))
+            if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can access the list of all users.");
 
             return clinicDb.Users
@@ -61,7 +58,7 @@ namespace ClinicManagement_proj.BLL.Services
         }
         public UserDTO GetUserById(int id)
         {
-            if (!CurrentUserHasRole(UserRoles.Admin))
+            if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can access user details.");
 
             var user = clinicDb.Users.Include(u => u.Roles).FirstOrDefault(u => u.Id == id);
@@ -84,7 +81,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public void CreateUser(string username, string password, List<RoleDTO> roles)
         {
-            if (!CurrentUserHasRole(UserRoles.Admin))
+            if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can create new users.");
 
             if (string.IsNullOrWhiteSpace(username))
@@ -115,7 +112,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public void UpdateUser(int id, string username, string password, List<RoleDTO> roles)
         {
-            if (!CurrentUserHasRole(UserRoles.Admin))
+            if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can update users.");
 
             var user = clinicDb.Users.Include(u => u.Roles).FirstOrDefault(u => u.Id == id);
@@ -151,7 +148,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public void DeleteUser(int id)
         {
-            if (!CurrentUserHasRole(UserRoles.Admin))
+            if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can delete users.");
 
             var user = clinicDb.Users.Find(id);
@@ -164,7 +161,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         public UserDTO Search(int id)
         {
-            if (!CurrentUserHasRole(UserRoles.Admin))
+            if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can search users.");
 
             UserDTO userToSearch = new UserDTO();
@@ -179,7 +176,7 @@ namespace ClinicManagement_proj.BLL.Services
         public static bool CurrentUserHasRole(UserRoles role)
         {
             if (CurrentUser.User == null) return false;
-            return CurrentUser.User.Roles.Any(r => r.Id == (int)role);
+            return CurrentUser.User.Roles.Any(r => r.RoleName == role.ToString());
         }
     }
 }
