@@ -269,26 +269,46 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnUsrSearch_Click(object sender, EventArgs e)
         {
-            string searchTerm = txtUsrId.Text.Trim();
-            if (string.IsNullOrEmpty(searchTerm))
+            string idText = txtUsrId.Text.Trim();
+            string username = txtUsrUsername.Text.Trim();
+
+            List<UserDTO> users = null;
+
+            if (!string.IsNullOrEmpty(idText))
             {
-                NotificationManager.AddNotification("Enter a user id to search!", NotificationType.Error);
+                if (!int.TryParse(idText, out int userId))
+                {
+                    NotificationManager.AddNotification("Invalid user id!", NotificationType.Error);
+                    return;
+                }
+                users = userService.Search(userId);
+            }
+            else if (!string.IsNullOrEmpty(username))
+            {
+                users = userService.Search(username);
+            }
+            else
+            {
+                NotificationManager.AddNotification("Enter user id or username to search!", NotificationType.Error);
                 return;
             }
 
             try
             {
-                var user = userService.GetUserById(Convert.ToInt32(searchTerm));
-                if (user != null)
+                if (users != null && users.Any())
                 {
-                    txtUsrId.Text = user.Id.ToString();
-                    txtUsrUsername.Text = user.Username;
-                    if (user.Roles.Any())
+                    dgvUsers.DataSource = users;
+                    if (dgvUsers.RowCount > 0)
                     {
-                        cmbRoles.SelectedItem = user.Roles.First();
+                        UserDTO user = (UserDTO)dgvUsers.Rows[0].DataBoundItem;
+                        txtUsrId.Text = user.Id.ToString();
+                        txtUsrUsername.Text = user.Username;
+                        if (user.Roles.Any())
+                        {
+                            cmbRoles.SelectedItem = user.Roles.First();
+                        }
+                        EnterUsrEditMode();
                     }
-                    EnterUsrEditMode();
-                    dgvUsers.DataSource = new List<UserDTO> { user };
                 }
                 else
                 {
@@ -384,16 +404,38 @@ namespace ClinicManagement_proj.UI
 
         private string GeneratePassword()
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            string password = "";
-            while (password.Length < 15)
-            {
-                var random = new Random();
-                password += chars[random.Next(chars.Length)];
-            }
+            const string upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            const string lowerChars = "abcdefghijklmnopqrstuvwxyz";
+            const string digitChars = "0123456789";
+            const string specialChars = "!@#$%^&*()_+-=[]{}|;:,.<>?";
+            const string allChars = upperChars + lowerChars + digitChars + specialChars;
 
-            try { return UserDTO.ValidatePassword(password); } 
-            catch { return GeneratePassword(); }
+            var random = new Random();
+            string password;
+
+            do
+            {
+                password = "";
+                for (int i = 0; i < 15; i++)
+                {
+                    password += allChars[random.Next(allChars.Length)];
+                }
+            } while (!IsPasswordValid(password));
+
+            return password;
+        }
+
+        private bool IsPasswordValid(string password)
+        {
+            try
+            {
+                UserDTO.ValidatePassword(password);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
         }
 
         /// <summary>

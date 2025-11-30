@@ -25,8 +25,8 @@ namespace ClinicManagement_proj.BLL.DTO
             get { return _passwordHash; }
             set { _passwordHash = ValidatePasswordHash(value); }
         }
-        public DateTime CreatedAt { get; set; }
-        public DateTime ModifiedAt { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
+        public DateTime ModifiedAt { get; set; } = DateTime.Now;
         public ICollection<RoleDTO> Roles { get; set; }
 
         public UserDTO()

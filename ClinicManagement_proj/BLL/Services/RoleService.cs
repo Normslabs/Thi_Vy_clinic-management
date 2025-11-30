@@ -17,8 +17,17 @@ namespace ClinicManagement_proj.BLL.Services
             clinicDb = dbContext;
         }
 
+        private bool CurrentUserHasRole(UserService.UserRoles role)
+        {
+            if (ClinicManagementApp.CurrentUser == null) return false;
+            return ClinicManagementApp.CurrentUser.Roles.Any(r => r.RoleName == role.ToString());
+        }
+
         public List<RoleDTO> GetAllRoles()
         {
+            if (!CurrentUserHasRole(UserService.UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can access roles.");
+
             return clinicDb.Roles
                 .Include(r => r.Users)
                 .ToList();
@@ -27,31 +36,36 @@ namespace ClinicManagement_proj.BLL.Services
 
         public RoleDTO GetRoleById(int id)
         {
+            if (!CurrentUserHasRole(UserService.UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can access role details.");
+
             var role = clinicDb.Roles
                 .Include(r => r.Users)
                 .FirstOrDefault(r => r.Id == id);
 
-            if (role == null) return null;
-
-            return new RoleDTO(role.Id, role.RoleName, role.CreatedAt, role.ModifiedAt, role.Users.Select(u => new UserDTO(u.Id, u.Username, u.PasswordHash, u.CreatedAt)).ToList());
+            return role;
         }
 
 
         public RoleDTO GetRoleByName(string roleName)
         {
+            if (!CurrentUserHasRole(UserService.UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can access role details.");
+
             var role = clinicDb.Roles
                 .Include(r => r.Users)
                 .FirstOrDefault(r => r.RoleName == roleName);
 
-            if (role == null) return null;
-
-            return new RoleDTO(role.Id, role.RoleName, role.CreatedAt, role.ModifiedAt, role.Users.Select(u => new UserDTO(u.Id, u.Username, u.PasswordHash, u.CreatedAt)).ToList());
+            return role;
         }
 
 
         public int CreateRole(RoleDTO roleDto)
         {
-            var role = new RoleDTO(roleDto.RoleName, DateTime.UtcNow, DateTime.UtcNow);
+            if (!CurrentUserHasRole(UserService.UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can create roles.");
+
+            var role = new RoleDTO(roleDto.RoleName, DateTime.Now, DateTime.Now);
 
             clinicDb.Roles.Add(role);
             clinicDb.SaveChanges();
@@ -62,11 +76,14 @@ namespace ClinicManagement_proj.BLL.Services
 
         public bool UpdateRole(RoleDTO roleDto)
         {
+            if (!CurrentUserHasRole(UserService.UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can update roles.");
+
             var role = clinicDb.Roles.FirstOrDefault(r => r.Id == roleDto.Id);
             if (role == null) return false;
 
             role.RoleName = roleDto.RoleName;
-            role.ModifiedAt = DateTime.UtcNow;
+            role.ModifiedAt = DateTime.Now;
 
             clinicDb.SaveChanges();
             return true;
@@ -74,6 +91,9 @@ namespace ClinicManagement_proj.BLL.Services
 
         public List<RoleDTO> SearchRoles(string keyword)
         {
+            if (!CurrentUserHasRole(UserService.UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can search roles.");
+
             var roles = clinicDb.Roles
                 .Include(r => r.Users)
                 .Where(r => r.RoleName.Contains(keyword)) // filter by partial match
@@ -84,6 +104,9 @@ namespace ClinicManagement_proj.BLL.Services
 
         public bool DeleteRole(int id)
         {
+            if (!CurrentUserHasRole(UserService.UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can delete roles.");
+
             var role = clinicDb.Roles.Find(id);
             if (role == null) return false;
 
