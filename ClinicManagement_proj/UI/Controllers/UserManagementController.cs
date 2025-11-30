@@ -17,7 +17,6 @@ namespace ClinicManagement_proj.UI
         private readonly Panel panel;
         private readonly UserService userService;
         private readonly RoleService roleService;
-        private int selectedUserId;
 
         private DataGridView dgvUsers => (DataGridView)(panel.Controls["dgvUsers"] 
                 ?? throw new Exception("No control named [dgvUsers] found in panel controls collection."));
@@ -76,21 +75,62 @@ namespace ClinicManagement_proj.UI
             btnGenPassword.Click += new EventHandler(btnGenPassword_Click);
             txtUsrPassword.TextChanged += new EventHandler(txtUsrPassword_TextChanged);
             dgvUsers.Click += new EventHandler(dgvUsers_Click);
+            dgvUsers.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvUsers_CellFormatting);
         }
 
         public void OnShow()
         {
             LoadUsers();
             ResetUsrForm();
+
             cmbRoles.DataSource = roleService.GetAllRoles();
             cmbRoles.DisplayMember = "RoleName";
-            cmbRoles.ValueMember = "Id";
         }
 
         private void LoadUsers()
         {
             var users = userService.GetAllUsers();
             dgvUsers.DataSource = users;
+
+            dgvUsers.Columns["PasswordHash"].Visible = false;
+
+            // Custom column formatting
+            if (dgvUsers.Columns.Contains("Id"))
+            {
+                dgvUsers.Columns["Id"].HeaderText = "User ID";
+                dgvUsers.Columns["Id"].Width = 80;
+                dgvUsers.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            if (dgvUsers.Columns.Contains("Username"))
+            {
+                dgvUsers.Columns["Username"].HeaderText = "Username";
+                dgvUsers.Columns["Username"].Width = 150;
+                dgvUsers.Columns["Username"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            if (dgvUsers.Columns.Contains("CreatedAt"))
+            {
+                dgvUsers.Columns["CreatedAt"].HeaderText = "Created At";
+                dgvUsers.Columns["CreatedAt"].Width = 120;
+                dgvUsers.Columns["CreatedAt"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+                dgvUsers.Columns["CreatedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            if (dgvUsers.Columns.Contains("ModifiedAt"))
+            {
+                dgvUsers.Columns["ModifiedAt"].HeaderText = "Modified At";
+                dgvUsers.Columns["ModifiedAt"].Width = 120;
+                dgvUsers.Columns["ModifiedAt"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+                dgvUsers.Columns["ModifiedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            }
+
+            if (dgvUsers.Columns.Contains("Roles"))
+            {
+                dgvUsers.Columns["Roles"].HeaderText = "Role";
+                dgvUsers.Columns["Roles"].Width = 200;
+                dgvUsers.Columns["Roles"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            }
         }
 
         /// <summary>
@@ -109,7 +149,6 @@ namespace ClinicManagement_proj.UI
             txtUsrPassword.UseSystemPasswordChar = true;
             btnTogglePassword.Text = "Show";
             txtUsrPassword.BackColor = SystemColors.Window;
-            selectedUserId = 0;
         }
 
         /// <summary>
@@ -152,15 +191,14 @@ namespace ClinicManagement_proj.UI
             string password = txtUsrPassword.Text.Trim();
             var selectedRole = cmbRoles.SelectedItem as RoleDTO;
 
-            if (string.IsNullOrEmpty(username) || selectedRole == null || string.IsNullOrEmpty(password))
-            {
-                NotificationManager.AddNotification("All fields are required!", NotificationType.Error);
-                return;
-            }
-
             try
             {
-                userService.CreateUser(username, password, new List<RoleDTO> { selectedRole });
+                userService.CreateUser(
+                    new UserDTO
+                    {
+                        Username = txtUsrUsername.Text.Trim(),
+                        Roles = new List<RoleDTO> { selectedRole }
+                    }, password);
                 NotificationManager.AddNotification("User created successfully!", NotificationType.Info);
                 LoadUsers();
                 ResetUsrForm();
@@ -177,24 +215,37 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnUsrUpdate_Click(object sender, EventArgs e)
         {
-            if (selectedUserId == 0)
+            if (!isEditMode)
+            {
+                NotificationManager.AddNotification("Not in edit mode!", NotificationType.Error);
+                return;
+            }
+
+            if (dgvUsers.CurrentRow == null)
             {
                 NotificationManager.AddNotification("Please select a user to update!", NotificationType.Error);
                 return;
             }
 
-            string username = txtUsrUsername.Text.Trim();
-            var selectedRole = cmbRoles.SelectedItem as RoleDTO;
+            UserDTO userToUpdate = (UserDTO)dgvUsers.CurrentRow.DataBoundItem;
 
-            if (string.IsNullOrEmpty(username) || selectedRole == null)
+            userToUpdate.Username = txtUsrUsername.Text.Trim();
+            userToUpdate.Roles = new List<RoleDTO> { cmbRoles.SelectedItem as RoleDTO };
+
+            string newPassword = (isPasswordChanged) ? txtUsrPassword.Text.Trim() : null;
+
+            try
             {
-                NotificationManager.AddNotification("Username and Role are required!", NotificationType.Error);
+                userService.UpdateUser(userToUpdate, newPassword);
+            }
+            catch (Exception ex)
+            {
+                NotificationManager.AddNotification($"Error: {ex.Message}", NotificationType.Error);
                 return;
             }
 
             try
             {
-                userService.UpdateUser(selectedUserId, username, isPasswordChanged ? txtUsrPassword.Text.Trim() : null, new List<RoleDTO> { selectedRole });
                 NotificationManager.AddNotification("User updated successfully!", NotificationType.Info);
                 LoadUsers();
                 ResetUsrForm();
@@ -230,12 +281,11 @@ namespace ClinicManagement_proj.UI
                 var user = userService.GetUserById(Convert.ToInt32(searchTerm));
                 if (user != null)
                 {
-                    selectedUserId = user.Id;
-                    txtUsrId.Text = selectedUserId.ToString();
+                    txtUsrId.Text = user.Id.ToString();
                     txtUsrUsername.Text = user.Username;
                     if (user.Roles.Any())
                     {
-                        cmbRoles.SelectedValue = user.Roles.First().Id;
+                        cmbRoles.SelectedValue = user.Roles.First();
                     }
                     EnterUsrEditMode();
                     dgvUsers.DataSource = new List<UserDTO> { user };
@@ -258,13 +308,13 @@ namespace ClinicManagement_proj.UI
         {
             if (dgvUsers.CurrentRow != null)
             {
-                selectedUserId = (int)dgvUsers.CurrentRow.Cells["Id"].Value;
-                txtUsrId.Text = selectedUserId.ToString();
-                var user = userService.GetUserById(selectedUserId);
-                txtUsrUsername.Text = user.Username;
-                if (user.Roles.Any())
+                UserDTO selectedUser = (UserDTO)dgvUsers.CurrentRow.DataBoundItem;
+                txtUsrId.Text = selectedUser.Id.ToString();
+                txtUsrUsername.Text = selectedUser.Username;
+                txtUsrPassword.Text = string.Empty;
+                if (selectedUser.Roles.Any())
                 {
-                    cmbRoles.SelectedValue = user.Roles.First().Id;
+                    cmbRoles.SelectedValue = selectedUser.Roles.First();
                 }
                 EnterUsrEditMode();
             }
@@ -301,7 +351,8 @@ namespace ClinicManagement_proj.UI
         {
             try
             {
-                userService.DeleteUser(selectedUserId);
+                UserDTO user = (UserDTO)dgvUsers.CurrentRow.DataBoundItem;
+                userService.DeleteUser(user);
                 NotificationManager.AddNotification("User deleted successfully!", NotificationType.Info);
                 LoadUsers();
                 ResetUsrForm();
@@ -334,8 +385,35 @@ namespace ClinicManagement_proj.UI
         private string GeneratePassword()
         {
             const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            var random = new Random();
-            return new string(Enumerable.Repeat(chars, 12).Select(s => s[random.Next(s.Length)]).ToArray());
+            string password = "";
+            while (password.Length < 15)
+            {
+                var random = new Random();
+                password += chars[random.Next(chars.Length)];
+            }
+
+            try { return UserDTO.ValidatePassword(password); } 
+            catch { return GeneratePassword(); }
+        }
+
+        /// <summary>
+        /// Handle DataGridView cell formatting to display only the first role
+        /// </summary>
+        private void dgvUsers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dgvUsers.Columns["Roles"].Index && e.Value != null)
+            {
+                var roles = e.Value as ICollection<RoleDTO>;
+                if (roles != null && roles.Any())
+                {
+                    e.Value = roles.First().RoleName;
+                }
+                else
+                {
+                    e.Value = string.Empty;
+                }
+                e.FormattingApplied = true;
+            }
         }
     }
 }

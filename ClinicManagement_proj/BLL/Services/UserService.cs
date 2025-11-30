@@ -21,6 +21,7 @@ namespace ClinicManagement_proj.BLL.Services
 
         private static string HashPassword(string plainPassword)
         {
+            UserDTO.ValidatePassword(plainPassword);
             byte[] salt;
             new RNGCryptoServiceProvider().GetBytes(salt = new byte[16]);
             var pbkdf2 = new Rfc2898DeriveBytes(plainPassword, salt, 10000);
@@ -31,7 +32,7 @@ namespace ClinicManagement_proj.BLL.Services
             return Convert.ToBase64String(hashBytes);
         }
 
-        public static bool ValidatePassword(string plainPassword, string storedHash)
+        public static bool ComparePassword(string plainPassword, string storedHash)
         {
             byte[] hashBytes = Convert.FromBase64String(storedHash);
             byte[] salt = new byte[16];
@@ -54,96 +55,56 @@ namespace ClinicManagement_proj.BLL.Services
                 throw new UnauthorizedAccessException("Only Admin users can access the list of all users.");
 
             return clinicDb.Users
-                .Include(u => u.Roles).ToList();
+                .Include(u => u.Roles)
+                .ToList();
         }
         public UserDTO GetUserById(int id)
         {
             if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can access user details.");
 
-            var user = clinicDb.Users.Include(u => u.Roles).FirstOrDefault(u => u.Id == id);
-            if (user == null) return null;
+            var user = clinicDb.Users
+                .Include(u => u.Roles)
+                .FirstOrDefault(u => u.Id == id);
 
-            return new UserDTO(user.Id, user.Username, user.PasswordHash, user.CreatedAt, user.ModifiedAt, user.Roles.ToList());
+            return user;
         }
 
         public UserDTO GetUserByUsername(string username)
         {
             var user = clinicDb.Users
+                .Where(u => u.Username == username)
                 .Include(u => u.Roles)
-                .FirstOrDefault(u => u.Username == username);
+                .SingleOrDefault() 
+                ?? throw new ArgumentException("User not found");
 
-            if (user == null) return null;
-
-            return new UserDTO(user.Id, user.Username, user.PasswordHash, user.CreatedAt, user.ModifiedAt, user.Roles.ToList());
+            return user;
         }
 
-
-        public void CreateUser(string username, string password, List<RoleDTO> roles)
+        public void CreateUser(UserDTO user, string password)
         {
             if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can create new users.");
 
-            if (string.IsNullOrWhiteSpace(username))
-                throw new ArgumentException("Username is required");
-            if (username.Length > UserDTO.USERNAME_MAX_LENGTH)
-                throw new ArgumentException($"Username must be {UserDTO.USERNAME_MAX_LENGTH} characters or less");
-            if (string.IsNullOrWhiteSpace(password))
-                throw new ArgumentException("Password is required");
-            if (password.Length > UserDTO.PASSWORD_MAX_LENGTH)
-                throw new ArgumentException($"Password must be {UserDTO.PASSWORD_MAX_LENGTH} characters or less");
-            if (clinicDb.Users.Any(u => u.Username == username))
+            if (clinicDb.Users.Any(u => u.Username == user.Username))
                 throw new ArgumentException("Username already exists");
 
-            string hash = HashPassword(password);
-            var user = new UserDTO(username, hash, DateTime.UtcNow, DateTime.UtcNow, null); // Don't set roles yet
-
+            user.PasswordHash = HashPassword(password);
             clinicDb.Users.Add(user);
-
-            // Load and attach roles
-            if (roles != null && roles.Any())
-            {
-                var attachedRoles = roles.Select(r => clinicDb.Roles.Find(r.Id)).ToList();
-                user.Roles = attachedRoles;
-            }
-
             clinicDb.SaveChanges();
         }
 
-        public void UpdateUser(int id, string username, string password, List<RoleDTO> roles)
+        public UserDTO UpdateUser(UserDTO user, string password = null)
         {
             if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can update users.");
 
-            var user = clinicDb.Users.Include(u => u.Roles).FirstOrDefault(u => u.Id == id);
-            if (user == null)
-                throw new ArgumentException("User not found");
-            if (string.IsNullOrWhiteSpace(username))
-                throw new ArgumentException("Username is required");
-            if (username.Length > UserDTO.USERNAME_MAX_LENGTH)
-                throw new ArgumentException($"Username must be {UserDTO.USERNAME_MAX_LENGTH} characters or less");
-            if (username != user.Username && clinicDb.Users.Any(u => u.Username == username))
-                throw new ArgumentException("Username already exists");
-            if (password != null && password.Length > UserDTO.PASSWORD_MAX_LENGTH)
-                throw new ArgumentException($"Password must be {UserDTO.PASSWORD_MAX_LENGTH} characters or less");
-
-            user.Username = username;
-            if (password != null)
-            {
+            if (!string.IsNullOrEmpty(password))
                 user.PasswordHash = HashPassword(password);
-            }
 
-            user.Roles.Clear();
-            if (roles != null && roles.Any())
-            {
-                // Load and attach roles
-                var attachedRoles = roles.Select(r => clinicDb.Roles.Find(r.Id)).ToList();
-                user.Roles = attachedRoles;
-            }
-
-            user.ModifiedAt = DateTime.UtcNow;
-
+            user.ModifiedAt = DateTime.Now;
             clinicDb.SaveChanges();
+            return user;
         }
 
         public void DeleteUser(int id)
@@ -151,26 +112,45 @@ namespace ClinicManagement_proj.BLL.Services
             if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can delete users.");
 
-            var user = clinicDb.Users.Find(id);
-            if (user == null) return;
+            var user = clinicDb.Users
+                    .Where(u => u.Id == id)
+                    .FirstOrDefault() 
+                    ?? throw new ArgumentException("User not found");
+
+            clinicDb.Users.Remove(user);
+            clinicDb.SaveChanges();
+        }
+
+        public void DeleteUser(UserDTO user)
+        {
+            if (!CurrentUserHasRole(UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can delete users.");
 
             clinicDb.Users.Remove(user);
             clinicDb.SaveChanges();
         }
 
 
-        public UserDTO Search(int id)
+        public List<UserDTO> Search(int id)
         {
             if (!CurrentUserHasRole(UserRoles.Administrator))
                 throw new UnauthorizedAccessException("Only Admin users can search users.");
 
-            UserDTO userToSearch = new UserDTO();
+            return clinicDb.Users
+                .Where(u => u.Id.ToString().Contains(id.ToString()))
+                .Include(u => u.Roles)
+                .ToList();
+        }
 
-            //Check if the contact id exist
-            userToSearch = clinicDb.Users.FirstOrDefault(u => u.Id == id);
+        public List<UserDTO> Search(string username)
+        {
+            if (!CurrentUserHasRole(UserRoles.Administrator))
+                throw new UnauthorizedAccessException("Only Admin users can search users.");
 
-            // return true if exist otherwise return false
-            return userToSearch;
+            return clinicDb.Users
+                .Where(u => u.Username.Contains(username))
+                .Include(u => u.Roles)
+                .ToList();
         }
 
         public static bool CurrentUserHasRole(UserRoles role)

@@ -6,9 +6,15 @@ namespace ClinicManagement_proj.BLL.DTO
     {
         public static int NOTES_MAX_LENGTH = 512;
 
+        private string _notes;
+
         public int Id { get; set; }
         public DateTime Date { get; set; }
-        public string Notes { get; set; }
+        public string Notes
+        {
+            get { return _notes; }
+            set { _notes = ValidateNotes(value); }
+        }
 
         public int DoctorId { get; set; }
         public int PatientId { get; set; }
@@ -22,6 +28,13 @@ namespace ClinicManagement_proj.BLL.DTO
 
         public AppointmentDTO()
         {
+        }
+
+        public static string ValidateNotes(string notes)
+        {
+            if (notes != null && notes.Length > NOTES_MAX_LENGTH)
+                throw new ArgumentException($"Notes must be at most {NOTES_MAX_LENGTH} characters.");
+            return notes;
         }
 
         public AppointmentDTO(DateTime date, string notes, int doctorId, int patientId, int timeSlotId, DateTime createdAt, DateTime modifiedAt)

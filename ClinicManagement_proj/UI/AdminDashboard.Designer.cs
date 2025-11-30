@@ -55,7 +55,6 @@ namespace ClinicManagement_proj.UI
             this.btnApptSearch = new System.Windows.Forms.Button();
             this.btnApptDisplay = new System.Windows.Forms.Button();
             this.btnApptCancel = new System.Windows.Forms.Button();
-            this.lblApptDoctor = new System.Windows.Forms.Label();
             this.txtApptDoctor = new System.Windows.Forms.TextBox();
             this.lblApptPatient = new System.Windows.Forms.Label();
             this.txtApptPatient = new System.Windows.Forms.TextBox();
@@ -67,8 +66,9 @@ namespace ClinicManagement_proj.UI
             this.txtApptNotes = new System.Windows.Forms.TextBox();
             this.lblApptStatus = new System.Windows.Forms.Label();
             this.cmbApptStatus = new System.Windows.Forms.ComboBox();
-            this.lblApptId = new System.Windows.Forms.Label();
             this.txtApptId = new System.Windows.Forms.TextBox();
+            this.lblApptDoctor = new System.Windows.Forms.Label();
+            this.lblApptId = new System.Windows.Forms.Label();
             this.pnlPatientRegistration = new System.Windows.Forms.Panel();
             this.dgvRegPatients = new System.Windows.Forms.DataGridView();
             this.grpPatientRegistration = new System.Windows.Forms.GroupBox();
@@ -578,19 +578,6 @@ namespace ClinicManagement_proj.UI
             this.btnApptCancel.Text = "Cancel";
             this.btnApptCancel.UseVisualStyleBackColor = false;
             // 
-            // lblApptDoctor
-            // 
-            this.lblApptDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblApptDoctor.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblApptDoctor.Location = new System.Drawing.Point(25, 121);
-            this.lblApptDoctor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblApptDoctor.Name = "lblApptDoctor";
-            this.lblApptDoctor.Size = new System.Drawing.Size(560, 35);
-            this.lblApptDoctor.TabIndex = 12;
-            this.lblApptDoctor.Text = "Doctor";
-            this.lblApptDoctor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // txtApptDoctor
             // 
             this.txtApptDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -734,6 +721,31 @@ namespace ClinicManagement_proj.UI
             this.cmbApptStatus.Size = new System.Drawing.Size(560, 31);
             this.cmbApptStatus.TabIndex = 23;
             // 
+            // txtApptId
+            // 
+            this.txtApptId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtApptId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtApptId.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtApptId.Location = new System.Drawing.Point(25, 76);
+            this.txtApptId.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.txtApptId.Name = "txtApptId";
+            this.txtApptId.Size = new System.Drawing.Size(560, 31);
+            this.txtApptId.TabIndex = 25;
+            // 
+            // lblApptDoctor
+            // 
+            this.lblApptDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblApptDoctor.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblApptDoctor.Location = new System.Drawing.Point(25, 121);
+            this.lblApptDoctor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblApptDoctor.Name = "lblApptDoctor";
+            this.lblApptDoctor.Size = new System.Drawing.Size(560, 35);
+            this.lblApptDoctor.TabIndex = 12;
+            this.lblApptDoctor.Text = "Doctor";
+            this.lblApptDoctor.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // lblApptId
             // 
             this.lblApptId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -746,18 +758,6 @@ namespace ClinicManagement_proj.UI
             this.lblApptId.TabIndex = 24;
             this.lblApptId.Text = "Appointment ID";
             this.lblApptId.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // txtApptId
-            // 
-            this.txtApptId.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApptId.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtApptId.Font = new System.Drawing.Font("Lucida Sans", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApptId.Location = new System.Drawing.Point(25, 76);
-            this.txtApptId.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtApptId.Name = "txtApptId";
-            this.txtApptId.Size = new System.Drawing.Size(560, 31);
-            this.txtApptId.TabIndex = 25;
             // 
             // pnlPatientRegistration
             // 
@@ -2424,6 +2424,7 @@ namespace ClinicManagement_proj.UI
             this.Name = "AdminDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Admin Dashboard";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.AdminDashboard_Load);
             this.pnlSidebar.ResumeLayout(false);
             this.pnlSidebarHeader.ResumeLayout(false);

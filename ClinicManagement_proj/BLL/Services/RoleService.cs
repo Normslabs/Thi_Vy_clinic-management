@@ -14,8 +14,9 @@ namespace ClinicManagement_proj.BLL.Services
 
         public List<RoleDTO> GetAllRoles()
         {
-            var roles = clinicDb.Roles.Include(r => r.Users).ToList();
-            return roles.Select(r => new RoleDTO(r.Id, r.RoleName, r.CreatedAt, r.ModifiedAt, r.Users.Select(u => new UserDTO(u.Id, u.Username, u.PasswordHash, u.CreatedAt)).ToList())).ToList();
+            return clinicDb.Roles
+                .Include(r => r.Users)
+                .ToList();
         }
 
 
