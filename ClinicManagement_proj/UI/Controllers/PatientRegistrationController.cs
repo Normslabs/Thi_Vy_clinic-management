@@ -58,6 +58,10 @@ namespace ClinicManagement_proj.UI
             this.panel = panel;
         }
 
+        public PatientRegistrationController(Panel pnlPatientRegistration)
+        {
+        }
+
         public void Initialize()
         {
             btnPatientCreate.Click += new EventHandler(btnPatientCreate_Click);
