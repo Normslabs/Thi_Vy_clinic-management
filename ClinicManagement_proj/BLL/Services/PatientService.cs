@@ -17,7 +17,16 @@ namespace ClinicManagement_proj.BLL.Services
 
         public List<PatientDTO> GetAll()
         {
-            return clinicDb.Patients.ToList();
+            return clinicDb.Patients
+                .Include(pat => pat.Appointments)
+                .ToList();
+        }
+
+        public PatientDTO GetPatientById(int id)
+        {
+            return clinicDb.Patients
+                .Include(pat => pat.Appointments)
+                .FirstOrDefault(s => s.Id == id);
         }
         public void AddPatient(PatientDTO dto)
         {
