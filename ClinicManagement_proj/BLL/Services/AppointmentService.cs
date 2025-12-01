@@ -2,6 +2,7 @@
 using ClinicManagement_proj.DAL;
 using System;
 using System.Collections.Generic;
+using static System.Data.Entity.DbFunctions;
 using System.Linq;
 
 namespace ClinicManagement_proj.BLL.Services
@@ -108,7 +109,7 @@ namespace ClinicManagement_proj.BLL.Services
                 .Include("Doctor")
                 .Include("Patient")
                 .Include("TimeSlot")
-                .Where(a => a.Date.Date == date.Date)
+                .Where(a => a.Date >= date.Date && a.Date < AddDays(date.Date, 1))
                 .ToList();
         }
 
@@ -160,7 +161,7 @@ namespace ClinicManagement_proj.BLL.Services
                )
                 throw new UnauthorizedAccessException("Only authorized users can create appointments.");
             var bookedSlotIds = clinicDb.Appointments
-                                        .Where(a => a.Date.Date == date.Date)
+                                        .Where(a => a.Date >= date.Date && a.Date < AddDays(date.Date, 1))
                                         .Select(a => a.TimeSlotId)
                                         .ToList();
             var availableSlots = clinicDb.TimeSlots

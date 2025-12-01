@@ -51,9 +51,9 @@ namespace ClinicManagement_proj.UI
             this.btnApptSearch = new System.Windows.Forms.Button();
             this.btnApptDisplay = new System.Windows.Forms.Button();
             this.btnApptCancel = new System.Windows.Forms.Button();
-            this.txtApptDoctor = new System.Windows.Forms.TextBox();
+            this.cmbApptDoctor = new System.Windows.Forms.ComboBox();
             this.lblApptPatient = new System.Windows.Forms.Label();
-            this.txtApptPatient = new System.Windows.Forms.TextBox();
+            this.cmbApptPatient = new System.Windows.Forms.ComboBox();
             this.lblApptDate = new System.Windows.Forms.Label();
             this.dtpApptDate = new System.Windows.Forms.DateTimePicker();
             this.lblApptTimeSlot = new System.Windows.Forms.Label();
@@ -257,9 +257,9 @@ namespace ClinicManagement_proj.UI
             // grpApptMgmt
             // 
             this.grpApptMgmt.Controls.Add(this.layoutApptButtons);
-            this.grpApptMgmt.Controls.Add(this.txtApptDoctor);
+            this.grpApptMgmt.Controls.Add(this.cmbApptDoctor);
             this.grpApptMgmt.Controls.Add(this.lblApptPatient);
-            this.grpApptMgmt.Controls.Add(this.txtApptPatient);
+            this.grpApptMgmt.Controls.Add(this.cmbApptPatient);
             this.grpApptMgmt.Controls.Add(this.lblApptDate);
             this.grpApptMgmt.Controls.Add(this.dtpApptDate);
             this.grpApptMgmt.Controls.Add(this.lblApptTimeSlot);
@@ -385,17 +385,16 @@ namespace ClinicManagement_proj.UI
             this.btnApptCancel.Text = "Cancel";
             this.btnApptCancel.UseVisualStyleBackColor = false;
             // 
-            // txtApptDoctor
+            // cmbApptDoctor
             // 
-            this.txtApptDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbApptDoctor.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApptDoctor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtApptDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApptDoctor.Location = new System.Drawing.Point(25, 162);
-            this.txtApptDoctor.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtApptDoctor.Name = "txtApptDoctor";
-            this.txtApptDoctor.Size = new System.Drawing.Size(560, 30);
-            this.txtApptDoctor.TabIndex = 13;
+            this.cmbApptDoctor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbApptDoctor.Location = new System.Drawing.Point(25, 162);
+            this.cmbApptDoctor.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.cmbApptDoctor.Name = "cmbApptDoctor";
+            this.cmbApptDoctor.Size = new System.Drawing.Size(560, 30);
+            this.cmbApptDoctor.TabIndex = 13;
             // 
             // lblApptPatient
             // 
@@ -410,17 +409,16 @@ namespace ClinicManagement_proj.UI
             this.lblApptPatient.Text = "Patient";
             this.lblApptPatient.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // txtApptPatient
+            // cmbApptPatient
             // 
-            this.txtApptPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbApptPatient.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtApptPatient.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtApptPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtApptPatient.Location = new System.Drawing.Point(25, 248);
-            this.txtApptPatient.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
-            this.txtApptPatient.Name = "txtApptPatient";
-            this.txtApptPatient.Size = new System.Drawing.Size(560, 30);
-            this.txtApptPatient.TabIndex = 15;
+            this.cmbApptPatient.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbApptPatient.Location = new System.Drawing.Point(25, 248);
+            this.cmbApptPatient.Margin = new System.Windows.Forms.Padding(5, 2, 2, 5);
+            this.cmbApptPatient.Name = "cmbApptPatient";
+            this.cmbApptPatient.Size = new System.Drawing.Size(560, 30);
+            this.cmbApptPatient.TabIndex = 15;
             // 
             // lblApptDate
             // 
@@ -1076,9 +1074,9 @@ namespace ClinicManagement_proj.UI
         private System.Windows.Forms.Button btnApptDisplay;
         private System.Windows.Forms.Button btnApptCancel;
         private System.Windows.Forms.Label lblApptDoctor;
-        private System.Windows.Forms.TextBox txtApptDoctor;
+        private System.Windows.Forms.ComboBox cmbApptDoctor;
         private System.Windows.Forms.Label lblApptPatient;
-        private System.Windows.Forms.TextBox txtApptPatient;
+        private System.Windows.Forms.ComboBox cmbApptPatient;
         private System.Windows.Forms.Label lblApptDate;
         private System.Windows.Forms.DateTimePicker dtpApptDate;
         private System.Windows.Forms.Label lblApptTimeSlot;

@@ -92,43 +92,29 @@ namespace ClinicManagement_proj.UI
 
             dgvUsers.Columns["PasswordHash"].Visible = false;
 
-            // Custom column formatting
-            if (dgvUsers.Columns.Contains("Id"))
-            {
-                dgvUsers.Columns["Id"].HeaderText = "User ID";
-                dgvUsers.Columns["Id"].Width = 80;
-                dgvUsers.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+            dgvUsers.Columns["Id"].HeaderText = "User ID";
+            dgvUsers.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvUsers.Columns["Id"].DisplayIndex = 0;
 
-            if (dgvUsers.Columns.Contains("Username"))
-            {
-                dgvUsers.Columns["Username"].HeaderText = "Username";
-                dgvUsers.Columns["Username"].Width = 100;
-                dgvUsers.Columns["Username"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            }
+            dgvUsers.Columns["Username"].HeaderText = "Username";
+            dgvUsers.Columns["Username"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvUsers.Columns["Username"].DisplayIndex = 1;
 
-            if (dgvUsers.Columns.Contains("CreatedAt"))
-            {
-                dgvUsers.Columns["CreatedAt"].HeaderText = "Created At";
-                dgvUsers.Columns["CreatedAt"].Width = 150;
-                dgvUsers.Columns["CreatedAt"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
-                dgvUsers.Columns["CreatedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+            dgvUsers.Columns["CreatedAt"].HeaderText = "Created At";
+            dgvUsers.Columns["CreatedAt"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+            dgvUsers.Columns["CreatedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvUsers.Columns["CreatedAt"].DisplayIndex = 3;
 
-            if (dgvUsers.Columns.Contains("ModifiedAt"))
-            {
-                dgvUsers.Columns["ModifiedAt"].HeaderText = "Modified At";
-                dgvUsers.Columns["ModifiedAt"].Width = 150;
-                dgvUsers.Columns["ModifiedAt"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
-                dgvUsers.Columns["ModifiedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            }
+            dgvUsers.Columns["ModifiedAt"].HeaderText = "Modified At";
+            dgvUsers.Columns["ModifiedAt"].DefaultCellStyle.Format = "yyyy-MM-dd HH:mm";
+            dgvUsers.Columns["ModifiedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvUsers.Columns["ModifiedAt"].DisplayIndex = 4;
 
-            if (dgvUsers.Columns.Contains("Roles"))
-            {
-                dgvUsers.Columns["Roles"].HeaderText = "Role";
-                dgvUsers.Columns["Roles"].Width = 200;
-                dgvUsers.Columns["Roles"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            }
+            dgvUsers.Columns["Roles"].HeaderText = "Role";
+            dgvUsers.Columns["Roles"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvUsers.Columns["Roles"].DisplayIndex = 2;
+
+            dgvUsers.AutoResizeColumns();
         }
 
         /// <summary>
