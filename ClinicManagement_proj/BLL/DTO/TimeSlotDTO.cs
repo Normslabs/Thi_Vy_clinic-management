@@ -46,5 +46,10 @@ namespace ClinicManagement_proj.BLL.DTO
             MinuteOfHour = minuteOfHour;
             Appointments = new List<AppointmentDTO>();
         }
+
+        public override string ToString()
+        {
+            return $"{HourOfDay:D2}:{MinuteOfHour:D2}";
+        }
     }
 }

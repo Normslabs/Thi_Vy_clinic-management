@@ -65,5 +65,10 @@ namespace ClinicManagement_proj.BLL.DTO
             CreatedAt = createdAt;
             ModifiedAt = modifiedAt;
         }
+
+        public override string ToString()
+        {
+            return $"Appointment on {Date.ToShortDateString()} at {TimeSlot?.ToString() ?? "N/A"} with {Doctor?.ToString() ?? "Unknown Doctor"} for {Patient?.ToString() ?? "Unknown Patient"}";
+        }
     }
 }

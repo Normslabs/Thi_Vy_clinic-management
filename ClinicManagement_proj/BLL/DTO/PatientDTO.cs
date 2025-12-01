@@ -93,5 +93,10 @@ namespace ClinicManagement_proj.BLL.DTO
             ModifiedAt = modifiedAt;
             Appointments = new List<AppointmentDTO>();
         }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName} (Phone: {PhoneNumber})";
+        }
     }
 }

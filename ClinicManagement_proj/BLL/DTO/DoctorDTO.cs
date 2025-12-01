@@ -80,5 +80,10 @@ namespace ClinicManagement_proj.BLL.DTO
             DoctorSchedules = new List<DoctorScheduleDTO>();
             Specialties = new List<SpecialtyDTO>();
         }
+
+        public override string ToString()
+        {
+            return $"{FirstName} {LastName} (License: {LicenseNumber})";
+        }
     }
 }
