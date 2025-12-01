@@ -12,7 +12,7 @@ namespace ClinicManagement_proj.UI
     /// </summary>
     public class PatientRegistrationController : IPanelController
     {
-        private readonly PatientService patientService = ClinicManagementApp.PatientService;
+        private readonly PatientService patientService;
 
 
 
@@ -52,8 +52,9 @@ namespace ClinicManagement_proj.UI
 
         public Panel Panel => panel;
 
-        public PatientRegistrationController(Panel panel)
+        public PatientRegistrationController(Panel panel, PatientService patientService)
         {
+            this.patientService = patientService;
             this.panel = panel;
         }
 
@@ -110,18 +111,14 @@ namespace ClinicManagement_proj.UI
         private void dgvPatients_Click(object sender, EventArgs e)
         {
             if (dgvPatients.CurrentRow != null)
-            {
-
-                int selectedUserId = (int)dgvPatients.CurrentRow.Cells["Id"].Value;
-                txtPatientId.Text = selectedUserId.ToString();
-                var user = patientService.Search(selectedUserId);
-                txtPFName.Text = user.FirstName;
-                txtPLName.Text = user.LastName;
-                dtpDoB.Value = user.DateOfBirth;
-                txtMedicalNumber.Text = user.InsuranceNumber;
-                txtPPhone.Text = user.PhoneNumber;
-
-
+            {           
+                PatientDTO clickedOnPatient = (PatientDTO)dgvPatients.CurrentRow.DataBoundItem;
+                txtPatientId.Text = clickedOnPatient.Id.ToString();
+                txtPFName.Text = clickedOnPatient.FirstName;
+                txtPLName.Text = clickedOnPatient.LastName;
+                dtpDoB.Value = clickedOnPatient.DateOfBirth;
+                txtMedicalNumber.Text = clickedOnPatient.InsuranceNumber;
+                txtPPhone.Text = clickedOnPatient.PhoneNumber;
             }
         }
 
@@ -221,56 +218,53 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnPatientUpdate_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtPatientId.Text, out int id))
+            if (dgvPatients.CurrentRow != null)
             {
-                MessageBox.Show("Enter a valid ID.");
+
+                PatientDTO selectedPatient = (PatientDTO)dgvPatients.CurrentRow.DataBoundItem;
+                // Note: Id shouldnt be modifiable 
+                selectedPatient.FirstName = txtPFName.Text;
+                selectedPatient.LastName = txtPLName.Text;
+                selectedPatient.DateOfBirth = dtpDoB.Value;
+                selectedPatient.InsuranceNumber = txtMedicalNumber.Text;
+                selectedPatient.PhoneNumber = txtPPhone.Text;
+
+                patientService.UpdatePatient(selectedPatient);
+                dgvPatients.Refresh();
+
+            }
+            else
+            {
+                MessageBox.Show("This patient cannot update.");
                 return;
+
             }
 
-            if (!patientService.Exists(id))
-            {
-                MessageBox.Show("This patient ID does not exist. Cannot update.");
-                return;
-            }
-
-            var dto = new PatientDTO
-            {
-                Id = id,
-                FirstName = txtPFName.Text,
-                LastName = txtPLName.Text,
-                InsuranceNumber = txtMedicalNumber.Text,
-                DateOfBirth = DateTime.Parse(dtpDoB.Text),
-                PhoneNumber = txtPPhone.Text
-            };
-
-            patientService.UpdatePatient(dto);
-            LoadPatients();
-            //ResetPatientForm();
 
         }
 
         /// <summary>
         /// Delete selected patient
         /// </summary>
-        private void btnPatientDelete_Click(object sender, EventArgs e)
-        {
-            if (!int.TryParse(txtPatientId.Text, out int id))
-            {
-                MessageBox.Show("Enter a valid ID.");
-                return;
-            }
+        //private void btnPatientDelete_Click(object sender, EventArgs e)
+        //{
+        //    if (!int.TryParse(txtPatientId.Text, out int id))
+        //    {
+        //        MessageBox.Show("Enter a valid ID.");
+        //        return;
+        //    }
 
-            if (!patientService.Exists(id))
-            {
-                MessageBox.Show("This patient ID does not exist. Cannot delete.");
-                return;
-            }
+        //    if (!patientService.Exists(id))
+        //    {
+        //        MessageBox.Show("This patient ID does not exist. Cannot delete.");
+        //        return;
+        //    }
 
 
-            patientService.DeletePatient(id);
-            LoadPatients();
-            ResetPatientForm();
-        }
+        //    patientService.DeletePatient(id);
+        //    LoadPatients();
+        //    ResetPatientForm();
+        //}
 
         public void OnHide()
         {
