@@ -3,6 +3,7 @@ using ClinicManagement_proj.DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Data.Entity;
 
 namespace ClinicManagement_proj.BLL.Services
 {
@@ -28,47 +29,33 @@ namespace ClinicManagement_proj.BLL.Services
                 .Include(pat => pat.Appointments)
                 .FirstOrDefault(s => s.Id == id);
         }
-        public void AddPatient(PatientDTO dto)
-        {
-            //var patient = new Patient
-            //{
-            //    Id = dto.Id,
-            //    FirstName = dto.FirstName,
-            //    LastName = dto.LastName,
-            //    InsuranceNumber = dto.InsuranceNumber,
-            //    DateOfBirth = dto.DateOfBirth,
-            //    PhoneNumber = dto.PhoneNumber
-            //};
+        public PatientDTO AddPatient(PatientDTO dto)
+        {           
             clinicDb.Patients.Add(dto);
             clinicDb.SaveChanges();
+            return dto;
         }
 
-        public void UpdatePatient(PatientDTO patientDto)
-        {
-            var patient = clinicDb.Patients.FirstOrDefault(p => p.Id == patientDto.Id);
-            if (patient != null)
-            {
-                patient.FirstName = patientDto.FirstName;
-                patient.LastName = patientDto.LastName;
-                patient.InsuranceNumber = patientDto.InsuranceNumber;
-                patient.DateOfBirth = patientDto.DateOfBirth;
-                patient.PhoneNumber = patientDto.PhoneNumber;
-                patient.ModifiedAt = DateTime.UtcNow;
+        public PatientDTO UpdatePatient(PatientDTO patientDto)
+        {           
+            patientDto.ModifiedAt = DateTime.Now;
 
-                clinicDb.SaveChanges();
-            }
+            clinicDb.SaveChanges();
+            return patientDto;
         }
 
-        public void DeletePatient(int id)
-        {
-            var patient = clinicDb.Patients.Find(id);
-            if (patient != null)
-            {
-                clinicDb.Patients.Remove(patient);
-                clinicDb.SaveChanges();
+        //public void DeletePatient(int id)
+        //{
+        //    var patient = clinicDb.Patients.Find(id);
+        //    if (patient != null)
+        //    {
+        //        clinicDb.Patients.Remove(patient);
+        //        clinicDb.SaveChanges();
 
-            }
-        }
+        //    }
+        //}
+
+
 
         public PatientDTO Search(int id)
         {
