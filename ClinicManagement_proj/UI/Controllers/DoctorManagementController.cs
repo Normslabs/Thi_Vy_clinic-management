@@ -1,5 +1,10 @@
+using ClinicManagement_proj.BLL;
+using ClinicManagement_proj.BLL.DTO;
+using ClinicManagement_proj.BLL.Services;
 using ClinicManagement_proj.BLL.Utils;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace ClinicManagement_proj.UI
@@ -10,12 +15,15 @@ namespace ClinicManagement_proj.UI
     public class DoctorManagementController : IPanelController
     {
         private readonly Panel panel;
+        private readonly DoctorService doctorService;
         private DataGridView dgvDoctors => (DataGridView)(panel.Controls["dgvDoctors"]
                 ?? throw new Exception("No control named [dgvDoctors] found in panel controls collection."));
         private GroupBox grpDoctorMgmt => (GroupBox)(panel.Controls["grpDoctorMgmt"]
                 ?? throw new Exception("No control named [grpDoctorMgmt] found in panel controls collection."));
         private TableLayoutPanel actionsLayout => (TableLayoutPanel)(grpDoctorMgmt.Controls["layoutDoctorActions"]
                 ?? throw new Exception("No control named [layoutDoctorActions] found in grpDoctorMgmt controls collection."));
+        private TextBox txtDoctorId => (TextBox)(grpDoctorMgmt.Controls["txtDoctorId"]
+                ?? throw new Exception("No control named [txtDoctorId] found in grpDoctorMgmt controls collection"));
         private TextBox txtDoctorFName => (TextBox)(grpDoctorMgmt.Controls["txtDoctorFName"]
                 ?? throw new Exception("No control named [txtDoctorFName] found in grpDoctorMgmt controls collection."));
         private TextBox txtDoctorLName => (TextBox)(grpDoctorMgmt.Controls["txtDoctorLName"]
@@ -26,15 +34,20 @@ namespace ClinicManagement_proj.UI
                 ?? throw new Exception("No control named [btnDoctorCreate] found in actionsLayout controls collection."));
         private Button btnDoctorUpdate => (Button)(actionsLayout.Controls["btnDoctorUpdate"]
                 ?? throw new Exception("No control named [btnDoctorUpdate] found in actionsLayout controls collection."));
+        private Button btnDoctorSearch => (Button)(actionsLayout.Controls["btnDoctorSearch"]
+                ?? throw new Exception("No control named [btnDoctorSearch] found in actionsLayout controls collection."));
         private Button btnDoctorCancel => (Button)(actionsLayout.Controls["btnDoctorCancel"]
                 ?? throw new Exception("No control named [btnDoctorCancel] found in actionsLayout controls collection."));
         private Button btnDoctorDelete => (Button)(actionsLayout.Controls["btnDoctorDelete"]
                 ?? throw new Exception("No control named [btnDoctorDelete] found in actionsLayout controls collection."));
 
+        private bool isEditMode = false;
+
         public Panel Panel => panel;
 
         public DoctorManagementController(Panel panel)
         {
+            this.doctorService = ClinicManagementApp.DoctorService;
             this.panel = panel;
         }
 
@@ -42,6 +55,7 @@ namespace ClinicManagement_proj.UI
         {
             btnDoctorCreate.Click += new EventHandler(btnDoctorCreate_Click);
             btnDoctorUpdate.Click += new EventHandler(btnDoctorUpdate_Click);
+            btnDoctorSearch.Click += new EventHandler(btnDoctorSearch_Click);
             btnDoctorCancel.Click += new EventHandler(btnDoctorCancel_Click);
             btnDoctorDelete.Click += new EventHandler(btnDoctorDelete_Click);
             dgvDoctors.Click += new EventHandler(dgvDoctors_Click);
@@ -51,12 +65,52 @@ namespace ClinicManagement_proj.UI
         {
             ResetDoctorForm();
             LoadDoctors();
+
+            cmbSpecialization.DataSource = doctorService.GetAllSpecialties();
         }
 
         private void LoadDoctors()
         {
-            // var doctors = doctorService.GetAllDoctors();
-            // dgvDoctors.DataSource = doctors;
+            var doctors = doctorService.GetAllDoctors();
+            dgvDoctors.DataSource = doctors;
+
+            dgvDoctors.Columns["Id"].HeaderText = "Doctor ID";
+            dgvDoctors.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvDoctors.Columns["Id"].DisplayIndex = 0;
+
+            dgvDoctors.Columns["FirstName"].HeaderText = "First Name";
+            dgvDoctors.Columns["FirstName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["FirstName"].DisplayIndex = 1;
+
+            dgvDoctors.Columns["LastName"].HeaderText = "Last Name";
+            dgvDoctors.Columns["LastName"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["LastName"].DisplayIndex = 2;
+
+            dgvDoctors.Columns["LicenseNumber"].HeaderText = "License Number";
+            dgvDoctors.Columns["LicenseNumber"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["LicenseNumber"].DisplayIndex = 3;
+
+            dgvDoctors.Columns["CreatedAt"].HeaderText = "Created At";
+            dgvDoctors.Columns["CreatedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["CreatedAt"].DisplayIndex = 4;
+
+            dgvDoctors.Columns["ModifiedAt"].HeaderText = "Modified At";
+            dgvDoctors.Columns["ModifiedAt"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["ModifiedAt"].DisplayIndex = 5;
+
+            dgvDoctors.Columns["Appointments"].HeaderText = "Appointments";
+            dgvDoctors.Columns["Appointments"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["Appointments"].DisplayIndex = 6;
+
+            dgvDoctors.Columns["DoctorSchedules"].HeaderText = "Doctor Schedules";
+            dgvDoctors.Columns["DoctorSchedules"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["DoctorSchedules"].DisplayIndex = 7;
+
+            dgvDoctors.Columns["Specialties"].HeaderText = "Specialties";
+            dgvDoctors.Columns["Specialties"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dgvDoctors.Columns["Specialties"].DisplayIndex = 8;
+
+            dgvDoctors.AutoResizeColumns();
         }
 
         /// <summary>
@@ -64,13 +118,30 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void ResetDoctorForm()
         {
+            txtDoctorId.Text = string.Empty;
             txtDoctorFName.Text = string.Empty;
             txtDoctorLName.Text = string.Empty;
-
-            // TODO: Load specializations when enum is available
             cmbSpecialization.SelectedIndex = -1;
+            isEditMode = false;
+
+            btnDoctorCreate.Enabled = true;
+            btnDoctorCancel.Enabled = false;
+            btnDoctorDelete.Enabled = false;
+            btnDoctorUpdate.Enabled = false;
 
             dgvDoctors.ClearSelection();
+        }
+
+        /// <summary>
+        /// Enter edit mode for doctor form
+        /// </summary>
+        private void EnterDoctorEditMode()
+        {
+            btnDoctorCreate.Enabled = false;
+            btnDoctorCancel.Enabled = true;
+            btnDoctorDelete.Enabled = true;
+            btnDoctorUpdate.Enabled = true;
+            grpDoctorMgmt.Text = "Edit Doctor";
         }
 
         /// <summary>
@@ -80,9 +151,16 @@ namespace ClinicManagement_proj.UI
         {
             if (dgvDoctors.CurrentRow != null)
             {
-                // Load selected doctor data
-                txtDoctorFName.Text = dgvDoctors.CurrentRow.Cells["FirstName"].Value.ToString();
-                txtDoctorLName.Text = dgvDoctors.CurrentRow.Cells["LastName"].Value.ToString();
+                DoctorDTO selectedDoctor = (DoctorDTO)dgvDoctors.CurrentRow.DataBoundItem;
+                txtDoctorId.Text = selectedDoctor.Id.ToString();
+                txtDoctorFName.Text = selectedDoctor.FirstName;
+                txtDoctorLName.Text = selectedDoctor.LastName;
+                
+                if (selectedDoctor.Specialties.Any())
+                {
+                    cmbSpecialization.SelectedItem = selectedDoctor.Specialties.First();
+                }
+                EnterDoctorEditMode();
             }
         }
 
@@ -99,6 +177,7 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnDoctorCreate_Click(object sender, EventArgs e)
         {
+            // TODO: Implement actual create logic
             NotificationManager.AddNotification("Doctor operation simulated!", NotificationType.Info);
             ResetDoctorForm();
         }
@@ -108,8 +187,63 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnDoctorUpdate_Click(object sender, EventArgs e)
         {
+            // TODO: Implement actual update logic
             NotificationManager.AddNotification("Doctor operation simulated!", NotificationType.Info);
             ResetDoctorForm();
+        }
+
+        /// <summary>
+        /// Search for doctor
+        /// </summary>
+        private void btnDoctorSearch_Click(object sender, EventArgs e)
+        {
+            string idText = txtDoctorId.Text.Trim();
+            string firstName = txtDoctorFName.Text.Trim();
+            string lastName = txtDoctorLName.Text.Trim();
+
+            List<DoctorDTO> doctors = null;
+
+            if (!string.IsNullOrEmpty(idText))
+            {
+                if (!int.TryParse(idText, out int doctorId))
+                {
+                    NotificationManager.AddNotification("Invalid Doctor ID format.", NotificationType.Error);
+                    return;
+                }
+                doctors = doctorService.Search(doctorId);
+            }
+            else if (!string.IsNullOrEmpty(firstName))
+            {
+                doctors = doctorService.Search(firstName);
+            }
+            else if (!string.IsNullOrEmpty(lastName))
+            {
+                doctors = doctorService.Search(lastName);
+            }
+            else
+            {
+                NotificationManager.AddNotification("Enter doctor id or first name or last name to search!", NotificationType.Warning);
+                return;
+            }
+
+            if (doctors.Count == 0)
+            {
+                NotificationManager.AddNotification("No doctors found matching the criteria.", NotificationType.Info);
+                return;
+            }
+
+            try
+            {
+                dgvDoctors.DataSource = doctors;
+                DoctorDTO doctor = (DoctorDTO)dgvDoctors.Rows[0].DataBoundItem;
+                txtDoctorId.Text = doctor.Id.ToString();
+                txtDoctorFName.Text = doctor.FirstName;
+                txtDoctorLName.Text = doctor.LastName;
+            }
+            catch (Exception ex)
+            {
+                NotificationManager.AddNotification($"Error during doctor search: {ex.Message}", NotificationType.Error);
+            }
         }
 
         /// <summary>
@@ -117,8 +251,18 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnDoctorDelete_Click(object sender, EventArgs e)
         {
-            NotificationManager.AddNotification("Doctor delete simulated!", NotificationType.Info);
-            ResetDoctorForm();
+            try
+            {
+                DoctorDTO doctor = (DoctorDTO)dgvDoctors.CurrentRow.DataBoundItem;
+                doctorService.DeleteDoctor(doctor.Id);
+                NotificationManager.AddNotification("Doctor deleted successfully.", NotificationType.Info);
+                LoadDoctors();
+                ResetDoctorForm();
+            }
+            catch (Exception ex)
+            {
+                NotificationManager.AddNotification($"Error deleting doctor: {ex.Message}", NotificationType.Error);
+            }
         }
 
         public void OnHide()
