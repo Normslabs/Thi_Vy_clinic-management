@@ -34,7 +34,7 @@ namespace ClinicManagement_proj.UI
             navigationManager = new NavigationManager(SIDEBAR_BG, SIDEBAR_ACTIVE);
 
             // Initialize panel controllers
-            patientRegistrationController = new PatientRegistrationController(pnlPatientRegistration, ClinicManagementApp.PatientService);
+            patientRegistrationController = new PatientRegistrationController(pnlPatientRegistration);
             appointmentManagementController = new ApptMgmtController(pnlAppointmentManagement);
         }
 

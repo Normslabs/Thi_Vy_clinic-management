@@ -75,6 +75,9 @@ namespace ClinicManagement_proj.UI
             txtUsrPassword.TextChanged += new EventHandler(txtUsrPassword_TextChanged);
             dgvUsers.Click += new EventHandler(dgvUsers_Click);
             dgvUsers.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvUsers_CellFormatting);
+
+            // Ensure scrollbars are enabled
+            dgvUsers.ScrollBars = ScrollBars.Both;
         }
 
         public void OnShow()

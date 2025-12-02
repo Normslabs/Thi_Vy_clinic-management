@@ -59,6 +59,9 @@ namespace ClinicManagement_proj.UI
             btnDoctorCancel.Click += new EventHandler(btnDoctorCancel_Click);
             btnDoctorDelete.Click += new EventHandler(btnDoctorDelete_Click);
             dgvDoctors.Click += new EventHandler(dgvDoctors_Click);
+
+            // Ensure scrollbars are enabled
+            dgvDoctors.ScrollBars = ScrollBars.Both;
         }
 
         public void OnShow()

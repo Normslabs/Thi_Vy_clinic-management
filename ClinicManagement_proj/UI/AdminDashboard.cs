@@ -41,7 +41,7 @@ namespace ClinicManagement_proj.UI
             userManagementController = new UserManagementController(pnlUserManagement);
             doctorManagementController = new DoctorManagementController(pnlDoctorManagement);
             schedulingController = new SchedulingController(pnlDoctorScheduling);
-            patientRegistrationController = new PatientRegistrationController(pnlPatientRegistration, ClinicManagementApp.PatientService);
+            patientRegistrationController = new PatientRegistrationController(pnlPatientRegistration);
             reportsController = new ReportsController(pnlReports);
             appointmentManagementController = new ApptMgmtController(pnlAppointmentManagement);
         }

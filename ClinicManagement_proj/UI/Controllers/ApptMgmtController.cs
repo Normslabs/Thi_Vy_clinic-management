@@ -74,6 +74,9 @@ namespace ClinicManagement_proj.UI
             cmbApptDoctor.TextChanged += new EventHandler(cmbApptDoctor_TextChanged);
             cmbApptPatient.TextChanged += new EventHandler(cmbApptPatient_TextChanged);
             dgvAppointments.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvAppointments_CellFormatting);
+
+            // Ensure scrollbars are enabled
+            dgvAppointments.ScrollBars = ScrollBars.Both;
         }
 
         public void OnShow()
@@ -86,7 +89,6 @@ namespace ClinicManagement_proj.UI
         {
             dgvAppointments.DataSource = appointmentService.GetAllAppointments();
 
-            dgvAppointments.Columns["Id"].Visible = false;
             dgvAppointments.Columns["DoctorId"].Visible = false;
             dgvAppointments.Columns["TimeSlotId"].Visible = false;
             dgvAppointments.Columns["PatientId"].Visible = false;
@@ -97,16 +99,18 @@ namespace ClinicManagement_proj.UI
 
             dgvAppointments.Columns["Date"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvAppointments.Columns["TimeSlot"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dgvAppointments.Columns["Id"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dgvAppointments.AutoResizeColumns();
 
-            dgvAppointments.Columns["Date"].DisplayIndex = 0;
-            dgvAppointments.Columns["TimeSlot"].DisplayIndex = 1;
-            dgvAppointments.Columns["Doctor"].DisplayIndex = 2;
-            dgvAppointments.Columns["Patient"].DisplayIndex = 3;
-            dgvAppointments.Columns["Status"].DisplayIndex = 4;
-            dgvAppointments.Columns["Notes"].DisplayIndex = 5;
-            dgvAppointments.Columns["CreatedAt"].DisplayIndex = 6;
-            dgvAppointments.Columns["ModifiedAt"].DisplayIndex = 7;
+            dgvAppointments.Columns["Id"].DisplayIndex = 0;
+            dgvAppointments.Columns["Date"].DisplayIndex = 1;
+            dgvAppointments.Columns["TimeSlot"].DisplayIndex = 2;
+            dgvAppointments.Columns["Doctor"].DisplayIndex = 3;
+            dgvAppointments.Columns["Patient"].DisplayIndex = 4;
+            dgvAppointments.Columns["Status"].DisplayIndex = 5;
+            dgvAppointments.Columns["Notes"].DisplayIndex = 6;
+            dgvAppointments.Columns["CreatedAt"].DisplayIndex = 7;
+            dgvAppointments.Columns["ModifiedAt"].DisplayIndex = 8;
         }
 
         private void ResetAppointmentForm()

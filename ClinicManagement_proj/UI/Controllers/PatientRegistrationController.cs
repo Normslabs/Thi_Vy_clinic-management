@@ -1,3 +1,4 @@
+using ClinicManagement_proj.BLL;
 using ClinicManagement_proj.BLL.DTO;
 using ClinicManagement_proj.BLL.Services;
 using System;
@@ -40,8 +41,6 @@ namespace ClinicManagement_proj.UI
                 ?? throw new Exception("No control named [btnPUpdate] found in layoutPatientButtons controls collection."));
         private Button btnPatientCancel => (Button)(layoutPatientButtons.Controls["btnPCancel"]
                 ?? throw new Exception("No control named [btnPCancel] found in layoutPatientButtons controls collection."));
-        //private Button btnPatientDelete => (Button)(layoutPatientButtons.Controls["btnPDelete"] 
-        //        ?? throw new Exception("No control named [btnPDelete] found in layoutPatientButtons controls collection."));
         private Button btnPatientDisplay => (Button)(layoutPatientButtons.Controls["btnPDisplay"]
                 ?? throw new Exception("No control named [btnPDisplay] found in layoutPatientButtons controls collection."));
         private Button btnPatientSearch => (Button)(layoutPatientButtons.Controls["btnPSearch"]
@@ -51,15 +50,10 @@ namespace ClinicManagement_proj.UI
 
         public Panel Panel => panel;
 
-        public PatientRegistrationController(Panel panel, PatientService patientService)
+        public PatientRegistrationController(Panel panel)
         {
-            this.patientService = patientService;
+            this.patientService = ClinicManagementApp.PatientService;
             this.panel = panel;
-        }
-
-        public PatientRegistrationController(Panel pnlPatientRegistration)
-        {
-            this.panel = pnlPatientRegistration;
         }
 
         public void Initialize()
@@ -71,6 +65,9 @@ namespace ClinicManagement_proj.UI
             btnPatientDisplay.Click += new EventHandler(btnPatientDisplay_Click);
             btnPatientSearch.Click += new EventHandler(btnPatientSearch_Click);
             dgvPatients.Click += new EventHandler(dgvPatients_Click);
+
+            // Ensure scrollbars are enabled
+            dgvPatients.ScrollBars = ScrollBars.Both;
         }
 
         public void OnShow()
