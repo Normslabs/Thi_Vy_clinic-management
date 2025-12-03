@@ -58,7 +58,7 @@ namespace ClinicManagement_proj.UI
             this.lblApptDate = new System.Windows.Forms.Label();
             this.dtpApptDate = new System.Windows.Forms.DateTimePicker();
             this.lblApptTimeSlot = new System.Windows.Forms.Label();
-            this.flpApptTimeSlots = new System.Windows.Forms.FlowLayoutPanel();
+            this.cmbApptTimeSlots = new System.Windows.Forms.ComboBox();
             this.lblApptNotes = new System.Windows.Forms.Label();
             this.txtApptNotes = new System.Windows.Forms.TextBox();
             this.lblApptStatus = new System.Windows.Forms.Label();
@@ -128,7 +128,7 @@ namespace ClinicManagement_proj.UI
             this.lblHeader.Location = new System.Drawing.Point(232, 0);
             this.lblHeader.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblHeader.Name = "lblHeader";
-            this.lblHeader.Size = new System.Drawing.Size(1109, 100);
+            this.lblHeader.Size = new System.Drawing.Size(1032, 100);
             this.lblHeader.TabIndex = 1;
             this.lblHeader.Text = "Doctor Dashboard";
             this.lblHeader.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -144,7 +144,7 @@ namespace ClinicManagement_proj.UI
             this.pnlSidebar.Location = new System.Drawing.Point(0, 100);
             this.pnlSidebar.Margin = new System.Windows.Forms.Padding(2);
             this.pnlSidebar.Name = "pnlSidebar";
-            this.pnlSidebar.Size = new System.Drawing.Size(238, 740);
+            this.pnlSidebar.Size = new System.Drawing.Size(238, 601);
             this.pnlSidebar.TabIndex = 2;
             // 
             // btnAppointmentManagement
@@ -245,7 +245,7 @@ namespace ClinicManagement_proj.UI
             this.pnlMainContent.Margin = new System.Windows.Forms.Padding(2);
             this.pnlMainContent.Name = "pnlMainContent";
             this.pnlMainContent.Padding = new System.Windows.Forms.Padding(16);
-            this.pnlMainContent.Size = new System.Drawing.Size(1103, 740);
+            this.pnlMainContent.Size = new System.Drawing.Size(1026, 601);
             this.pnlMainContent.TabIndex = 3;
             // 
             // pnlAppointmentManagement
@@ -256,7 +256,7 @@ namespace ClinicManagement_proj.UI
             this.pnlAppointmentManagement.Location = new System.Drawing.Point(16, 16);
             this.pnlAppointmentManagement.Margin = new System.Windows.Forms.Padding(2);
             this.pnlAppointmentManagement.Name = "pnlAppointmentManagement";
-            this.pnlAppointmentManagement.Size = new System.Drawing.Size(1071, 708);
+            this.pnlAppointmentManagement.Size = new System.Drawing.Size(994, 569);
             this.pnlAppointmentManagement.TabIndex = 6;
             this.pnlAppointmentManagement.Visible = false;
             // 
@@ -279,7 +279,7 @@ namespace ClinicManagement_proj.UI
             this.dgvAppointments.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvAppointments.RowTemplate.Height = 24;
             this.dgvAppointments.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAppointments.Size = new System.Drawing.Size(583, 708);
+            this.dgvAppointments.Size = new System.Drawing.Size(506, 569);
             this.dgvAppointments.TabIndex = 8;
             // 
             // grpApptMgmt
@@ -291,7 +291,7 @@ namespace ClinicManagement_proj.UI
             this.grpApptMgmt.Controls.Add(this.lblApptDate);
             this.grpApptMgmt.Controls.Add(this.dtpApptDate);
             this.grpApptMgmt.Controls.Add(this.lblApptTimeSlot);
-            this.grpApptMgmt.Controls.Add(this.flpApptTimeSlots);
+            this.grpApptMgmt.Controls.Add(this.cmbApptTimeSlots);
             this.grpApptMgmt.Controls.Add(this.lblApptNotes);
             this.grpApptMgmt.Controls.Add(this.txtApptNotes);
             this.grpApptMgmt.Controls.Add(this.lblApptStatus);
@@ -305,7 +305,7 @@ namespace ClinicManagement_proj.UI
             this.grpApptMgmt.Margin = new System.Windows.Forms.Padding(2);
             this.grpApptMgmt.Name = "grpApptMgmt";
             this.grpApptMgmt.Padding = new System.Windows.Forms.Padding(20);
-            this.grpApptMgmt.Size = new System.Drawing.Size(488, 708);
+            this.grpApptMgmt.Size = new System.Drawing.Size(488, 569);
             this.grpApptMgmt.TabIndex = 7;
             this.grpApptMgmt.TabStop = false;
             this.grpApptMgmt.Text = "Appointment Management";
@@ -485,17 +485,15 @@ namespace ClinicManagement_proj.UI
             this.lblApptTimeSlot.Text = "Time Slot";
             this.lblApptTimeSlot.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // flpApptTimeSlots
+            // cmbApptTimeSlots
             // 
-            this.flpApptTimeSlots.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.cmbApptTimeSlots.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.flpApptTimeSlots.AutoScroll = true;
-            this.flpApptTimeSlots.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flpApptTimeSlots.Location = new System.Drawing.Point(20, 336);
-            this.flpApptTimeSlots.Margin = new System.Windows.Forms.Padding(2);
-            this.flpApptTimeSlots.Name = "flpApptTimeSlots";
-            this.flpApptTimeSlots.Size = new System.Drawing.Size(448, 48);
-            this.flpApptTimeSlots.TabIndex = 19;
+            this.cmbApptTimeSlots.Location = new System.Drawing.Point(20, 336);
+            this.cmbApptTimeSlots.Margin = new System.Windows.Forms.Padding(2);
+            this.cmbApptTimeSlots.Name = "cmbApptTimeSlots";
+            this.cmbApptTimeSlots.Size = new System.Drawing.Size(449, 28);
+            this.cmbApptTimeSlots.TabIndex = 19;
             // 
             // lblApptNotes
             // 
@@ -600,7 +598,7 @@ namespace ClinicManagement_proj.UI
             this.pnlPatientRegistration.Location = new System.Drawing.Point(16, 16);
             this.pnlPatientRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.pnlPatientRegistration.Name = "pnlPatientRegistration";
-            this.pnlPatientRegistration.Size = new System.Drawing.Size(1071, 708);
+            this.pnlPatientRegistration.Size = new System.Drawing.Size(994, 569);
             this.pnlPatientRegistration.TabIndex = 3;
             this.pnlPatientRegistration.Visible = false;
             // 
@@ -622,7 +620,7 @@ namespace ClinicManagement_proj.UI
             this.dgvRegPatients.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvRegPatients.RowTemplate.Height = 24;
             this.dgvRegPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvRegPatients.Size = new System.Drawing.Size(583, 708);
+            this.dgvRegPatients.Size = new System.Drawing.Size(506, 569);
             this.dgvRegPatients.TabIndex = 7;
             // 
             // grpPatientRegistration
@@ -646,7 +644,7 @@ namespace ClinicManagement_proj.UI
             this.grpPatientRegistration.Margin = new System.Windows.Forms.Padding(2);
             this.grpPatientRegistration.Name = "grpPatientRegistration";
             this.grpPatientRegistration.Padding = new System.Windows.Forms.Padding(20);
-            this.grpPatientRegistration.Size = new System.Drawing.Size(488, 708);
+            this.grpPatientRegistration.Size = new System.Drawing.Size(488, 569);
             this.grpPatientRegistration.TabIndex = 6;
             this.grpPatientRegistration.TabStop = false;
             this.grpPatientRegistration.Text = "Register Patient";
@@ -909,7 +907,7 @@ namespace ClinicManagement_proj.UI
             this.pnlReports.Location = new System.Drawing.Point(16, 16);
             this.pnlReports.Margin = new System.Windows.Forms.Padding(2);
             this.pnlReports.Name = "pnlReports";
-            this.pnlReports.Size = new System.Drawing.Size(1071, 708);
+            this.pnlReports.Size = new System.Drawing.Size(994, 569);
             this.pnlReports.TabIndex = 1;
             this.pnlReports.Visible = false;
             // 
@@ -921,7 +919,7 @@ namespace ClinicManagement_proj.UI
             this.lblReportsPlaceholder.Location = new System.Drawing.Point(0, 0);
             this.lblReportsPlaceholder.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblReportsPlaceholder.Name = "lblReportsPlaceholder";
-            this.lblReportsPlaceholder.Size = new System.Drawing.Size(1071, 708);
+            this.lblReportsPlaceholder.Size = new System.Drawing.Size(994, 569);
             this.lblReportsPlaceholder.TabIndex = 0;
             this.lblReportsPlaceholder.Text = "Reports Module - Coming Soon";
             this.lblReportsPlaceholder.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -935,7 +933,7 @@ namespace ClinicManagement_proj.UI
             this.pnlHeader.Location = new System.Drawing.Point(0, 0);
             this.pnlHeader.Margin = new System.Windows.Forms.Padding(2);
             this.pnlHeader.Name = "pnlHeader";
-            this.pnlHeader.Size = new System.Drawing.Size(1341, 100);
+            this.pnlHeader.Size = new System.Drawing.Size(1264, 100);
             this.pnlHeader.TabIndex = 4;
             // 
             // grpNotifications
@@ -946,7 +944,7 @@ namespace ClinicManagement_proj.UI
             this.grpNotifications.Dock = System.Windows.Forms.DockStyle.Right;
             this.grpNotifications.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grpNotifications.ForeColor = System.Drawing.Color.White;
-            this.grpNotifications.Location = new System.Drawing.Point(683, 0);
+            this.grpNotifications.Location = new System.Drawing.Point(606, 0);
             this.grpNotifications.Margin = new System.Windows.Forms.Padding(2);
             this.grpNotifications.Name = "grpNotifications";
             this.grpNotifications.Padding = new System.Windows.Forms.Padding(24, 16, 24, 24);
@@ -1023,10 +1021,10 @@ namespace ClinicManagement_proj.UI
             this.pnlNotifications.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.pnlNotifications.Controls.Add(this.lbNotifications);
             this.pnlNotifications.Dock = System.Windows.Forms.DockStyle.Right;
-            this.pnlNotifications.Location = new System.Drawing.Point(1340, 100);
+            this.pnlNotifications.Location = new System.Drawing.Point(1263, 100);
             this.pnlNotifications.Margin = new System.Windows.Forms.Padding(2);
             this.pnlNotifications.Name = "pnlNotifications";
-            this.pnlNotifications.Size = new System.Drawing.Size(1, 740);
+            this.pnlNotifications.Size = new System.Drawing.Size(1, 601);
             this.pnlNotifications.TabIndex = 1;
             this.pnlNotifications.Visible = false;
             // 
@@ -1042,7 +1040,7 @@ namespace ClinicManagement_proj.UI
             this.lbNotifications.Location = new System.Drawing.Point(0, 0);
             this.lbNotifications.Margin = new System.Windows.Forms.Padding(2);
             this.lbNotifications.Name = "lbNotifications";
-            this.lbNotifications.Size = new System.Drawing.Size(0, 645);
+            this.lbNotifications.Size = new System.Drawing.Size(0, 480);
             this.lbNotifications.TabIndex = 0;
             // 
             // timerToast
@@ -1070,7 +1068,7 @@ namespace ClinicManagement_proj.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.ClientSize = new System.Drawing.Size(1341, 840);
+            this.ClientSize = new System.Drawing.Size(1264, 701);
             this.Controls.Add(this.pnlNotifications);
             this.Controls.Add(this.pnlMainContent);
             this.Controls.Add(this.pnlSidebar);
@@ -1078,7 +1076,7 @@ namespace ClinicManagement_proj.UI
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(1357, 830);
+            this.MinimumSize = new System.Drawing.Size(1280, 740);
             this.Name = "DoctorDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Doctor Dashboard";
@@ -1166,7 +1164,7 @@ namespace ClinicManagement_proj.UI
         private System.Windows.Forms.Label lblApptDate;
         private System.Windows.Forms.DateTimePicker dtpApptDate;
         private System.Windows.Forms.Label lblApptTimeSlot;
-        private System.Windows.Forms.FlowLayoutPanel flpApptTimeSlots;
+        private System.Windows.Forms.ComboBox cmbApptTimeSlots;
         private System.Windows.Forms.Label lblApptNotes;
         private System.Windows.Forms.TextBox txtApptNotes;
         private System.Windows.Forms.Label lblApptStatus;
