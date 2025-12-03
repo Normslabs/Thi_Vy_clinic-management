@@ -177,9 +177,41 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnDoctorCreate_Click(object sender, EventArgs e)
         {
-            // TODO: Implement actual create logic
-            NotificationManager.AddNotification("Doctor operation simulated!", NotificationType.Info);
-            ResetDoctorForm();
+            string idTxt = txtDoctorId.Text.Trim();
+            string name = txtDoctorFName.Text.Trim();
+            string lastName = txtDoctorLName.Text.Trim();
+            var specialization = cmbSpecialization.SelectedItem as SpecialtyDTO;
+
+            if (string.IsNullOrWhiteSpace(name) || string.IsNullOrWhiteSpace(lastName))
+            {
+                NotificationManager.AddNotification("First Name and Last Name are required.", NotificationType.Warning);
+                return;
+            }
+
+            if (!int.TryParse(idTxt, out int id))
+            {
+                NotificationManager.AddNotification("Invalid Doctor ID format.", NotificationType.Error);
+                return;
+            }
+
+            try
+            {
+                DoctorDTO newDoctor = new DoctorDTO
+                {
+                    Id = id,
+                    FirstName = name,
+                    LastName = lastName,
+                    Specialties = specialization != null ? new List<SpecialtyDTO> { specialization } : new List<SpecialtyDTO>()
+                };
+                doctorService.CreateDoctor(newDoctor);
+                NotificationManager.AddNotification("Doctor created successfully.", NotificationType.Info);
+                LoadDoctors();
+                ResetDoctorForm();
+            }
+            catch (Exception ex)
+            {
+                NotificationManager.AddNotification($"Error creating doctor: {ex.Message}", NotificationType.Error);
+            }
         }
 
         /// <summary>
