@@ -18,9 +18,9 @@ namespace ClinicManagement_proj.UI
         DoctorService doctorService;
         PatientService patientService;
 
-        private DoctorDTO selectedDoctor;
-        private PatientDTO selectedPatient;
-        private TimeSlotDTO selectedTimeSlot;
+        private DoctorDTO selectedDoctor = null;
+        private PatientDTO selectedPatient = null;
+        private TimeSlotDTO selectedTimeSlot = null;
 
         private bool isUpdatingDoctorCombo = false;
         private bool isUpdatingPatientCombo = false;
@@ -196,8 +196,6 @@ namespace ClinicManagement_proj.UI
                 DoctorId = selectedDoctor.Id,
                 PatientId = selectedPatient.Id,
                 TimeSlotId = selectedTimeSlot.Id,
-                CreatedAt = DateTime.Now,
-                ModifiedAt = DateTime.Now
             };
 
             appointmentService.CreateAppointment(dto);
@@ -228,14 +226,22 @@ namespace ClinicManagement_proj.UI
 
         private void dtpApptDate_ValueChanged(object sender, EventArgs e)
         {
+            LoadTimeSlots();
+        }
+
+        private void LoadTimeSlots()
+        {
             cmbApptTimeSlots.DataSource = null;
             cmbApptTimeSlots.Items.Clear();
-            var slots = appointmentService.GetAvailableTimeSlots(dtpApptDate.Value);
-            if (selectedTimeSlot != null && !slots.Contains(selectedTimeSlot))
+            if (selectedDoctor != null)
             {
-                slots.Add(selectedTimeSlot);
+                var slots = appointmentService.GetAvailableTimeSlots(selectedDoctor.Id, dtpApptDate.Value);
+                if (selectedTimeSlot != null && !slots.Contains(selectedTimeSlot))
+                {
+                    slots.Add(selectedTimeSlot);
+                }
+                cmbApptTimeSlots.DataSource = slots;
             }
-            cmbApptTimeSlots.DataSource = slots;
             cmbApptTimeSlots.SelectedIndex = -1;
         }
 
@@ -327,6 +333,7 @@ namespace ClinicManagement_proj.UI
         {
             selectedDoctor = cmbApptDoctor.SelectedIndex != -1 ? (DoctorDTO)cmbApptDoctor.SelectedItem : null;
             cmbApptDoctor.BackColor = selectedDoctor != null ? Color.LightGreen : SystemColors.Window;
+            LoadTimeSlots(); // Load time slots when doctor is selected
         }
 
         private void cmbApptPatient_SelectedIndexChanged(object sender, EventArgs e)

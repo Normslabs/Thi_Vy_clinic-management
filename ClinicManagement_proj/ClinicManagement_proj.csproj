@@ -111,28 +111,13 @@
     <Compile Include="DAL\Specialty.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DAL\sp_BookAppointment_Result.cs">
-      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\sp_CancelAppointment_Result.cs">
-      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="DAL\sp_GetAvailableSlots_Result.cs">
-      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\sp_GetDoctorCurrentSchedule_Result.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\TimeSlot.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\User.cs">
-      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\vw_DoctorCurrentSchedule.cs">
-      <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="DAL\vw_DoctorWorkloadStats.cs">
       <DependentUpon>HealthCareClinicModel.tt</DependentUpon>
     </Compile>
     <Compile Include="DAL\vw_PatientRecordsSummary.cs">

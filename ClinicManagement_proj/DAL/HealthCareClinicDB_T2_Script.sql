@@ -17,33 +17,13 @@ IF OBJECT_ID('dbo.sp_GetAvailableSlots', 'P') IS NOT NULL
     DROP PROCEDURE dbo.sp_GetAvailableSlots;
 GO
 
-IF OBJECT_ID('dbo.sp_CancelAppointment', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.sp_CancelAppointment;
-GO
-
-IF OBJECT_ID('dbo.sp_BookAppointment', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.sp_BookAppointment;
-GO
-
-IF OBJECT_ID('dbo.sp_GetDoctorCurrentSchedule', 'P') IS NOT NULL
-    DROP PROCEDURE dbo.sp_GetDoctorCurrentSchedule;
-GO
-
 -- DROP VIEWS
-IF OBJECT_ID('dbo.vw_DoctorWorkloadStats', 'V') IS NOT NULL
-    DROP VIEW dbo.vw_DoctorWorkloadStats;
-GO
-
 IF OBJECT_ID('dbo.vw_PatientRecordsSummary', 'V') IS NOT NULL
     DROP VIEW dbo.vw_PatientRecordsSummary;
 GO
 
 IF OBJECT_ID('dbo.vw_UpcomingAppointments', 'V') IS NOT NULL
     DROP VIEW dbo.vw_UpcomingAppointments;
-GO
-
-IF OBJECT_ID('dbo.vw_DoctorCurrentSchedule', 'V') IS NOT NULL
-    DROP VIEW dbo.vw_DoctorCurrentSchedule;
 GO
 
 -- DROP TABLES (correct FK order: children → parents)
@@ -325,25 +305,7 @@ INSERT INTO dbo.Appointment (PatientId, DoctorId, TimeSlotId, Date, Notes, Statu
 
 GO
 
--- VIEW 1: Doctor's Current Schedule
-CREATE VIEW dbo.vw_DoctorCurrentSchedule
-AS
-SELECT 
-    d.Id AS DoctorId,
-    d.FirstName + ' ' + d.LastName AS DoctorName,
-    s.Name AS Specialization,
-    sc.DayOfWeek,
-    CONVERT(VARCHAR(5), sc.WorkStartTime, 108) AS StartTime,
-    CONVERT(VARCHAR(5), sc.WorkEndTime, 108) AS EndTime,
-    d.LicenseNumber
-FROM 
-    dbo.Doctor d
-    LEFT JOIN dbo.DoctorSpecialties ds ON d.Id = ds.DoctorId
-    LEFT JOIN dbo.Specialties s ON ds.SpecialtyId = s.Id
-    LEFT JOIN dbo.DoctorSchedule sc ON d.Id = sc.DoctorId;
-GO
-
--- VIEW 2: Upcoming Appointments Summary
+-- VIEW 1: Upcoming Appointments Summary
 CREATE VIEW dbo.vw_UpcomingAppointments
 AS
 SELECT 
@@ -369,7 +331,7 @@ WHERE
     a.Date >= CAST(GETDATE() AS DATE);
 GO
 
--- VIEW 3: Patient Medical Records Summary
+-- VIEW 2: Patient Medical Records Summary
 CREATE VIEW dbo.vw_PatientRecordsSummary
 AS
 SELECT 
@@ -391,167 +353,7 @@ FROM
     dbo.Patient p;
 GO
 
--- VIEW 4: Doctor Workload Statistics
-CREATE VIEW dbo.vw_DoctorWorkloadStats
-AS
-SELECT 
-    d.Id AS DoctorId,
-    d.FirstName + ' ' + d.LastName AS DoctorName,
-    s.Name AS Specialization,
-    (SELECT COUNT(*) FROM dbo.Appointment WHERE DoctorId = d.Id AND Date >= CAST(GETDATE() AS DATE)) AS UpcomingAppointments,
-    (SELECT COUNT(*) FROM dbo.Appointment WHERE DoctorId = d.Id AND Date < CAST(GETDATE() AS DATE)) AS CompletedAppointments,
-    (SELECT COUNT(*) FROM dbo.Appointment WHERE DoctorId = d.Id) AS TotalAppointments
-FROM 
-    dbo.Doctor d
-    LEFT JOIN dbo.DoctorSpecialties ds ON d.Id = ds.DoctorId
-    LEFT JOIN dbo.Specialties s ON ds.SpecialtyId = s.Id;
-GO
-
--- PROCEDURE 1: Get Doctor's Current Schedule
-CREATE PROCEDURE dbo.sp_GetDoctorCurrentSchedule
-    @DoctorId INT = NULL
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    IF @DoctorId IS NULL
-    BEGIN
-        -- Return all doctors' schedules
-        SELECT * FROM dbo.vw_DoctorCurrentSchedule
-        ORDER BY DoctorName, DayOfWeek;
-    END
-    ELSE
-    BEGIN
-        -- Return specific doctor's schedule
-        IF NOT EXISTS (SELECT 1 FROM dbo.Doctor WHERE Id = @DoctorId)
-        BEGIN
-            RAISERROR('Doctor not found', 16, 1);
-            RETURN;
-        END
-        
-        SELECT * FROM dbo.vw_DoctorCurrentSchedule
-        WHERE DoctorId = @DoctorId
-        ORDER BY DayOfWeek;
-    END
-END
-GO
-
--- PROCEDURE 2: Book New Appointment
-CREATE PROCEDURE dbo.sp_BookAppointment
-    @PatientId INT,
-    @DoctorId INT,
-    @AppointmentDate DATE,
-    @TimeSlotId INT,
-    @Notes VARCHAR(512) = NULL
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    DECLARE @NewId INT;
-    
-    -- Validate inputs
-    IF NOT EXISTS (SELECT 1 FROM dbo.Patient WHERE Id = @PatientId)
-    BEGIN
-        RAISERROR('Patient not found', 16, 1);
-        RETURN;
-    END
-    
-    IF NOT EXISTS (SELECT 1 FROM dbo.Doctor WHERE Id = @DoctorId)
-    BEGIN
-        RAISERROR('Doctor not found', 16, 1);
-        RETURN;
-    END
-    
-    IF NOT EXISTS (SELECT 1 FROM dbo.TimeSlots WHERE Id = @TimeSlotId)
-    BEGIN
-        RAISERROR('Time slot not found', 16, 1);
-        RETURN;
-    END
-    
-    IF @AppointmentDate < CAST(GETDATE() AS DATE)
-    BEGIN
-        RAISERROR('Appointment date cannot be in the past', 16, 1);
-        RETURN;
-    END
-    
-    -- Check for existing appointment at this time
-    IF EXISTS (
-        SELECT 1 
-        FROM dbo.Appointment 
-        WHERE DoctorId = @DoctorId 
-            AND Date = @AppointmentDate
-            AND TimeSlotId = @TimeSlotId
-    )
-    BEGIN
-        RAISERROR('This time slot is already booked', 16, 1);
-        RETURN;
-    END
-    
-    -- Insert new appointment
-    INSERT INTO dbo.Appointment 
-        (PatientId, DoctorId, Date, TimeSlotId, Notes, CreatedAt, ModifiedAt)
-    VALUES 
-        (@PatientId, @DoctorId, @AppointmentDate, @TimeSlotId, @Notes, GETDATE(), GETDATE());
-    
-    -- Get the new ID
-    SET @NewId = SCOPE_IDENTITY();
-    
-    -- Return the new appointment details
-    SELECT 
-        a.Id AS AppointmentId,
-        p.FirstName + ' ' + p.LastName AS PatientName,
-        d.FirstName + ' ' + d.LastName AS DoctorName,
-        a.Date AS AppointmentDate,
-        ts.HourOfDay,
-        ts.MinuteOfHour,
-        a.Notes
-    FROM 
-        dbo.Appointment a
-        INNER JOIN dbo.Patient p ON a.PatientId = p.Id
-        INNER JOIN dbo.Doctor d ON a.DoctorId = d.Id
-        INNER JOIN dbo.TimeSlots ts ON a.TimeSlotId = ts.Id
-    WHERE 
-        a.Id = @NewId;
-END
-GO
-
--- PROCEDURE 3: Cancel Appointment
-CREATE PROCEDURE dbo.sp_CancelAppointment
-    @AppointmentId INT
-AS
-BEGIN
-    SET NOCOUNT ON;
-    
-    -- Check if appointment exists
-    IF NOT EXISTS (SELECT 1 FROM dbo.Appointment WHERE Id = @AppointmentId)
-    BEGIN
-        RAISERROR('Appointment not found', 16, 1);
-        RETURN;
-    END
-    
-    -- Return confirmation with appointment details before deleting
-    SELECT 
-        a.Id AS AppointmentId,
-        p.FirstName + ' ' + p.LastName AS PatientName,
-        d.FirstName + ' ' + d.LastName AS DoctorName,
-        a.Date AS AppointmentDate,
-        ts.HourOfDay,
-        ts.MinuteOfHour,
-        'Appointment cancelled successfully' AS Message
-    FROM 
-        dbo.Appointment a
-        INNER JOIN dbo.Patient p ON a.PatientId = p.Id
-        INNER JOIN dbo.Doctor d ON a.DoctorId = d.Id
-        INNER JOIN dbo.TimeSlots ts ON a.TimeSlotId = ts.Id
-    WHERE 
-        a.Id = @AppointmentId;
-    
-    -- Delete the appointment
-    DELETE FROM dbo.Appointment WHERE Id = @AppointmentId;
-END
-GO
-
--- PROCEDURE 4: Get Available Appointment Slots
+-- PROCEDURE 1: Get Available Appointment Slots
 CREATE PROCEDURE dbo.sp_GetAvailableSlots
     @DoctorId INT,
     @Date DATE
@@ -578,8 +380,7 @@ BEGIN
         @DayName AS DayOfWeek,
         ts.Id AS TimeSlotId,
         ts.HourOfDay,
-        ts.MinuteOfHour,
-        CASE WHEN a.Id IS NOT NULL THEN 1 ELSE 0 END AS IsBooked
+        ts.MinuteOfHour
     FROM 
         dbo.Doctor d
         LEFT JOIN dbo.DoctorSpecialties ds ON d.Id = ds.DoctorId
@@ -593,6 +394,7 @@ BEGIN
         d.Id = @DoctorId
         AND CAST(CAST(ts.HourOfDay AS VARCHAR) + ':' + CAST(ts.MinuteOfHour AS VARCHAR) AS TIME) >= CAST(sc.WorkStartTime AS TIME)
         AND CAST(CAST(ts.HourOfDay AS VARCHAR) + ':' + CAST(ts.MinuteOfHour AS VARCHAR) AS TIME) < CAST(sc.WorkEndTime AS TIME)
+        AND a.Id IS NULL
     ORDER BY 
         ts.HourOfDay, ts.MinuteOfHour;
 END

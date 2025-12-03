@@ -16,7 +16,8 @@ namespace ClinicManagement_proj.DAL
         public DbSet<SpecialtyDTO> Specialties { get; set; }
         public DbSet<TimeSlotDTO> TimeSlots { get; set; }
         public DbSet<UserDTO> Users { get; set; }
-
+        public virtual DbSet<vw_PatientRecordsSummary> vw_PatientRecordsSummary { get; set; }
+        public virtual DbSet<vw_UpcomingAppointments> vw_UpcomingAppointments { get; set; }
         public ClinicDbContext() : base("data source=.\\SQLEXPRESS;initial catalog=HealthCareClinicDB_T2;integrated security=True;encrypt=False;MultipleActiveResultSets=True;App=EntityFramework")
         { }
 
@@ -267,6 +268,15 @@ namespace ClinicManagement_proj.DAL
                 .HasRequired(a => a.TimeSlot)
                 .WithMany(ts => ts.Appointments)
                 .HasForeignKey(a => a.TimeSlotId);
+
+            // View entities primary keys
+            modelBuilder.Entity<vw_PatientRecordsSummary>()
+                .ToTable("vw_PatientRecordsSummary")
+                .HasKey(v => v.PatientId);
+
+            modelBuilder.Entity<vw_UpcomingAppointments>()
+                .ToTable("vw_UpcomingAppointments")
+                .HasKey(v => v.AppointmentId);
         }
     }
 }

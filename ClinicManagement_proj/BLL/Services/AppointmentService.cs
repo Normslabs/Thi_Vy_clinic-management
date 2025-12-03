@@ -150,7 +150,20 @@ namespace ClinicManagement_proj.BLL.Services
                 .ToList();
         }
 
-        public List<TimeSlotDTO> GetAvailableTimeSlots(DateTime date)
+        public TimeSlotDTO GetTimeSlotById(int id)
+        {
+            if (!ClinicManagementApp.CurrentUserHasRole
+                    (
+                        UserService.UserRoles.Administrator,
+                        UserService.UserRoles.Doctor,
+                        UserService.UserRoles.Receptionist
+                    )
+               ) 
+                throw new UnauthorizedAccessException("Only authorized users can access timeslot details.");
+            return clinicDb.TimeSlots.Find(id);
+        }
+
+        public List<TimeSlotDTO> GetAvailableTimeSlots(int doctorId, DateTime date)
         {
             if (!ClinicManagementApp.CurrentUserHasRole
                     (
@@ -160,14 +173,8 @@ namespace ClinicManagement_proj.BLL.Services
                     )
                )
                 throw new UnauthorizedAccessException("Only authorized users can create appointments.");
-            var bookedSlotIds = clinicDb.Appointments
-                                        .Where(a => DateTime.Compare(a.Date, date.Date) == 0)
-                                        .Select(a => a.TimeSlotId)
-                                        .ToList();
-            var availableSlots = clinicDb.TimeSlots
-                                        .Where(ts => !bookedSlotIds.Contains(ts.Id))
-                                        .ToList();
-            return availableSlots;
+            var results = clinicDb.Database.SqlQuery<sp_GetAvailableSlots_Result>("EXEC sp_GetAvailableSlots @p0, @p1", doctorId, date).ToList();
+            return results.Select(r => GetTimeSlotById(r.TimeSlotId)).ToList();
         }
     }
 }

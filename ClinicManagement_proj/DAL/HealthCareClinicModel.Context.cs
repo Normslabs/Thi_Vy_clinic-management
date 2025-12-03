@@ -15,10 +15,10 @@ namespace ClinicManagement_proj.DAL
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class HealthCareClinicDBEntities1 : DbContext
+    public partial class HealthCareClinicDB_T2Entities : DbContext
     {
-        public HealthCareClinicDBEntities1()
-            : base("name=HealthCareClinicDBEntities1")
+        public HealthCareClinicDB_T2Entities()
+            : base("name=HealthCareClinicDB_T2Entities")
         {
         }
     
@@ -35,44 +35,8 @@ namespace ClinicManagement_proj.DAL
         public virtual DbSet<Specialty> Specialties { get; set; }
         public virtual DbSet<TimeSlot> TimeSlots { get; set; }
         public virtual DbSet<User> Users { get; set; }
-        public virtual DbSet<vw_DoctorCurrentSchedule> vw_DoctorCurrentSchedule { get; set; }
-        public virtual DbSet<vw_DoctorWorkloadStats> vw_DoctorWorkloadStats { get; set; }
         public virtual DbSet<vw_PatientRecordsSummary> vw_PatientRecordsSummary { get; set; }
         public virtual DbSet<vw_UpcomingAppointments> vw_UpcomingAppointments { get; set; }
-    
-        public virtual ObjectResult<sp_BookAppointment_Result> sp_BookAppointment(Nullable<int> patientId, Nullable<int> doctorId, Nullable<System.DateTime> appointmentDate, Nullable<int> timeSlotId, string notes)
-        {
-            var patientIdParameter = patientId.HasValue ?
-                new ObjectParameter("PatientId", patientId) :
-                new ObjectParameter("PatientId", typeof(int));
-    
-            var doctorIdParameter = doctorId.HasValue ?
-                new ObjectParameter("DoctorId", doctorId) :
-                new ObjectParameter("DoctorId", typeof(int));
-    
-            var appointmentDateParameter = appointmentDate.HasValue ?
-                new ObjectParameter("AppointmentDate", appointmentDate) :
-                new ObjectParameter("AppointmentDate", typeof(System.DateTime));
-    
-            var timeSlotIdParameter = timeSlotId.HasValue ?
-                new ObjectParameter("TimeSlotId", timeSlotId) :
-                new ObjectParameter("TimeSlotId", typeof(int));
-    
-            var notesParameter = notes != null ?
-                new ObjectParameter("Notes", notes) :
-                new ObjectParameter("Notes", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_BookAppointment_Result>("sp_BookAppointment", patientIdParameter, doctorIdParameter, appointmentDateParameter, timeSlotIdParameter, notesParameter);
-        }
-    
-        public virtual ObjectResult<sp_CancelAppointment_Result> sp_CancelAppointment(Nullable<int> appointmentId)
-        {
-            var appointmentIdParameter = appointmentId.HasValue ?
-                new ObjectParameter("AppointmentId", appointmentId) :
-                new ObjectParameter("AppointmentId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_CancelAppointment_Result>("sp_CancelAppointment", appointmentIdParameter);
-        }
     
         public virtual ObjectResult<sp_GetAvailableSlots_Result> sp_GetAvailableSlots(Nullable<int> doctorId, Nullable<System.DateTime> date)
         {
@@ -85,15 +49,6 @@ namespace ClinicManagement_proj.DAL
                 new ObjectParameter("Date", typeof(System.DateTime));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetAvailableSlots_Result>("sp_GetAvailableSlots", doctorIdParameter, dateParameter);
-        }
-    
-        public virtual ObjectResult<sp_GetDoctorCurrentSchedule_Result> sp_GetDoctorCurrentSchedule(Nullable<int> doctorId)
-        {
-            var doctorIdParameter = doctorId.HasValue ?
-                new ObjectParameter("DoctorId", doctorId) :
-                new ObjectParameter("DoctorId", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<sp_GetDoctorCurrentSchedule_Result>("sp_GetDoctorCurrentSchedule", doctorIdParameter);
         }
     }
 }

@@ -21,6 +21,5 @@ namespace ClinicManagement_proj.DAL
         public int TimeSlotId { get; set; }
         public int HourOfDay { get; set; }
         public int MinuteOfHour { get; set; }
-        public int IsBooked { get; set; }
     }
 }

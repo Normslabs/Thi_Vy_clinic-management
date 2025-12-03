@@ -18,6 +18,8 @@ namespace ClinicManagement_proj.UI
     public class SchedulingController : IPanelController
     {
         private readonly Panel panel;
+        private DoctorService doctorService;
+        private bool isUpdatingDoctorCombo = false;
         private AdminDashboard adminDashboard => (AdminDashboard)(panel.FindForm()
                 ?? throw new Exception("Form not found for panel."));
         private GroupBox grpScheduling => (GroupBox)(panel.Controls["grpDoctorScheduling"]
@@ -56,6 +58,7 @@ namespace ClinicManagement_proj.UI
         public SchedulingController(Panel panel)
         {
             this.panel = panel;
+            
         }
 
         public void Initialize()
@@ -66,17 +69,18 @@ namespace ClinicManagement_proj.UI
             SetupSchedulingListViews();
             
             // Populate doctor ComboBox here
-            var doctorService = new DoctorService(new ClinicDbContext());
+            doctorService = new DoctorService(new ClinicDbContext());
             List<DoctorDTO> doctors = doctorService.GetAllDoctors();
 
             cmbDoctorSelect.DataSource = doctors;
-            cmbDoctorSelect.DisplayMember = "DisplayText"; 
-            cmbDoctorSelect.ValueMember = "Id";
+            cmbDoctorSelect.DisplayMember = "ToString"; 
+            cmbDoctorSelect.ValueMember = null;
             cmbDoctorSelect.SelectedIndex = -1;
             cmbDoctorSelect.Text = "Please select a doctor";
 
 
             cmbDoctorSelect.SelectedIndexChanged += cmbDoctorSelect_SelectedIndexChanged;
+            cmbDoctorSelect.TextChanged += cmbDoctorSelect_TextChanged;
 
         }
 
@@ -118,6 +122,48 @@ namespace ClinicManagement_proj.UI
                     }
                 }
             }
+        }
+
+        private void cmbDoctorSelect_TextChanged(object sender, EventArgs e)
+        {
+            if (isUpdatingDoctorCombo) return;
+
+            isUpdatingDoctorCombo = true;
+
+            string currentText = cmbDoctorSelect.Text;
+            int selStart = cmbDoctorSelect.SelectionStart;
+            int selLen = cmbDoctorSelect.SelectionLength;
+            var trimmed = currentText.Trim();
+            List<DoctorDTO> filtered;
+            if (string.IsNullOrEmpty(trimmed))
+            {
+                filtered = doctorService.GetAllDoctors();
+            }
+            else
+            {
+                filtered = doctorService.Search(trimmed);
+                if (filtered.Count == 0)
+                {
+                    filtered = doctorService.GetAllDoctors();
+                }
+            }
+            cmbDoctorSelect.DataSource = filtered;
+            cmbDoctorSelect.SelectedIndex = -1;
+            if (cmbDoctorSelect.Text != trimmed)
+            {
+                cmbDoctorSelect.Text = trimmed;
+                int newSelStart = Math.Min(selStart, trimmed.Length);
+                int newSelLen = Math.Min(selLen, trimmed.Length - newSelStart);
+                cmbDoctorSelect.SelectionStart = newSelStart;
+                cmbDoctorSelect.SelectionLength = newSelLen;
+            }
+            if (filtered.Count == 1 && !string.IsNullOrEmpty(trimmed))
+            {
+                cmbDoctorSelect.SelectedIndex = 0;
+                btnScheduleSave.Focus();
+            }
+
+            isUpdatingDoctorCombo = false;
         }
 
         public void OnShow()

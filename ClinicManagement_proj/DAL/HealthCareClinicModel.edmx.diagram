@@ -4,25 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="2e3b079014cd4d788a17082a97d8f818" Name="Diagram1">
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.Appointment" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.Doctor" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.DoctorSchedule" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.Patient" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.Role" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.Specialty" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.TimeSlot" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.User" Width="1.5" PointX="8" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.vw_DoctorCurrentSchedule" Width="1.5" PointX="5.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.vw_DoctorWorkloadStats" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.vw_PatientRecordsSummary" Width="1.5" PointX="7.75" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="HealthCareClinicDBModel.vw_UpcomingAppointments" Width="1.5" PointX="9.75" PointY="5.375" IsExpanded="true" />
-        <AssociationConnector Association="HealthCareClinicDBModel.FK_Appointment_Doctor" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthCareClinicDBModel.FK_Appointment_Patient" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthCareClinicDBModel.FK_Appointment_TimeSlot" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthCareClinicDBModel.FK_DoctorSchedule_Doctor" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthCareClinicDBModel.DoctorSpecialties" ManuallyRouted="false" />
-        <AssociationConnector Association="HealthCareClinicDBModel.UserRoles" ManuallyRouted="false" />
+      <Diagram DiagramId="982af947af074f6cb755988de829f9d5" Name="Diagram1" ZoomLevel="67">
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.Appointment" Width="1.5" PointX="3" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.Doctor" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.DoctorSchedule" Width="1.5" PointX="3" PointY="8" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.Patient" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.Role" Width="1.5" PointX="5.75" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.Specialty" Width="1.5" PointX="3" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.TimeSlot" Width="1.5" PointX="0.75" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.User" Width="1.5" PointX="8" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.vw_PatientRecordsSummary" Width="1.5" PointX="5.75" PointY="5.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HealthCareClinicDB_T2Model.vw_UpcomingAppointments" Width="1.5" PointX="7.75" PointY="5.375" IsExpanded="true" />
+        <AssociationConnector Association="HealthCareClinicDB_T2Model.FK_Appointment_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareClinicDB_T2Model.FK_Appointment_Patient" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareClinicDB_T2Model.FK_Appointment_TimeSlot" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareClinicDB_T2Model.FK_DoctorSchedule_Doctor" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareClinicDB_T2Model.DoctorSpecialties" ManuallyRouted="false" />
+        <AssociationConnector Association="HealthCareClinicDB_T2Model.UserRoles" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

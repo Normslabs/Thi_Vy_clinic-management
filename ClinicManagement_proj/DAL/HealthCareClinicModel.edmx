@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HealthCareClinicDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="HealthCareClinicDB_T2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="Id" />
@@ -106,37 +106,7 @@
           <Property Name="ModifiedAt" Type="datetime2" Precision="7" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_DoctorCurrentSchedule' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_DoctorCurrentSchedule">
-          <Key>
-            <PropertyRef Name="DoctorId" />
-            <PropertyRef Name="DoctorName" />
-            <PropertyRef Name="LicenseNumber" />
-          </Key>
-          <Property Name="DoctorId" Type="int" Nullable="false" />
-          <Property Name="DoctorName" Type="varchar" MaxLength="129" Nullable="false" />
-          <Property Name="Specialization" Type="varchar" MaxLength="64" />
-          <Property Name="DayOfWeek" Type="varchar" MaxLength="10" />
-          <Property Name="StartTime" Type="varchar" MaxLength="5" />
-          <Property Name="EndTime" Type="varchar" MaxLength="5" />
-          <Property Name="LicenseNumber" Type="varchar" MaxLength="24" Nullable="false" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_DoctorWorkloadStats' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="vw_DoctorWorkloadStats">
-          <Key>
-            <PropertyRef Name="DoctorId" />
-            <PropertyRef Name="DoctorName" />
-          </Key>
-          <Property Name="DoctorId" Type="int" Nullable="false" />
-          <Property Name="DoctorName" Type="varchar" MaxLength="129" Nullable="false" />
-          <Property Name="Specialization" Type="varchar" MaxLength="64" />
-          <Property Name="UpcomingAppointments" Type="int" />
-          <Property Name="CompletedAppointments" Type="int" />
-          <Property Name="TotalAppointments" Type="int" />
-        </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_PatientRecordsSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'HealthCareClinicDB_T2.dbo.vw_PatientRecordsSummary' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_PatientRecordsSummary">
           <Key>
             <PropertyRef Name="PatientId" />
@@ -154,7 +124,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_PatientRecordsSummary' d
           <Property Name="LastAppointmentDate" Type="date" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'HealthCareClinicDB_T2.dbo.vw_UpcomingAppointments' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vw_UpcomingAppointments">
           <Key>
             <PropertyRef Name="AppointmentId" />
@@ -284,24 +254,11 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Function Name="sp_BookAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="PatientId" Type="int" Mode="In" />
-          <Parameter Name="DoctorId" Type="int" Mode="In" />
-          <Parameter Name="AppointmentDate" Type="date" Mode="In" />
-          <Parameter Name="TimeSlotId" Type="int" Mode="In" />
-          <Parameter Name="Notes" Type="varchar" Mode="In" />
-        </Function>
-        <Function Name="sp_CancelAppointment" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="AppointmentId" Type="int" Mode="In" />
-        </Function>
         <Function Name="sp_GetAvailableSlots" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="DoctorId" Type="int" Mode="In" />
           <Parameter Name="Date" Type="date" Mode="In" />
         </Function>
-        <Function Name="sp_GetDoctorCurrentSchedule" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-          <Parameter Name="DoctorId" Type="int" Mode="In" />
-        </Function>
-        <EntityContainer Name="HealthCareClinicDBModelStoreContainer">
+        <EntityContainer Name="HealthCareClinicDB_T2ModelStoreContainer">
           <EntitySet Name="Appointment" EntityType="Self.Appointment" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Doctor" EntityType="Self.Doctor" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DoctorSchedule" EntityType="Self.DoctorSchedule" Schema="dbo" store:Type="Tables" />
@@ -312,27 +269,6 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
           <EntitySet Name="TimeSlots" EntityType="Self.TimeSlots" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="vw_DoctorCurrentSchedule" EntityType="Self.vw_DoctorCurrentSchedule" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_DoctorCurrentSchedule].[DoctorId] AS [DoctorId], 
-    [vw_DoctorCurrentSchedule].[DoctorName] AS [DoctorName], 
-    [vw_DoctorCurrentSchedule].[Specialization] AS [Specialization], 
-    [vw_DoctorCurrentSchedule].[DayOfWeek] AS [DayOfWeek], 
-    [vw_DoctorCurrentSchedule].[StartTime] AS [StartTime], 
-    [vw_DoctorCurrentSchedule].[EndTime] AS [EndTime], 
-    [vw_DoctorCurrentSchedule].[LicenseNumber] AS [LicenseNumber]
-    FROM [dbo].[vw_DoctorCurrentSchedule] AS [vw_DoctorCurrentSchedule]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="vw_DoctorWorkloadStats" EntityType="Self.vw_DoctorWorkloadStats" store:Type="Views" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [vw_DoctorWorkloadStats].[DoctorId] AS [DoctorId], 
-    [vw_DoctorWorkloadStats].[DoctorName] AS [DoctorName], 
-    [vw_DoctorWorkloadStats].[Specialization] AS [Specialization], 
-    [vw_DoctorWorkloadStats].[UpcomingAppointments] AS [UpcomingAppointments], 
-    [vw_DoctorWorkloadStats].[CompletedAppointments] AS [CompletedAppointments], 
-    [vw_DoctorWorkloadStats].[TotalAppointments] AS [TotalAppointments]
-    FROM [dbo].[vw_DoctorWorkloadStats] AS [vw_DoctorWorkloadStats]</DefiningQuery>
-          </EntitySet>
           <EntitySet Name="vw_PatientRecordsSummary" EntityType="Self.vw_PatientRecordsSummary" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [vw_PatientRecordsSummary].[PatientId] AS [PatientId], 
@@ -397,7 +333,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HealthCareClinicDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="HealthCareClinicDB_T2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Appointment">
           <Key>
             <PropertyRef Name="Id" />
@@ -493,32 +429,6 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
           <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="ModifiedAt" Type="DateTime" Nullable="false" Precision="7" />
           <NavigationProperty Name="Roles" Relationship="Self.UserRoles" FromRole="Users" ToRole="Roles" />
-        </EntityType>
-        <EntityType Name="vw_DoctorCurrentSchedule">
-          <Key>
-            <PropertyRef Name="DoctorId" />
-            <PropertyRef Name="DoctorName" />
-            <PropertyRef Name="LicenseNumber" />
-          </Key>
-          <Property Name="DoctorId" Type="Int32" Nullable="false" />
-          <Property Name="DoctorName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Specialization" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="DayOfWeek" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
-          <Property Name="StartTime" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="EndTime" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
-          <Property Name="LicenseNumber" Type="String" MaxLength="24" FixedLength="false" Unicode="false" Nullable="false" />
-        </EntityType>
-        <EntityType Name="vw_DoctorWorkloadStats">
-          <Key>
-            <PropertyRef Name="DoctorId" />
-            <PropertyRef Name="DoctorName" />
-          </Key>
-          <Property Name="DoctorId" Type="Int32" Nullable="false" />
-          <Property Name="DoctorName" Type="String" MaxLength="129" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="Specialization" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
-          <Property Name="UpcomingAppointments" Type="Int32" />
-          <Property Name="CompletedAppointments" Type="Int32" />
-          <Property Name="TotalAppointments" Type="Int32" />
         </EntityType>
         <EntityType Name="vw_PatientRecordsSummary">
           <Key>
@@ -617,7 +527,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
           <End Role="Roles" Type="Self.Role" Multiplicity="*" />
           <End Role="Users" Type="Self.User" Multiplicity="*" />
         </Association>
-        <EntityContainer Name="HealthCareClinicDBEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="HealthCareClinicDB_T2Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Appointments" EntityType="Self.Appointment" />
           <EntitySet Name="Doctors" EntityType="Self.Doctor" />
           <EntitySet Name="DoctorSchedules" EntityType="Self.DoctorSchedule" />
@@ -626,8 +536,6 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
           <EntitySet Name="Specialties" EntityType="Self.Specialty" />
           <EntitySet Name="TimeSlots" EntityType="Self.TimeSlot" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <EntitySet Name="vw_DoctorCurrentSchedule" EntityType="Self.vw_DoctorCurrentSchedule" />
-          <EntitySet Name="vw_DoctorWorkloadStats" EntityType="Self.vw_DoctorWorkloadStats" />
           <EntitySet Name="vw_PatientRecordsSummary" EntityType="Self.vw_PatientRecordsSummary" />
           <EntitySet Name="vw_UpcomingAppointments" EntityType="Self.vw_UpcomingAppointments" />
           <AssociationSet Name="FK_Appointment_Doctor" Association="Self.FK_Appointment_Doctor">
@@ -654,42 +562,11 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             <End Role="Roles" EntitySet="Roles" />
             <End Role="Users" EntitySet="Users" />
           </AssociationSet>
-          <FunctionImport Name="sp_BookAppointment" ReturnType="Collection(HealthCareClinicDBModel.sp_BookAppointment_Result)">
-            <Parameter Name="PatientId" Mode="In" Type="Int32" />
-            <Parameter Name="DoctorId" Mode="In" Type="Int32" />
-            <Parameter Name="AppointmentDate" Mode="In" Type="DateTime" />
-            <Parameter Name="TimeSlotId" Mode="In" Type="Int32" />
-            <Parameter Name="Notes" Mode="In" Type="String" />
-          </FunctionImport>
-          <FunctionImport Name="sp_CancelAppointment" ReturnType="Collection(HealthCareClinicDBModel.sp_CancelAppointment_Result)">
-            <Parameter Name="AppointmentId" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="sp_GetAvailableSlots" ReturnType="Collection(HealthCareClinicDBModel.sp_GetAvailableSlots_Result)">
+          <FunctionImport Name="sp_GetAvailableSlots" ReturnType="Collection(HealthCareClinicDB_T2Model.sp_GetAvailableSlots_Result)">
             <Parameter Name="DoctorId" Mode="In" Type="Int32" />
             <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="sp_GetDoctorCurrentSchedule" ReturnType="Collection(HealthCareClinicDBModel.sp_GetDoctorCurrentSchedule_Result)">
-            <Parameter Name="DoctorId" Mode="In" Type="Int32" />
-          </FunctionImport>
         </EntityContainer>
-        <ComplexType Name="sp_BookAppointment_Result">
-          <Property Type="Int32" Name="AppointmentId" Nullable="false" />
-          <Property Type="String" Name="PatientName" Nullable="false" MaxLength="129" />
-          <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="129" />
-          <Property Type="DateTime" Name="AppointmentDate" Nullable="false" />
-          <Property Type="Int32" Name="HourOfDay" Nullable="false" />
-          <Property Type="Int32" Name="MinuteOfHour" Nullable="false" />
-          <Property Type="String" Name="Notes" Nullable="true" MaxLength="512" />
-        </ComplexType>
-        <ComplexType Name="sp_CancelAppointment_Result">
-          <Property Type="Int32" Name="AppointmentId" Nullable="false" />
-          <Property Type="String" Name="PatientName" Nullable="false" MaxLength="129" />
-          <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="129" />
-          <Property Type="DateTime" Name="AppointmentDate" Nullable="false" />
-          <Property Type="Int32" Name="HourOfDay" Nullable="false" />
-          <Property Type="Int32" Name="MinuteOfHour" Nullable="false" />
-          <Property Type="String" Name="Message" Nullable="false" MaxLength="34" />
-        </ComplexType>
         <ComplexType Name="sp_GetAvailableSlots_Result">
           <Property Type="Int32" Name="DoctorId" Nullable="false" />
           <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="129" />
@@ -699,25 +576,15 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
           <Property Type="Int32" Name="TimeSlotId" Nullable="false" />
           <Property Type="Int32" Name="HourOfDay" Nullable="false" />
           <Property Type="Int32" Name="MinuteOfHour" Nullable="false" />
-          <Property Type="Int32" Name="IsBooked" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="sp_GetDoctorCurrentSchedule_Result">
-          <Property Type="Int32" Name="DoctorId" Nullable="false" />
-          <Property Type="String" Name="DoctorName" Nullable="false" MaxLength="129" />
-          <Property Type="String" Name="Specialization" Nullable="true" MaxLength="64" />
-          <Property Type="String" Name="DayOfWeek" Nullable="true" MaxLength="10" />
-          <Property Type="String" Name="StartTime" Nullable="true" MaxLength="5" />
-          <Property Type="String" Name="EndTime" Nullable="true" MaxLength="5" />
-          <Property Type="String" Name="LicenseNumber" Nullable="false" MaxLength="24" />
         </ComplexType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HealthCareClinicDBModelStoreContainer" CdmEntityContainer="HealthCareClinicDBEntities1">
+        <EntityContainerMapping StorageEntityContainer="HealthCareClinicDB_T2ModelStoreContainer" CdmEntityContainer="HealthCareClinicDB_T2Entities">
           <EntitySetMapping Name="Appointments">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.Appointment">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.Appointment">
               <MappingFragment StoreEntitySet="Appointment">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -732,7 +599,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Doctors">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.Doctor">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.Doctor">
               <MappingFragment StoreEntitySet="Doctor">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -744,7 +611,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DoctorSchedules">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.DoctorSchedule">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.DoctorSchedule">
               <MappingFragment StoreEntitySet="DoctorSchedule">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
@@ -757,7 +624,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Patients">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.Patient">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.Patient">
               <MappingFragment StoreEntitySet="Patient">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -771,7 +638,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Roles">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.Role">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.Role">
               <MappingFragment StoreEntitySet="Roles">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="RoleName" ColumnName="RoleName" />
@@ -781,7 +648,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Specialties">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.Specialty">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.Specialty">
               <MappingFragment StoreEntitySet="Specialties">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
@@ -789,7 +656,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TimeSlots">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.TimeSlot">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.TimeSlot">
               <MappingFragment StoreEntitySet="TimeSlots">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
@@ -798,7 +665,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.User">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.User">
               <MappingFragment StoreEntitySet="Users">
                 <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
@@ -808,33 +675,8 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="vw_DoctorCurrentSchedule">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.vw_DoctorCurrentSchedule">
-              <MappingFragment StoreEntitySet="vw_DoctorCurrentSchedule">
-                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
-                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
-                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
-                <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="vw_DoctorWorkloadStats">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.vw_DoctorWorkloadStats">
-              <MappingFragment StoreEntitySet="vw_DoctorWorkloadStats">
-                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
-                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
-                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
-                <ScalarProperty Name="UpcomingAppointments" ColumnName="UpcomingAppointments" />
-                <ScalarProperty Name="CompletedAppointments" ColumnName="CompletedAppointments" />
-                <ScalarProperty Name="TotalAppointments" ColumnName="TotalAppointments" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="vw_PatientRecordsSummary">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.vw_PatientRecordsSummary">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.vw_PatientRecordsSummary">
               <MappingFragment StoreEntitySet="vw_PatientRecordsSummary">
                 <ScalarProperty Name="PatientId" ColumnName="PatientId" />
                 <ScalarProperty Name="PatientName" ColumnName="PatientName" />
@@ -848,7 +690,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vw_UpcomingAppointments">
-            <EntityTypeMapping TypeName="HealthCareClinicDBModel.vw_UpcomingAppointments">
+            <EntityTypeMapping TypeName="HealthCareClinicDB_T2Model.vw_UpcomingAppointments">
               <MappingFragment StoreEntitySet="vw_UpcomingAppointments">
                 <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
                 <ScalarProperty Name="PatientName" ColumnName="PatientName" />
@@ -864,7 +706,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <AssociationSetMapping Name="DoctorSpecialties" TypeName="HealthCareClinicDBModel.DoctorSpecialties" StoreEntitySet="DoctorSpecialties">
+          <AssociationSetMapping Name="DoctorSpecialties" TypeName="HealthCareClinicDB_T2Model.DoctorSpecialties" StoreEntitySet="DoctorSpecialties">
             <EndProperty Name="Doctor">
               <ScalarProperty Name="Id" ColumnName="DoctorId" />
             </EndProperty>
@@ -872,7 +714,7 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
               <ScalarProperty Name="Id" ColumnName="SpecialtyId" />
             </EndProperty>
           </AssociationSetMapping>
-          <AssociationSetMapping Name="UserRoles" TypeName="HealthCareClinicDBModel.UserRoles" StoreEntitySet="UserRoles">
+          <AssociationSetMapping Name="UserRoles" TypeName="HealthCareClinicDB_T2Model.UserRoles" StoreEntitySet="UserRoles">
             <EndProperty Name="Roles">
               <ScalarProperty Name="Id" ColumnName="RoleId" />
             </EndProperty>
@@ -880,35 +722,9 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
               <ScalarProperty Name="Id" ColumnName="UserId" />
             </EndProperty>
           </AssociationSetMapping>
-          <FunctionImportMapping FunctionImportName="sp_BookAppointment" FunctionName="HealthCareClinicDBModel.Store.sp_BookAppointment">
+          <FunctionImportMapping FunctionImportName="sp_GetAvailableSlots" FunctionName="HealthCareClinicDB_T2Model.Store.sp_GetAvailableSlots">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="HealthCareClinicDBModel.sp_BookAppointment_Result">
-                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
-                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
-                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
-                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
-                <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
-                <ScalarProperty Name="MinuteOfHour" ColumnName="MinuteOfHour" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_CancelAppointment" FunctionName="HealthCareClinicDBModel.Store.sp_CancelAppointment">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HealthCareClinicDBModel.sp_CancelAppointment_Result">
-                <ScalarProperty Name="AppointmentId" ColumnName="AppointmentId" />
-                <ScalarProperty Name="PatientName" ColumnName="PatientName" />
-                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
-                <ScalarProperty Name="AppointmentDate" ColumnName="AppointmentDate" />
-                <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
-                <ScalarProperty Name="MinuteOfHour" ColumnName="MinuteOfHour" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_GetAvailableSlots" FunctionName="HealthCareClinicDBModel.Store.sp_GetAvailableSlots">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HealthCareClinicDBModel.sp_GetAvailableSlots_Result">
+              <ComplexTypeMapping TypeName="HealthCareClinicDB_T2Model.sp_GetAvailableSlots_Result">
                 <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
                 <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
                 <ScalarProperty Name="Specialization" ColumnName="Specialization" />
@@ -917,20 +733,6 @@ warning 6002: The table/view 'HealthCareClinicDB.dbo.vw_UpcomingAppointments' do
                 <ScalarProperty Name="TimeSlotId" ColumnName="TimeSlotId" />
                 <ScalarProperty Name="HourOfDay" ColumnName="HourOfDay" />
                 <ScalarProperty Name="MinuteOfHour" ColumnName="MinuteOfHour" />
-                <ScalarProperty Name="IsBooked" ColumnName="IsBooked" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_GetDoctorCurrentSchedule" FunctionName="HealthCareClinicDBModel.Store.sp_GetDoctorCurrentSchedule">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="HealthCareClinicDBModel.sp_GetDoctorCurrentSchedule_Result">
-                <ScalarProperty Name="DoctorId" ColumnName="DoctorId" />
-                <ScalarProperty Name="DoctorName" ColumnName="DoctorName" />
-                <ScalarProperty Name="Specialization" ColumnName="Specialization" />
-                <ScalarProperty Name="DayOfWeek" ColumnName="DayOfWeek" />
-                <ScalarProperty Name="StartTime" ColumnName="StartTime" />
-                <ScalarProperty Name="EndTime" ColumnName="EndTime" />
-                <ScalarProperty Name="LicenseNumber" ColumnName="LicenseNumber" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
