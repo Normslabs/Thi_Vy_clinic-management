@@ -15,6 +15,7 @@ namespace ClinicManagement_proj.BLL
         public static DoctorService DoctorService { get; } = new DoctorService(DbContext);
         public static PatientService PatientService { get; } = new PatientService(DbContext);
         public static DoctorScheduleService DoctorScheduleService { get; } = new DoctorScheduleService(DbContext);
+        public static ViewsService ViewsService { get; } = new ViewsService(DbContext);
 
         public static bool CurrentUserHasRole(UserService.UserRoles role)
         {

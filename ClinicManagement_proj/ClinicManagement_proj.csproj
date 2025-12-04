@@ -74,6 +74,7 @@
     <Compile Include="BLL\Services\DoctorService.cs" />
     <Compile Include="BLL\Services\PatientService.cs" />
     <Compile Include="BLL\Services\UserService.cs" />
+    <Compile Include="BLL\Services\ViewsService.cs" />
     <Compile Include="BLL\Utils\Notification.cs" />
     <Compile Include="BLL\Utils\NotificationManager.cs" />
     <Compile Include="BLL\ClinicManagementApp.cs" />
