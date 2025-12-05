@@ -61,6 +61,7 @@ namespace ClinicManagement_proj.UI
             btnDoctorCancel.Click += new EventHandler(btnDoctorCancel_Click);
             btnDoctorDelete.Click += new EventHandler(btnDoctorDelete_Click);
             dgvDoctors.Click += new EventHandler(dgvDoctors_Click);
+            dgvDoctors.CellFormatting += new DataGridViewCellFormattingEventHandler(dgvDoctors_CellFormatting);
 
             // Ensure scrollbars are enabled
             dgvDoctors.ScrollBars = ScrollBars.Both;
@@ -112,6 +113,15 @@ namespace ClinicManagement_proj.UI
 
             dgvDoctors.AutoResizeColumns();
             ResetDoctorForm();
+        }
+
+        private void dgvDoctors_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.ColumnIndex == dgvDoctors.Columns["Specialties"].Index && e.Value != null)
+            {
+                var specialties = (List<SpecialtyDTO>)e.Value;
+                e.Value = string.Join(", ", specialties.Select(s => s.Name));
+            }
         }
 
         /// <summary>
@@ -182,7 +192,6 @@ namespace ClinicManagement_proj.UI
         /// </summary>
         private void btnDoctorCreate_Click(object sender, EventArgs e)
         {
-            string idTxt = txtDoctorId.Text.Trim();
             string name = txtDoctorFName.Text.Trim();
             string lastName = txtDoctorLName.Text.Trim();
             string licenseNumber = txtDoctorLicense.Text.Trim();
@@ -194,9 +203,9 @@ namespace ClinicManagement_proj.UI
                 return;
             }
 
-            if (!int.TryParse(idTxt, out int id))
+            if(string.IsNullOrEmpty(licenseNumber))
             {
-                ClinicManagementApp.NotificationService.AddNotification("Invalid Doctor ID format.", NotificationType.Error);
+                ClinicManagementApp.NotificationService.AddNotification("License Number is required.", NotificationType.Warning);
                 return;
             }
 
@@ -204,7 +213,7 @@ namespace ClinicManagement_proj.UI
             {
                 DoctorDTO newDoctor = new DoctorDTO
                 {
-                    Id = id,
+                    Id = 0, // ID will be set by the database
                     FirstName = name,
                     LastName = lastName,
                     LicenseNumber = licenseNumber,
