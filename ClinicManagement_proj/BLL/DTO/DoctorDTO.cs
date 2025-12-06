@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace ClinicManagement_proj.BLL.DTO
 {
@@ -83,7 +84,8 @@ namespace ClinicManagement_proj.BLL.DTO
 
         public override string ToString()
         {
-            return $"{FirstName} {LastName} (License: {LicenseNumber}) [{Id}]";
+            string specialty = Specialties.FirstOrDefault().ToString();
+            return $"{FirstName} {LastName} ({specialty}) [{Id}]";
         }
     }
 }
