@@ -53,4 +53,3 @@ To uninstall, simply go to Settings > Apps and uninstall the application.
 - Navigate through dashboards based on user role.
 - Manage appointments, patients, and schedules as needed.
 - View reports and notifications for operational insights.
-
