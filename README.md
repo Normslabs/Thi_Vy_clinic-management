@@ -1,7 +1,5 @@
 # Clinic Management Application
 
-![Clinic Management Preview](ClinicManagement_proj/Static/HealthCareClinicPreview.gif)
-
 A multi-tier desktop application for managing clinic operations, developed for the Multi-tier Application Development course at College LaSalle.
 
 ![Clinic Management Preview](ClinicManagement_proj/Static/HealthCareClinicPreview.gif)
