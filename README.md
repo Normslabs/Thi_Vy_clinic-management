@@ -4,6 +4,10 @@
 
 A multi-tier desktop application for managing clinic operations, developed for the Multi-tier Application Development course at College LaSalle.
 
+![Clinic Management Preview](ClinicManagement_proj/Static/HealthCareClinicPreview.gif)
+
+A multi-tier desktop application for managing clinic operations, developed for the Multi-tier Application Development course at College LaSalle.
+
 ## Features
 
 - **User Authentication**: Role-based login for doctors, receptionists, and administrators.
@@ -49,3 +53,4 @@ To uninstall, simply go to Settings > Apps and uninstall the application.
 - Navigate through dashboards based on user role.
 - Manage appointments, patients, and schedules as needed.
 - View reports and notifications for operational insights.
+
